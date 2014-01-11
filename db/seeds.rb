@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Product.delete_all
 Navbar.delete_all
+Material.delete_all
+Color.delete_all
 # . . .
 Product.create(title: 'Programming Ruby 1.9  2.0', price: 14.98)
 Product.create(title: 'Nothing to say', price: 32.76)
@@ -26,4 +28,12 @@ unless rs.empty?
   Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id)
 end
 
+Material.create(name:'PVC', code: 'pvc')
+Material.create(name: 'Aluminium', code: 'aluminium')
+
+Color.create(name: 'Blanc', code: 'blanc', price: 0)
+Color.create(name: 'Acajou', code: 'acajou', price: 20)
+Color.create(name: "Oak d'orée", code: "oak d'orée", price: 20)
+Color.create(name: 'Noyer', code: 'noyer', price: 20)
+Color.create(name: 'Anthracite', code: 'anthracite', price: 20)
 # . . .
