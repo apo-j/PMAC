@@ -13,5 +13,11 @@
 //= require bootstrap
 //= require javascript-extensions
 //= require jquery.cookie
+//= require knockout
+//= require knockout.mapping
+//= require knockout-extensions
+//= require Namespace
+//= require global
+//= require static
 
 //= require_tree .
