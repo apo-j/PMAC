@@ -3,9 +3,9 @@ module Header
 
   private
 
-  def header_items
-
+  def fetch_header_items
+     @header_items = Navbar.get_navbar_root_items
   rescue ActiveRecord::RecordNotFound
-    @header = []
+    @header_items = []
   end
 end

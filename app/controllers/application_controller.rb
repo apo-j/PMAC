@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include Header
+  before_action :fetch_header_items
 end

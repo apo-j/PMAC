@@ -12,24 +12,27 @@
     </div>
     <nav class="collapse navbar-collapse ">
       <ul id="navbar" class="nav navbar-nav navbar-left">
-        <li>&nbsp;</li>
-        <li>
-          <a data-bind="link:obj.code">Home</a>
-          <ul class="hide sub-menu non-style" data-bind="foreach:children">
-            <li>
-              <ul class="sub-menu-item non-style">
-                <li class="navbar-item-title" data-bind="text:title"></li>
-                <li class="navbar-item-title" data-bind="text:sub_title"></li>
-                <li><img class="navbar-item-title" data-bind="attr:{src:image_url}"/></li>
-                <ul class="non-style" data-bind="splitList:{data:description, seperator:'|'}">
+        <% @header_items.each do |item| %>
+            <% if item.children.length > 0 %>
+                <li class= 'dropdown'>
+                  <a data-toggle="dropdown" class="dropdown-toggle" href=<%= item.url  %>>
+                    <%= item.name %><b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <% item.children.each do |c| %>
+                        <li><a href=<%= c.url  %>><%= c.name %></a></li>
+                    <% end %>
 
-                </ul>
-                <li><a data-bind="link:info_product"></a></li>
-                <li><a data-bind="link:info_price"></a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+                  </ul>
+                </li>
+            <% else %>
+                <li>
+                  <a href=<%= item.url  %>>
+                    <%= item.name %>
+                  </a>
+                </li>
+            <% end %>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -41,7 +44,7 @@
 </header>
 
 <% content_for :js do %>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $(function(){
         var subMenuItemWidth = $('#navbar ul.sub-menu > li:first-child').width();
         $('#navbar ul.sub-menu').each(function(index, element){
@@ -66,6 +69,6 @@
        );
 
     })
-</script>
+</script>-->
 
 <% end %>
