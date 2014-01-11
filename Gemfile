@@ -48,3 +48,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'state_machine' #state machine
+
+gem 'bcrypt-ruby', '3.0.1'

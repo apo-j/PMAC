@@ -2,6 +2,8 @@ PMAC::Application.routes.draw do
 
   match "configurator/:material/:type" , to: "configurator#index", via: 'get'
 
+  resources :users
+
   resources :orders
 
   resources :line_items
