@@ -1,9 +1,13 @@
 PMAC::Application.routes.draw do
+
+
   resources :orders
 
   resources :line_items
 
   resources :carts
+
+  match "show-cart", to: 'carts#show', via: "get"
 
   get "store/index"
   resources :products do

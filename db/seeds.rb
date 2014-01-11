@@ -13,19 +13,21 @@ Color.delete_all
 Product.create(title: 'Programming Ruby 1.9  2.0', price: 14.98)
 Product.create(title: 'Nothing to say', price: 32.76)
 
-Navbar.create(name: 'PVC', code: 'pvc', is_top: true)
-Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true)
+
+Navbar.create(name: 'Accueil', code: 'home', is_top: true, url: '/', order: 0)
+Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1)
+Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2)
 
 rs = Navbar.by_code('pvc')
 unless rs.empty?
-  Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id)
-  Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id)
+  Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/pvc/neuf')
+  Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id, order: 1, url: '/configurator/pvc/renovation')
 end
 
 rs = Navbar.by_code('aluminium')
 unless rs.empty?
-  Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id)
-  Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id)
+  Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/aluminium/neuf')
+  Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id, order: 1, url: '/configurator/aluminium/renovation')
 end
 
 Material.create(name:'PVC', code: 'pvc')
