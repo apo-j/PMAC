@@ -1,0 +1,65 @@
+@import "bootstrap.custom";
+@import "variables";
+
+#main{
+  margin-top: 60px;
+}
+
+ul.non-style{
+  list-style-type:none;
+}
+
+#menu{
+  &.container {
+    padding-left:0;
+    padding-right: 0;
+    >.navbar-collapse{
+      padding-left:0;
+      padding-right:0;
+    }
+  }
+  #navbar{
+    position:relative;
+    >li{
+      >a{
+        font-weight: bold;
+        color:#fff;
+        &:hover{
+          background-color: #808080;
+        }
+      }
+      >.sub-menu{
+        z-index: 99;
+        position:absolute;
+        width:800px;
+        padding-left:0;
+        >li{
+          background-color: #fff;
+          width:250px;
+          height:auto;
+          float:left;
+          border: 1px solid #000;
+          border-left:0;
+          &:first-child{
+            border-left:1px solid #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bordered.black{
+  border:1px solid #000;
+}
+
+#total-price{
+   position:fixed;
+  top:200px;
+  right:200px;
+}
+
+
+
+
+
