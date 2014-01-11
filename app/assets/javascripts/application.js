@@ -9,8 +9,9 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require jquery-1.10.2.min
+//= require bootstrap
+//= require javascript-extensions
 //= require jquery.cookie
 
 //= require_tree .

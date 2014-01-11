@@ -11,7 +11,8 @@
      <!-- <a href="/" class="navbar-brand" data-bind="text:module.navBar.title"></a>-->
     </div>
     <nav class="collapse navbar-collapse ">
-      <ul id="navbar" class="nav navbar-nav"  data-bind="foreach:navBar">
+      <ul id="navbar" class="nav navbar-nav navbar-left">
+        <li>&nbsp;</li>
         <li>
           <a data-bind="link:obj.code">Home</a>
           <ul class="hide sub-menu non-style" data-bind="foreach:children">
@@ -29,6 +30,11 @@
             </li>
           </ul>
         </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a data-bind="link:obj.code">Login</a></li>
+        <li class="dropdown"><span class="glyphicon glyphicon-shopping-cart" style="font-color:white;font-size:20px;"></span></li>
       </ul>
     </nav>
   </div>

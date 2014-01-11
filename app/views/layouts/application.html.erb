@@ -11,10 +11,10 @@
 <%= render 'layouts/header' %>
 
 <div role="main" id="main" class="container">
-  <%= render 'layouts/leftSideBar' %>
-  <%= render 'layouts/rightSideBar' %>
   <div class="row">
-    <%= yield %>
+    <div class="col-sm-2 col-md-2"><%= render 'layouts/leftSideBar' %></div>
+    <div class="col-sm-8 col-md-8"><%= yield %></div>
+    <div class="col-sm-2 col-md-2"><%= render 'layouts/rightSideBar' %></div>
   </div>
 </div>
 <!-- <%= render 'layouts/footer' %>-->
