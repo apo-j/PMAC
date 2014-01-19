@@ -19,7 +19,7 @@ PMAC::Application.routes.draw do
     get :who_bought, on: :member
   end
 
-  root 'store#index', as: 'store'
+  root 'store#index', as: 'root'
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'
