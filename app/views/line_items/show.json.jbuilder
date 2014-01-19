@@ -1,1 +1,1 @@
-json.extract! @line_item, :id, :product_id, :cart_id, :created_at, :updated_at
+json.extract! @product, :id, :title, :price, :material, :color, :color_side, :mode, :width, :height

@@ -77,26 +77,75 @@
           </h4>
         </div>
         <div class="panel-collapse collapse" id="dimension">
-          <label>Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.width.value">
+          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.width.value">
             <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
           </label>
-          <label>Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.height.value">
+          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.height.value">
             <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
           </label>
         </div>
       </div>
     </div>
 
-    <div class="well" id="total-price">
-      Total : <span data-bind="textAsCurrency: results.total"></span>
-    </div>
-    <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary">Add to cart</button>
+    <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="add-to-cart-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Vous venez d'ajouter à votre panier : </h4>
+          </div>
+          <div class="modal-body" data-bind='with: $root.product'>
+               <table>
+                 <tr>
+                    <td>Titre</td><td data-bind="text:title"></td>
+                 </tr>
+                 <tr>
+                   <td>Matière</td><td data-bind="text:material"></td>
+                 </tr>
+                 <tr>
+                   <td>Coloris</td><td data-bind="text:color"></td>
+                 </tr>
+                 <tr>
+                   <td>Coloris side</td><td data-bind="text:color_side"></td>
+                 </tr>
+                 <tr>
+                   <td>Type</td><td data-bind="text:mode"></td>
+                 </tr>
+                 <tr>
+                   <td>Largeur</td><td data-bind="text:width"></td>
+                 </tr>
+                 <tr>
+                   <td>Hauteur</td><td data-bind="text:height"></td>
+                 </tr>
+                 <tr>
+                   <td>Prix</td><td data-bind="text:price"></td>
+                 </tr>
+               </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Continuer le shopping</button>
+            <button type="button" data-bind="click:showCart" class="btn btn-primary">Afficher le panier</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 
   </div>
 
 
 
 
+
+<% content_for :custom_right_side_bar do %>
+    <div class="well" id="total-price">
+      Total : <span data-bind="textAsCurrency: results.total"></span>
+    </div>
+<% end %>
 
 
 <% content_for :body_content do %>
@@ -142,18 +191,45 @@
                 total: ko.observable(0)
             };
 
+            self.product = {
+                title:ko.observable(''),
+                material:ko.observable(''),
+                color:ko.observable('') ,
+                color_side:ko.observable(),
+                mode:ko.observable(),
+                width:ko.observable(),
+                height:ko.observable(),
+                price:ko.observable()
+            };
+
+            self.results.total.subscribe(function(newValue){
+                $('#total-price>span').text(utilities.numberToEuro(newValue));
+            });
+
 
             self.addToCart = function(){
                 utilities.post(
                         "/line_items.json",
                         {product_info: ko.mapping.toJS( self.results)},
                         function(data){
+                            self.product.title(data.title);
+                            self.product.price(utilities.numberToEuro(data.price));
+                            self.product.material(data.material);
+                            self.product.color(data.color);
+                            self.product.color_side(data.color_side);
+                            self.product.mode(data.mode);
+                            self.product.width(data.width);
+                            self.product.height(data.height);
                             utilities.arrayRange(self.priceData.widths, self.range.width);
                             utilities.arrayRange(self.priceData.heights, self.range.height);
-                            console.log('ajax');
+                            $('#add-to-cart-success').modal({});
                         },
                         function(){alert('KO')});
 
+            }
+
+            self.showCart = function(){
+                window.location.href = '/show-cart';
             }
 
             ko.computed(function(){
