@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include Header
   before_action :fetch_header_items
+  include ApplicationHelper
+  include SessionsHelper
 end
