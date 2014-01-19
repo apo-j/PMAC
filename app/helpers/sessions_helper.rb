@@ -30,7 +30,7 @@ module SessionsHelper
   def require_login
     unless signed_in?
       store_return_to
-      redirect_to new_session_path
+      redirect_to  new_session_path
     end
   end
 
