@@ -1,5 +1,6 @@
 class ConfiguratorController < ApplicationController
   before_action :verify_params, only: ['index']
+  protect_from_forgery except: :price_data
   def index
     @response = {}
     @response[:data] = {}
@@ -21,6 +22,21 @@ class ConfiguratorController < ApplicationController
     end
   end
 
+
+  def price_data
+    matiere = params[:matiere]
+    type =  params[:type]
+
+    mode = Mode.find(type)
+    prices_data = mode.price
+
+    res = {}
+    res[:widths] =  prices_data[:widths]
+    res[:heights] =  prices_data[:heights]
+    #res[:options] =  matrix_price:options]
+    res[:data] =  prices_data[:prices]
+    return render :json => res
+  end
 
   private
     def verify_params

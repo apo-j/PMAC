@@ -1,6 +1,7 @@
 PMAC::Application.routes.draw do
 
   match "configurator/:material/:type" , to: "configurator#index", via: 'get'
+  match "price", to:'configurator#price_data', via: 'post'
 
   resources :users
 
@@ -11,6 +12,7 @@ PMAC::Application.routes.draw do
   resources :carts
 
   match "show-cart", to: 'carts#show', via: "get"
+
 
   get "store/index"
   resources :products do

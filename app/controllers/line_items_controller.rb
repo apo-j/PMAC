@@ -3,7 +3,7 @@ class LineItemsController < ApplicationController
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   before_action :set_cart, only: [:create]
-
+  protect_from_forgery except: :create
   # GET /line_items
   # GET /line_items.json
   def index
@@ -27,7 +27,18 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    product = Product.find(params[:product_id])
+    product_info = params[:product_info]
+
+    material = Material.find(product_info[:matiere].to_i).name
+    color = Color.find(product_info[:coloris].to_i).name
+    color_side = product_info[:coloris_side]
+    mode = Mode.find(product_info[:type].to_i).name
+    width = product_info[:width].to_i
+    height = product_info[:height].to_i
+    price = product_info[:total]
+
+    product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
+
     @line_item = @cart.add_product(product.id)
 
     respond_to do |format|
@@ -73,7 +84,9 @@ class LineItemsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+=begin
     def line_item_params
       params.require(:line_item).permit(:product_id)
     end
+=end
 end

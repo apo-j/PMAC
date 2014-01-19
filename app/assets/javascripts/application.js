@@ -18,6 +18,7 @@
 //= require knockout-extensions
 //= require Namespace
 //= require global
+//= require utilities
 //= require static
 
 //= require_tree .
