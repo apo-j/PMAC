@@ -94,6 +94,11 @@
 
   </div>
 
+
+
+
+
+
 <% content_for :body_content do %>
     <%= @response.to_json  %>
 <% end %>
@@ -177,24 +182,7 @@
                         self.results.total(0);
                     }
                 }
-
             }).extend({ throttle: 500 });
-
-            /*     ko.computed(function(){
-             console.log('dd');
-             if(self.changeTracker.isDirty()){
-             if(self.results.matiere() && self.results.coloris() && self.results.coloris_side() && self.results.type() && self.results.width() > 0 && self.results.height() > 0){
-             utilities.post(
-             "/calculate-price",
-             {data: ko.mapping.toJS(self.results)},
-             function(data){
-             self.total(data.data);
-             self.changeTracker.reset();
-             },
-             function(){alert('KO')});
-             }
-             }
-             });*/
         }
 
 

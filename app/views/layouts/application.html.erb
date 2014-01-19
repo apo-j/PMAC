@@ -13,7 +13,14 @@
 <div role="main" id="main" class="container">
   <div class="row">
     <div class="col-sm-2 col-md-2"><%= render 'layouts/leftSideBar' %></div>
-    <div class="col-sm-8 col-md-8"><%= yield %></div>
+    <div class="col-sm-8 col-md-8">
+      <div class="container">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
     <div class="col-sm-2 col-md-2"><%= render 'layouts/rightSideBar' %></div>
   </div>
 </div>
