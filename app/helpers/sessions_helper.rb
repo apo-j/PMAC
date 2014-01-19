@@ -35,10 +35,13 @@ module SessionsHelper
   end
 
   def require_admin
-    require_login
-    unless @current_user.user_type.downcase == 'admin'
+    if !signed_in?
+      store_return_to
+      redirect_to new_session_path
+    elsif @current_user.user_type.downcase == 'admin'
       render file: 'public/403.html', status: :forbidden, :layout => false
     end
+
   end
 
 end
