@@ -36,7 +36,14 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a data-bind="link:obj.code">Login</a></li>
+        <li class="dropdown">
+          <% if signed_in? %>
+           <%= button_to 'Logout', '/signout', method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+          <% else %>
+              <a href="/signin">Login</a>
+          <% end %>
+        </li>
         <li class="dropdown"> <a href="/show-cart" style="color:white;font-size: 20px;font-weight: bold" class="glyphicon glyphicon-shopping-cart"></a>
 
         </li>
