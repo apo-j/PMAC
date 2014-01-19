@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_admin, only: [:index, :edit, :delete]
+  before_action :require_login, only: [:show, :user_edit]
   # GET /users
   # GET /users.json
   def index
@@ -12,9 +13,21 @@ class UsersController < ApplicationController
   def show
   end
 
+
+  # GET /users/edit
+  def user_edit
+    id = session[:user_id]
+    @user = User.find(id)
+    if @user.nil?
+      flash[:error] = "You must be amin to access this section"
+      redirect_to new_user_path
+    end
+  end
+
   # GET /users/new
   def new
     @user = User.new
+
   end
 
   # GET /users/1/edit
@@ -24,10 +37,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    user_params
     @user = User.new(user_params)
-
+    @user.user_type= :normal
     respond_to do |format|
       if @user.save
+        sign_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -41,6 +56,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+
+
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
@@ -69,6 +86,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:login)
+      params.require(:user).permit(:login, :password, :password_confirmation)
     end
+
 end
