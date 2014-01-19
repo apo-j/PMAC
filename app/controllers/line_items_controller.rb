@@ -37,15 +37,15 @@ class LineItemsController < ApplicationController
     height = product_info[:height].to_i
     price = product_info[:total]
 
-    product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
+    @product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
 
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(@product.id)
 
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url }
         format.js  { @current_item = @line_item }
-        format.json { render action: 'show', status: :created, location: @line_item }
+        format.json { render action: 'show', status: :created, location: @product }
       else
         format.html { render action: 'new' }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
