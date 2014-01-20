@@ -38,7 +38,7 @@ module SessionsHelper
     if !signed_in?
       store_return_to
       redirect_to new_session_path
-    elsif @current_user.user_type.downcase == 'admin'
+    elsif @current_user.user_type.downcase != 'admin'
       render file: 'public/403.html', status: :forbidden, :layout => false
     end
 
