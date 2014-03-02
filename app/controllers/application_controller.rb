@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :fetch_header_items
   include ApplicationHelper
   include SessionsHelper
+  include CurrentCart
+  before_action :set_cart
 end

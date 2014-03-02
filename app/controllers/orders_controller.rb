@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     if @cart.line_items.empty?
-      redirect_to root_path, notice: "Your cart is empty"
+      redirect_to root_path, notice: "Votre panier est vide"
       return
     end
     @order = Order.new

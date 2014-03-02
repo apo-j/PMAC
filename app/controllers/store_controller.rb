@@ -1,7 +1,6 @@
 class StoreController < ApplicationController
-  include CurrentCart
-  before_action :set_cart
   def index
     @products = Product.order(:title)
+    @carousel = Carousel.where("page=?", 'index').order(:order)
   end
 end

@@ -59,7 +59,7 @@ class CartsController < ApplicationController
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_url}
+      format.html { redirect_to root_url}
       format.json { head :no_content }
     end
   end
@@ -75,7 +75,7 @@ class CartsController < ApplicationController
       params[:cart]
     end
     def invalid_cart
-      logger.error "Attempt to access invalid cart #{Cart.find(session[:cart_id])}"
-      redirect_to store_url, notice: 'Invalid cart'
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to root_url, notice: 'Panier invalide'
     end
 end

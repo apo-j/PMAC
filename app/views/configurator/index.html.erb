@@ -126,7 +126,7 @@
                </table>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Continuer le shopping</button>
+            <button type="button" id='reload' class="btn btn-default pull-left" data-dismiss="modal">Continuer le shopping</button>
             <button type="button" data-bind="click:showCart" class="btn btn-primary">Afficher le panier</button>
           </div>
         </div><!-- /.modal-content -->
@@ -138,12 +138,12 @@
   </div>
 
 
-
-
-
 <% content_for :custom_right_side_bar do %>
-    <div class="well" id="total-price">
-      Total : <span data-bind="textAsCurrency: results.total"></span>
+    <div class="bloc" style="line-height: 30px">
+      <span class="title">Montant</span>
+      <div class="bloc-content" id="price-total" style="min-height: 30px;padding-left: 30px">
+        Total : <span data-bind="textAsCurrency: results.total"></span>
+      </div>
     </div>
 <% end %>
 
@@ -154,6 +154,10 @@
 
 <% content_for :js do %>
     <script>
+      $('#reload').on('click', function(){
+         window.document.location.reload();
+      })
+      $('#price-total>span').text(utilities.numberToEuro(0));
         var rawData = JSON.parse(String.removeChangeLine($('#' + static.pageContentId).text()));
 
         var priceData = function(data, widths, heights){
@@ -203,7 +207,7 @@
             };
 
             self.results.total.subscribe(function(newValue){
-                $('#total-price>span').text(utilities.numberToEuro(newValue));
+                $('#price-total>span').text(utilities.numberToEuro(newValue));
             });
 
 

@@ -1,0 +1,56 @@
+<div class="form-horizontal">
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2>Veuillez corriger les erreurs suivantes:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <div class="form-group">
+        <%= f.label :objet, class:"col-xs-3 control-label" %>
+        <div class="col-xs-9">
+          <%= f.text_field :object, class:"form-control input-sm" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, class:"col-xs-3 control-label" %>
+        <div class="input-group col-xs-9">
+          <span class="input-group-addon">@</span>
+          <%= f.text_field :email, class:"form-control input-sm" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :"Numéro de commande", class:"col-xs-3 control-label" %>
+        <div class="col-xs-9">
+          <%= f.text_field :command, class:"form-control input-sm" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :fichier, class:"col-xs-3 control-label" %>
+        <div class="col-xs-9">
+          <%= f.file_field :file_path %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :message, class:"col-xs-3 control-label" %>
+        <div class="col-xs-9">
+          <%= f.text_area :message, class:"form-control input-sm", rows:8 %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 control-label" >&nbsp;</label>
+        <div class="col-xs-9">
+          <div class="actions" style="float:right">
+            <%= f.submit 'ENVOYER', class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+<% end %>
+</div>

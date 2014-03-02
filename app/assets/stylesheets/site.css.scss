@@ -1,8 +1,23 @@
 @import "bootstrap.custom";
 @import "variables";
 
+body{
+  background: url("bg.png") repeat scroll center center #FFFFFF;
+  color: #767676;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+#header{
+  height:140px;
+  width:100%;
+  text-align: center;
+  margin-bottom:0;
+
+}
 #main{
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 ul.non-style{
@@ -13,6 +28,10 @@ ul.non-style{
   &.container {
     padding-left:17px;
     padding-right: 30px !important;
+    &.navbar{
+        background-color: #E5322D;
+        border-color: #FF0000;
+    }
     >.navbar-collapse{
       padding-left:0;
       padding-right:0;
@@ -56,6 +75,102 @@ ul.non-style{
 #total-price{
   position:fixed;
   top:200px;
+}
+a.original{
+  color: #428BCA !important;
+  text-decoration: underline !important;
+}
+#deconnecte{
+  color:#999999;
+  padding:15px;
+}
+#deconnecte:hover,
+#deconnecte:focus
+{
+  color:#fff;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0);
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus
+{
+     background-color: #88c1e5 !important;
+     color:#fff !important;
+}
+
+.sidebar .bloc {
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #888888;
+  color: #000000;
+  margin: 0 1em 1.1em 0;
+  overflow: hidden;
+  padding: 1px 0;
+  >.title {
+    background-color: #E5322D;
+    color:#fff;
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #C6C3C6;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 15px;
+    pointer-events: none;
+  }
+}
+.carousel-control{
+  background-image: none !important;
+}
+a.carousel-control:hover{
+    background-color:transparent !important;
+}
+#footer{
+  margin-top: 20px;
+/*  background-color:#DCDDE0;*/
+  padding:50px;
+  padding-top:20px;
+  height:250px;
+  >div.contact{
+    width:20%;
+    float: left;
+    height:250px;
+    a.contact{
+      color:deepskyblue !important;
+      font-size:16px;
+      &:hover{
+        background-color: transparent;
+      }
+    }
+  }
+  >div.partenaire{
+    height:250px;
+    float: right;
+    width:80%;
+    ul{
+      list-style-type: none !important;
+      >li{
+        float:left;
+        height:100px;
+        text-align: center;
+        line-height: 100px;
+      }
+      &.first{
+        li{
+          >img{
+            width:300px !important;
+          }
+        }
+      }
+      &.second{
+        li{
+          >img{
+            width:250px !important;
+          }
+        }
+      }
+    }
+
+  }
 }
 
 

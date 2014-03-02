@@ -1,4 +1,62 @@
-<%= yield :custom_right_side_bar %>
+<div class="sidebar">
+  <%= yield :custom_right_side_bar %>
+
+  <div class="bloc">
+    <span class="title">Mon Panier</span>
+    <div class="bloc-content" style="padding:10px;text-align: center">
+         <div>Produits :  <%= @cart.total_quantity %> </div>
+         <div>Montant : <%= number_to_currency(@cart.total_price, unit: "", separator: ",", delimiter: " ") %>€</div>
+      <div style="">
+        <a href="/show-cart" style="" class="">Afficher panier</a>
+      </div>
+    </div>
+  </div>
+
+
+  <% if !signed_in? %>
+  <div class="bloc">
+    <span class="title">Connexion</span>
+    <div class="bloc-content" style="padding:10px;">
+      <%= form_for(:session, url: sessions_path, role:'form') do |f| %>
+          <fieldset>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <%= f.text_field :login, class:"form-control", placeholder:"Identifiant" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
+                <%= f.password_field :password, class:'form-control', placeholder:"Mot de passe" %>
+              </div>
+            </div>
+            <div class="form form-inline">
+              <p class="pull-left"><span data-bind="translate:'NEW_USER?'"></span>&nbsp; <%= link_to "", signup_path, 'data-bind' => "translate:'SIGN_UP_NOW!'" %></p>
+              <div class="" style="text-align: center">
+                <%= f.submit 'Connexion', class: "btn btn-primary", style:'width:97%'%>
+              </div>
+            </div>
+          </fieldset>
+      <% end %>
+      <div style="margin-top: 10px;text-align: left">
+        <%= link_to "Créer un compte", signup_path, class:'original' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="bloc">
+    <div class="bloc-content" style="padding:10px;text-align: center">
+      <div style="font-weight: bold;text-align: left">MENUISERIES FABRIAUEES EN FRANCE</div>
+      <div style="font-weight: bold;text-align: left">TARIFS INTERNET REDUITS</div>
+      <div style="font-weight: bold;text-align: left">VITRAGE CERTIFIE CEKAL</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 

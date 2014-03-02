@@ -11,14 +11,23 @@ Material.delete_all
 Color.delete_all
 Mode.delete_all
 Price.delete_all
+Carousel.delete_all
 # . . .
 Product.create(title: 'Programming Ruby 1.9  2.0', price: 14.98)
 Product.create(title: 'Nothing to say', price: 32.76)
 
 
-Navbar.create(name: 'Accueil', code: 'home', is_top: true, url: '/', order: 0)
+Navbar.create(name: 'Accueil', picture:'glyphicon glyphicon-home' ,code: 'home', is_top: true, url: '/', order: 0)
 Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1)
 Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2)
+Navbar.create(name: 'Volet Roulants', code:'VR', is_top: true, order: 3)
+Navbar.create(name: 'Volet Battand', code:'VB', is_top: true, order: 4)
+Navbar.create(name: 'Store', code:'store', is_top: true, order: 5)
+Navbar.create(name: 'Rideaux Métalique', code:'RM', is_top: true, order: 6)
+Navbar.create(name: 'Accessoires', code:'accessoires', is_top: true, order: 7)
+
+
+
 
 rs = Navbar.by_code('pvc')
 unless rs.empty?
@@ -47,4 +56,12 @@ price02 = Price.create(widths:'60|70|80|90|100|110|120|130|140', heights:'65|75|
 
 Mode.create(name: 'type1', code: 'type1', price: price01)
 Mode.create(name: 'type2', code: 'type2', price: price02)
+
+Carousel.create(target:'/configurator/pvc/neuf', src:'fenetre-pvc.png', alt_text: 'PVC/Aluminium', page:'index', order:0, is_active:true )
+Carousel.create(target:'', src:'fenetre-aluminium.png', alt_text: 'Aluminium', page:'index', order:1)
+Carousel.create(target:'', src:'Volets-roulants.png', alt_text: 'Volet roulants', page:'index', order:2)
+Carousel.create(target:'', src:'store.png', alt_text: 'Store', page:'index', order:3)
+Carousel.create(target:'', src:'rideaux.png', alt_text: 'Rideaux', page:'index', order:4)
+Carousel.create(target:'', src:'Volet-battant.png', alt_text: 'Volet battant', page:'index', order:5)
+
 # . . .

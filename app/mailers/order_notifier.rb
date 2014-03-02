@@ -21,4 +21,9 @@ class OrderNotifier < ActionMailer::Base
     @order = order
     mail to: order.email, subject: 'PMAC Store Order Shipped'
   end
+
+
+  def contact(message)
+
+  end
 end

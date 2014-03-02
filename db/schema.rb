@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119212517) do
+ActiveRecord::Schema.define(version: 20140222094731) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20140119212517) do
 
   add_index "addresses", ["address_type"], name: "index_addresses_on_address_type", using: :btree
   add_index "addresses", ["user_id"], name: "fk_address", using: :btree
+
+  create_table "carousels", force: true do |t|
+    t.string   "target"
+    t.string   "src"
+    t.string   "alt_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "page"
+    t.integer  "order",      default: 0
+    t.boolean  "is_active",  default: false
+  end
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -63,6 +74,16 @@ ActiveRecord::Schema.define(version: 20140119212517) do
   end
 
   add_index "materials", ["code"], name: "index_materials_on_code", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "object"
+    t.string   "email"
+    t.string   "file_path"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "command"
+  end
 
   create_table "modes", force: true do |t|
     t.string   "category"

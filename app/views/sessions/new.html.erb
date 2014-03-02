@@ -1,21 +1,34 @@
-<% provide(:title, "Sign in") %>
-<div style="width:300px;margin: auto">
-<h1>Sign in</h1>
-
-
-  <div>
-    <%= form_for(:session, url: sessions_path) do |f| %>
-        <div class="field">
-        <%= f.label :login, 'Email' %>
-        <%= f.text_field :login %>
-        </div>
-        <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        </div>
-        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+<% provide(:title, "Se connecter") %>
+<div class="panel panel-default login" style="width:350px;margin: auto">
+  <div class="panel-heading">
+       Se connecter
+  </div>
+  <div class="panel-body">
+    <%= form_for(:session, url: sessions_path, role:'form') do |f| %>
+        <fieldset>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <%= f.text_field :login, class:"form-control", placeholder:"Identifiant" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
+              <%= f.password_field :password, class:'form-control', placeholder:"Mot de passe" %>
+            </div>
+          </div>
+          <div class="form form-inline">
+            <p class="pull-left"><span data-bind="translate:'NEW_USER?'"></span>&nbsp; <%= link_to "", signup_path, 'data-bind' => "translate:'SIGN_UP_NOW!'" %></p>
+            <div class="pull-right">
+              <a  href="#forgotpassword" data-toggle="tab"></a> &nbsp;
+              <%= f.submit 'Connexion', class: "btn btn-primary" %>
+            </div>
+          </div>
+        </fieldset>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <p>Vous n'avez pas de compte ?
+      <br/>
+      <%= link_to "Créer un compte !", signup_path, class:'original' %></p>
   </div>
 </div>

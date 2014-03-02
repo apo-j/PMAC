@@ -1,5 +1,7 @@
 <header  role="banner" id="doc-header">
-  <div id="header" class="container navbar" style="height:100px;width:800px;text-align: center;margin-bottom:0">dddd</div>
+  <div id="header" class="container navbar">
+     <img src="/assets/logo_pmac.jpg" width="1195px" height="150px">
+  </div>
   <div id="menu" class="container navbar navbar-inverse">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -15,7 +17,7 @@
         <% @header_items.each do |item| %>
             <% if item.children.length > 0 %>
                 <li class= 'dropdown'>
-                  <a data-toggle="dropdown" class="dropdown-toggle" href=<%= item.url  %>>
+                  <a data-toggle="dropdown" class="dropdown-toggle <%= item.picture%>" href=<%= item.url  %>>
                     <%= item.name %><b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
@@ -27,32 +29,45 @@
                 </li>
             <% else %>
                 <li>
-                  <a href=<%= item.url  %>>
+                  <a href="<%= item.url  %>" class="<%= item.picture%>">
+                  <% if (!item.picture || item.picture.length == 0)  %>
                     <%= item.name %>
-                  </a>
+                  <%end%>
+                      </a>
                 </li>
             <% end %>
         <% end %>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+     <!-- <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <% if signed_in? %>
-           <%= button_to 'Logout', '/signout', method: :delete,
-                            data: { confirm: 'Are you sure?' } %>
+              <form class="button_to" method="post" action="/signout">
+                <div>
+                  <input type="hidden" value="delete" name="_method">
+                  <button class="btn btn-link" id="deconnecte">Déconnexion</button>
+
+                  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+                </div>
+              </form>
           <% else %>
-              <a href="/signin">Login</a>
+              <a href="/signin">Connexion</a>
           <% end %>
         </li>
-        <li class="dropdown"> <a href="/show-cart" style="color:white;font-size: 20px;font-weight: bold" class="glyphicon glyphicon-shopping-cart"></a>
-
-        </li>
-      </ul>
+      </ul>  -->
     </nav>
   </div>
 </header>
 
 <% content_for :js do %>
+    <script type="text/javascript">
+        $(function(){
+            $('#deconnecte').click(function(){
+                $(this).parent('form').submit();
+            });
+        });
+     </script>
 <!--<script type="text/javascript">
     $(function(){
         var subMenuItemWidth = $('#navbar ul.sub-menu > li:first-child').width();
