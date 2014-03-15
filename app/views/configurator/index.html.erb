@@ -6,16 +6,31 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#matiere">
-              Matière
+              Type de pose
             </a>
           </h4>
         </div>
         <div class="panel-collapse collapse in"  id="matiere">
-          <div class="panel-body" data-bind="foreach:$data">
-            <label>
+          <div class="panel-body">
+          <!--<div class="panel-body" data-bind="foreach:$data">-->
+            <div style="float:left">
+                 <img class="image-zoom" src="/assets/pvc-pose-renovation.png" data-zoom-image="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+            </div>
+            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+              <label><input type="radio" name="type_repose" value="renovation"/>&nbsp;Pose en renovation sur dormant existant</label>
+            </div>
+            <hr>
+            <div style="float:left">
+              <img class="image-zoom" src="/assets/pvc-pose-neuf-titanium.png" data-zoom-image="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+            </div>
+            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+              <label><input type="radio" name="type_repose" value="neuf"/>&nbsp;Pose neuf en dormant 60mm</label>
+            </div>
+
+            <!--<label>
               <input type="radio" name="matiere" data-bind="checked: $root.results.matiere, value:id">
               <span data-bind="text:name"></span>
-            </label><br>
+            </label><br>-->
           </div>
         </div>
       </div>
@@ -137,7 +152,6 @@
 
   </div>
 
-
 <% content_for :custom_right_side_bar do %>
     <div class="bloc" style="line-height: 30px">
       <span class="title">Montant</span>
@@ -154,6 +168,7 @@
 
 <% content_for :js do %>
     <script>
+       $('.image-zoom').elevateZoom();
       $('#reload').on('click', function(){
          window.document.location.reload();
       })
