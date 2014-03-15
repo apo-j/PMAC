@@ -173,6 +173,32 @@ a.carousel-control:hover{
   }
 }
 
+#accessoire{
+  margin-top:20px;
+  .img{
+    float: left;
+/*    width:240px;
+    height:180px;*/
+    background-repeat: no-repeat;
+    &.poigner{
+      background-image: url( menpvc_secustik.jpg);
+
+    }
+  }
+  .description{
+    .title {
+      a{
+        background: transparent;
+        .btn-link{
+          font-size: 12px !important;
+        }
+      }
+
+    }
+  }
+
+}
+
 
 
 
