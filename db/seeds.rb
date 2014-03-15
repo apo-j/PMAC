@@ -18,8 +18,8 @@ Product.create(title: 'Nothing to say', price: 32.76)
 
 
 Navbar.create(name: 'Accueil', picture:'glyphicon glyphicon-home' ,code: 'home', is_top: true, url: '/', order: 0)
-Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1)
-Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2)
+Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1, url: '/configurator/pvc')
+Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2, url: '/configurator/aluminium')
 Navbar.create(name: 'Volet Roulants', code:'VR', is_top: true, order: 3)
 Navbar.create(name: 'Volet Battand', code:'VB', is_top: true, order: 4)
 Navbar.create(name: 'Store', code:'store', is_top: true, order: 5)
@@ -29,6 +29,7 @@ Navbar.create(name: 'Accessoires', code:'accessoires', is_top: true, order: 7)
 
 
 
+=begin
 rs = Navbar.by_code('pvc')
 unless rs.empty?
   Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/pvc/neuf')
@@ -40,15 +41,21 @@ unless rs.empty?
   Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/aluminium/neuf')
   Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id, order: 1, url: '/configurator/aluminium/renovation')
 end
+=end
 
 Material.create(name:'PVC', code: 'pvc')
 Material.create(name: 'Aluminium', code: 'aluminium')
 
-Color.create(name: 'Blanc', code: 'blanc', price: 0)
-Color.create(name: 'Acajou', code: 'acajou', price: 20)
-Color.create(name: "Oak d'orée", code: "oak d'orée", price: 20)
-Color.create(name: 'Noyer', code: 'noyer', price: 20)
-Color.create(name: 'Anthracite', code: 'anthracite', price: 20)
+Color.create(name: 'Blanc', code: 'blanc', price: 0, is_double_side: false, price_advance: 0)
+Color.create(name: 'Irish Oak', code: 'irish Oak', price: 30, is_double_side: true, price_advance: 40)
+Color.create(name: 'Golden Oak', code: 'golden oak', price: 30, is_double_side: true, price_advance: 40)
+Color.create(name: 'Chêne foncé', code: 'chêne foncé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Acajou', code: 'acajou', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Bleu acier grainé', code: 'bleu acier grainé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Gris anthracite grainé', code: 'gris anthracite grainé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Rouge carmin', code: 'rouge carmin', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Vert mousse', code: 'vert mousse', price: 30, is_double_side: false, price_advance: 0)
+
 
 
 price01 = Price.create(widths:'50|60|70|80|90|100|110|120|130|140|150|160', heights:'45|55|65|75|85|95', prices:'220|257|263|268|279|285|294|300|305|313|321|329|225|262|267|276|284|292|299|304|313|322|331|340|232|267|276|282|291|299|307|318|329|339|349|359|238|276|281|289|298|309|320|331|341|353|366|378|249|285|292|300|315|328|339|351|363|374|387|399|256|292|299|311|327|339|352|366|376|390|404|416' )
