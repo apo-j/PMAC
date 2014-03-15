@@ -44,14 +44,15 @@ end
 Material.create(name:'PVC', code: 'pvc')
 Material.create(name: 'Aluminium', code: 'aluminium')
 
-Color.create(name: 'Blanc', code: 'blanc', price: 0)
-Color.create(name: 'Irish Oak', code: 'irish oak', price: 30)
-Color.create(name: 'Golden Beech', code: 'golden beech', price: 30)
-Color.create(name: 'Golden Oak', code: 'golden oak', price: 30)
-Color.create(name: 'Chêne fincé', code: 'chêne fincé', price: 30)
-Color.create(name: 'Acajou', code: 'acajou', price: 30)
-Color.create(name: 'Bleu acier grainé', code: 'bleu acier grainé', price: 30)
-Color.create(name: 'Gris anthracite grainé', code: 'gris anthracite grainé', price: 30)
+Color.create(name: 'Blanc', code: 'blanc', price: 0, is_double_side: false, price_advance: 0)
+Color.create(name: 'Irish Oak', code: 'irish Oak', price: 30, is_double_side: true, price_advance: 40)
+Color.create(name: 'Golden Oak', code: 'golden oak', price: 30, is_double_side: true, price_advance: 40)
+Color.create(name: 'Chêne foncé', code: 'chêne foncé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Acajou', code: 'acajou', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Bleu acier grainé', code: 'bleu acier grainé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Gris anthracite grainé', code: 'gris anthracite grainé', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Rouge carmin', code: 'rouge carmin', price: 30, is_double_side: false, price_advance: 0)
+Color.create(name: 'Vert mousse', code: 'vert mousse', price: 30, is_double_side: false, price_advance: 0)
 
 
 
