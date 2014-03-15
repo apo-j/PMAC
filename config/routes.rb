@@ -2,7 +2,7 @@ PMAC::Application.routes.draw do
 
   get "message/new"
   match "messages", to:'message#create', via: 'post'
-  match "configurator/:material/:type" , to: "configurator#index", via: 'get'
+  match "configurator/:material/" , to: "configurator#index", via: 'get'
   match "price", to:'configurator#price_data', via: 'post'
 
   resources :users

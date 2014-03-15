@@ -18,8 +18,8 @@ Product.create(title: 'Nothing to say', price: 32.76)
 
 
 Navbar.create(name: 'Accueil', picture:'glyphicon glyphicon-home' ,code: 'home', is_top: true, url: '/', order: 0)
-Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1)
-Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2)
+Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1, url: '/configurator/pvc')
+Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2, url: '/configurator/aluminium')
 Navbar.create(name: 'Volet Roulants', code:'VR', is_top: true, order: 3)
 Navbar.create(name: 'Volet Battand', code:'VB', is_top: true, order: 4)
 Navbar.create(name: 'Store', code:'store', is_top: true, order: 5)
@@ -29,6 +29,7 @@ Navbar.create(name: 'Accessoires', code:'accessoires', is_top: true, order: 7)
 
 
 
+=begin
 rs = Navbar.by_code('pvc')
 unless rs.empty?
   Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/pvc/neuf')
@@ -40,6 +41,7 @@ unless rs.empty?
   Navbar.create(name: 'Neuf', code: 'neuf', is_top: false, parent_id: rs[0].id, order: 0, url: '/configurator/aluminium/neuf')
   Navbar.create(name: 'Renovation', code: 'renovation', is_top: false, parent_id: rs[0].id, order: 1, url: '/configurator/aluminium/renovation')
 end
+=end
 
 Material.create(name:'PVC', code: 'pvc')
 Material.create(name: 'Aluminium', code: 'aluminium')
