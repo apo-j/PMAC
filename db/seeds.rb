@@ -46,7 +46,7 @@ end
 Material.create(name:'PVC', code: 'pvc')
 Material.create(name: 'Aluminium', code: 'aluminium')
 
-Color.create(name: 'Blanc', code: 'blanc', price: 0, is_double_side: false, price_advance: 0)
+Color.create(name: 'Blanc', code: 'blanc', price: 0, is_double_side: false, price_advance: 0, image_url:'/assets/white.png')
 Color.create(name: 'Irish Oak', code: 'irish Oak', price: 30, is_double_side: true, price_advance: 40, image_url:'/assets/irish_oak.jpg')
 Color.create(name: 'Golden Oak', code: 'golden oak', price: 30, is_double_side: true, price_advance: 40, image_url:'/assets/golden_oak.png')
 Color.create(name: 'Chêne foncé', code: 'chêne foncé', price: 30, is_double_side: false, price_advance: 0, image_url:'/assets/chene_fonce.png')
