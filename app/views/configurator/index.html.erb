@@ -166,10 +166,10 @@
           </h4>
         </div>
         <div class="panel-collapse collapse" id="dimension">
-          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.width.value">
+          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
             <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
           </label>
-          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.height.value">
+          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
             <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
           </label>
         </div>
@@ -418,8 +418,8 @@
                 coloris: ko.observable(),
                 colorisSide: ko.observable('1'),
                 type:ko.observable(),
-                //width:self.data.dimension.width.value,
-                //height: self.data.dimension.height.value,
+                width:ko.observable(0),
+                height:ko.observable(0),
                 total: ko.observable(0)
             };
 
@@ -470,16 +470,16 @@
             }
 
             ko.computed(function(){
-                if(self.results.typeChassis()){
+                if(self.results.typeRepose()){
                     utilities.post(
                                 "/price",
-                                {matiere: 'pvc', type:self.results.typeChassis() },
+                                {matiere: 'pvc', type:self.results.typeRepose() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);
                                     utilities.arrayRange(self.priceData.heights, self.range.height);
                                 },
-                                function(){alert('KO')});
+                                function(){alert('Error')});
                 }
              });
 
@@ -498,8 +498,8 @@
                 }
             });*/
 
-           /* ko.computed(function(){
-                if(self.results.matiere() && self.results.coloris() && self.results.coloris_side() && self.results.type() && self.results.width() > 0 && self.results.height() > 0){
+           ko.computed(function(){
+                if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
 
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());
@@ -509,7 +509,7 @@
                         self.results.total(0);
                     }
                 }
-            }).extend({ throttle: 500 });*/
+            }).extend({ throttle: 500 });
         }
 
 
