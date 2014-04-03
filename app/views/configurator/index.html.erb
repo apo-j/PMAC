@@ -53,11 +53,11 @@
             </ul>
            <div class="panel-body">
                <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.coloris_side, value:1">
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:1">
                  <span>Votre choix de coloris à l'extérieur et à l'intérieur</span>
                </label><br>
                <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.coloris_side, value:2">
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:2">
                  <span>Votre choix de coloris à l'extérieur, blanc à l'intérieur</span>
                </label><br>
            </div>
@@ -266,6 +266,22 @@
 
             //self.data = ko.mapping.fromJS(rawData.data);
             self.data = {
+                dimension:{
+                    width: {
+                        value:0,
+                        range: {
+                            left: 0,
+                            right:0
+                        }
+                    },
+                    height:{
+                        value:0,
+                        range:{
+                            left:0,
+                            right:0
+                        }
+                    }
+                },
                 typesOuverture:[
                     {
                         typeChassis:'fenetre',
@@ -400,7 +416,7 @@
                 sens: ko.observable('0'),//right
                 seuilAlu:ko.observable('0'),
                 coloris: ko.observable(),
-                coloris_side: ko.observable('1'),
+                colorisSide: ko.observable('1'),
                 type:ko.observable(),
                 //width:self.data.dimension.width.value,
                 //height: self.data.dimension.height.value,
@@ -453,6 +469,20 @@
                 window.location.href = '/show-cart';
             }
 
+            ko.computed(function(){
+                if(self.results.typeChassis()){
+                    utilities.post(
+                                "/price",
+                                {matiere: 'pvc', type:self.results.typeChassis() },
+                                function(data){
+                                    self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
+                                    utilities.arrayRange(self.priceData.widths, self.range.width);
+                                    utilities.arrayRange(self.priceData.heights, self.range.height);
+                                },
+                                function(){alert('KO')});
+                }
+             });
+
            /* ko.computed(function(){
                 if(self.results.matiere() && self.results.type()){
                     utilities.post(
@@ -470,7 +500,7 @@
 
            /* ko.computed(function(){
                 if(self.results.matiere() && self.results.coloris() && self.results.coloris_side() && self.results.type() && self.results.width() > 0 && self.results.height() > 0){
-                    console.log('dd');
+
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());
                     if(i != -1 && j != -1){
