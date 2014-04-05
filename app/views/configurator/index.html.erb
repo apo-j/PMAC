@@ -2,7 +2,7 @@
 
   <div id="configurator">
     <div class="panel-group" id="accordion">
-      <div class="panel panel-default" data-bind="with:data.matiere">  <!-- Matiere -->
+      <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#matiere">
@@ -13,54 +13,128 @@
         <div class="panel-collapse collapse in"  id="matiere">
           <div class="panel-body">
           <!--<div class="panel-body" data-bind="foreach:$data">-->
-            <div style="float:left">
-                 <img class="image-zoom" src="/assets/pvc-pose-renovation.png" data-zoom-image="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+            <div class="easyzoom easyzoom--adjacent" style="float:left">
+              <a href="/assets/pvc-pose-renovation.png">
+                <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+              </a>
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="renovation"/>&nbsp;Pose en renovation sur dormant existant</label>
+              <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
             </div>
             <hr>
-            <div style="float:left">
-              <img class="image-zoom" src="/assets/pvc-pose-neuf-titanium.png" data-zoom-image="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+            <div class="easyzoom easyzoom--adjacent" style="float:left">
+              <a href="/assets/pvc-pose-neuf-titanium.png">
+                <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+              </a>
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="neuf"/>&nbsp;Pose neuf en dormant 60mm</label>
+              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
             </div>
-
-            <!--<label>
-              <input type="radio" name="matiere" data-bind="checked: $root.results.matiere, value:id">
-              <span data-bind="text:name"></span>
-            </label><br>-->
           </div>
         </div>
       </div>
 
-      <div class="panel panel-default" data-bind="with:data.coloris">  <!-- Coloris -->
+
+      <div class="panel panel-default"> <!--coloris-->
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
-              Ouverture
+              Coloris
             </a>
           </h4>
         </div>
         <div class="panel-collapse collapse"  id="coloris">
-          <div class="panel-body" data-bind="foreach:$data">
-            <label>
-              <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:id">
-              <img class="bordered black" data-bind="attr:{src:image_url,width:47, height:47}"/>
-              <span data-bind="text:name"></span>
-            </label><br>
-          </div>
-          <div class="panel-body">
-            <label>
-              <input type="radio" name="coloris_side" data-bind="checked: $root.results.coloris_side, value:1">
-              <span>Votre choix de coloris à l'extérieur et à l'intérieur</span>
-            </label><br>
-            <label>
-              <input type="radio" name="coloris_side" data-bind="checked: $root.results.coloris_side, value:2">
-              <span>Votre choix de coloris à l'extérieur, blanc à l'intérieur</span>
-            </label><br>
-          </div>
+           <ul class="panel-body" data-bind="foreach:data.colors">
+               <li style="float:left;width:160px;height:100px"><label>
+                 <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:code">
+                 <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
+                 <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
+               </label></li>
+            </ul>
+           <div class="panel-body">
+               <label>
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:1">
+                 <span>Votre choix de coloris à l'extérieur et à l'intérieur</span>
+               </label><br>
+               <label>
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:2">
+                 <span>Votre choix de coloris à l'extérieur, blanc à l'intérieur</span>
+               </label><br>
+           </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#ouverture">
+              Ouverture
+            </a>
+          </h4>
+        </div>
+       <div class="panel-collapse collapse"  id="ouverture">
+         <div class="panel-body">
+             <label>Type de châssis</label>
+           <ul>
+             <li>
+                <label>
+                    <input type="radio" name="type_chassis" value="fenetre" data-bind="checked: $root.results.typeChassis">
+                    <span>Fenêtre</span>
+                </label>
+             </li>
+             <li>
+             <label>
+               <input type="radio" name="type_chassis" value="porte_fenetre" data-bind="checked: $root.results.typeChassis">
+               <span>Porte-Fenêtre</span>
+             </label>
+            </li>
+           </ul>
+         </div>
+
+         <div class="panel-body">
+          <label>Ouverture</label>
+           <ul data-bind="foreach: data.typesOuverture">
+             <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
+             <li style="float:left;width:160px;height:100px"><label>
+               <input type="radio" name="coloris" data-bind="checked: $root.results.typeChassis, value:value">
+               <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
+               <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
+             </label></li>
+             <!-- /ko -->
+           </ul>
+           <br style="clear:both"/>
+           <!-- ko if: ($root.results.typeChassis() === 'fenetre') -->
+           <div style="padding-left: 20px">
+             <label>Options</label>  <br/>
+             <input type="checkbox" data-bind="checked:results.options.traverseIntermediaire">&nbsp;Traverse intermédiaire
+           </div>
+           <!-- /ko -->
+           <!-- ko if: ($root.results.typeChassis() === 'porte_fenetre') -->
+           <div style="padding-left: 20px">
+                <label>Sens</label>     <br/>
+                <input type="radio" value="0" name="sens" data-bind="checked:results.sens"/>&nbsp;à droite (vue intérieure)  &nbsp;&nbsp;
+                <input type="radio" value="1" name="sens" data-bind="checked:results.sens"/>&nbsp;à gauche (vue intérieure)
+           </div>
+           <div style="padding-left: 20px;margin-top: 20px">
+              <label>Seuil alu</label>  <br/>
+             <input type="radio" value="0" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Sans seuil alu   &nbsp;&nbsp;
+             <input type="radio" value="1" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Seuil alu 40 mm anodisé
+
+           </div>
+           <div style="padding-left: 20px;margin-top: 20px">
+             <label>Options</label>     <br/>
+             <div style="padding-left: 50px">
+               <input type="checkbox"  data-bind="checked:results.options.sansSoubassement">&nbsp;Sans soubassement <br/>
+               <input type="checkbox"  data-bind="checked:results.options.serrure">&nbsp;Serrure <br/>
+               <!-- ko if: ($root.results.options.serrure() === false) -->
+               <input type="checkbox"  data-bind="checked:results.options.oscilloBattant">&nbsp;Oscillo-battant <br/>
+               <input type="checkbox" data-bind="checked:results.options.PoigneACle">&nbsp;Poignée à clé <br/>
+               <!-- /ko -->
+               <input type="checkbox" data-bind="checked:results.options.grilleAeration">&nbsp;Grille d'aération
+             </div>
+           </div>
+           <!-- /ko -->
+         </div>
         </div>
       </div>
 
@@ -92,16 +166,16 @@
           </h4>
         </div>
         <div class="panel-collapse collapse" id="dimension">
-          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.width.value">
+          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
             <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
           </label>
-          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.data.dimension.height.value">
+          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
             <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
           </label>
         </div>
       </div>
     </div>
-
+    <br>
     <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
 
     <!-- Modal -->
@@ -168,10 +242,12 @@
 
 <% content_for :js do %>
     <script>
-       $('.image-zoom').elevateZoom();
+      // $('.image-zoom').elevateZoom();
+      var $easyzoom = $('.easyzoom').easyZoom();
+      //var api = $easyzoom.data('easyZoom');
       $('#reload').on('click', function(){
          window.document.location.reload();
-      })
+      });
       $('#price-total>span').text(utilities.numberToEuro(0));
         var rawData = JSON.parse(String.removeChangeLine($('#' + static.pageContentId).text()));
 
@@ -184,9 +260,134 @@
 
         var localVM = function(){
             var self = this;
+            self.selectType = function(data, event){
+                self.results.typeOuverture($(event.target).data('value') || '');
+            }
 
-            self.data = ko.mapping.fromJS(rawData.data);
-
+            //self.data = ko.mapping.fromJS(rawData.data);
+            self.data = {
+                dimension:{
+                    width: {
+                        value:0,
+                        range: {
+                            left: 0,
+                            right:0
+                        }
+                    },
+                    height:{
+                        value:0,
+                        range:{
+                            left:0,
+                            right:0
+                        }
+                    }
+                },
+                typesOuverture:[
+                    {
+                        typeChassis:'fenetre',
+                        imageUrl:'/assets/vert.png',
+                        value:1,
+                        isActive:false,
+                        name:'Fixe'
+                    },
+                    {
+                        typeChassis:'fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'porte_fenetre',
+                        imageUrl:'/assets/rouge.png',
+                        value:2,
+                        isActive:false,
+                        name:'Soufflet'
+                    }
+                ],
+                colors:[
+                    {
+                       name:'Blanc',
+                       imageUrl:'/assets/white.png',
+                       code:'blanc'
+                    },
+                    {
+                        name:'Irish Oak',
+                        imageUrl:'/assets/irish_oak.jpg',
+                        code:'irish Oak'
+                    },
+                    {
+                        name:'Golden Oak',
+                        imageUrl:'/assets/golden_oak.png',
+                        code:'golden oak'
+                    },
+                    {
+                        name:'Chêne foncé',
+                        imageUrl:'/assets/chene_fonce.png',
+                        code:'chêne foncé'
+                    },
+                    {
+                        name:'Acajou',
+                        imageUrl:'/assets/acajou.png',
+                        code:'acajou'
+                    },
+                    {
+                        name:'Bleu acier grainé',
+                        imageUrl:'/assets/bleu_acier.png',
+                        code:'bleu acier grainé'
+                    },
+                    {
+                        name:'Gris anthracite grainé',
+                        imageUrl:'/assets/gris_fonce.png',
+                        code:'gris anthracite grainé'
+                    },
+                    {
+                        name:'Rouge carmin',
+                        imageUrl:'/assets/rouge.png',
+                        code:'rouge carmin'
+                    },
+                    {
+                        name:'Vert mousse',
+                        imageUrl:'/assets/rouge.png',
+                        code:'vert mousse'
+                    }
+                ]
+            }
             self.priceData = new priceData();
             self.range = {
                 width:{
@@ -201,12 +402,24 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                matiere: ko.observable('9'),
+                typeRepose: ko.observable(''),
+                typeChassis: ko.observable(''),
+                typeOuverture: ko.observable(''),
+                options:{
+                     traverseIntermediaire : ko.observable(false),
+                     sansSoubassement : ko.observable(false),
+                     serrure : ko.observable(false),
+                     oscilloBattant : ko.observable(false),
+                     PoigneACle : ko.observable(false),
+                     grilleAeration : ko.observable(false)
+                },
+                sens: ko.observable('0'),//right
+                seuilAlu:ko.observable('0'),
                 coloris: ko.observable(),
-                coloris_side: ko.observable('1'),
+                colorisSide: ko.observable('1'),
                 type:ko.observable(),
-                width:self.data.dimension.width.value,
-                height: self.data.dimension.height.value,
+                width:ko.observable(0),
+                height:ko.observable(0),
                 total: ko.observable(0)
             };
 
@@ -220,6 +433,11 @@
                 height:ko.observable(),
                 price:ko.observable()
             };
+
+            ko.computed(function(){
+                console.log(ko.mapping.toJSON(self.results));
+
+            });
 
             self.results.total.subscribe(function(newValue){
                 $('#price-total>span').text(utilities.numberToEuro(newValue));
@@ -252,6 +470,20 @@
             }
 
             ko.computed(function(){
+                if(self.results.typeRepose()){
+                    utilities.post(
+                                "/price",
+                                {matiere: 'pvc', type:self.results.typeRepose() },
+                                function(data){
+                                    self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
+                                    utilities.arrayRange(self.priceData.widths, self.range.width);
+                                    utilities.arrayRange(self.priceData.heights, self.range.height);
+                                },
+                                function(){alert('Error')});
+                }
+             });
+
+           /* ko.computed(function(){
                 if(self.results.matiere() && self.results.type()){
                     utilities.post(
                             "/price",
@@ -264,11 +496,11 @@
                             },
                             function(){alert('KO')});
                 }
-            });
+            });*/
 
-            ko.computed(function(){
-                if(self.results.matiere() && self.results.coloris() && self.results.coloris_side() && self.results.type() && self.results.width() > 0 && self.results.height() > 0){
-                    console.log('dd');
+           ko.computed(function(){
+                if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
+
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());
                     if(i != -1 && j != -1){

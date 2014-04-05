@@ -24,6 +24,7 @@ class ConfiguratorController < ApplicationController
 
 
   def price_data
+=begin
     matiere = params[:matiere]
     type =  params[:type]
 
@@ -35,6 +36,11 @@ class ConfiguratorController < ApplicationController
     res[:heights] =  prices_data[:heights]
     #res[:options] =  matrix_price:options]
     res[:data] =  prices_data[:prices]
+=end
+    res = {}
+    res[:widths] =  '50|60|70|80|90|100|110|120|130|140|150|160'
+    res[:heights] =  '45|55|65|75|85|95'
+    res[:data] =  '220|257|263|268|279|285|294|300|305|313|321|329|225|262|267|276|284|292|299|304|313|322|331|340|232|267|276|282|291|299|307|318|329|339|349|359|238|276|281|289|298|309|320|331|341|353|366|378|249|285|292|300|315|328|339|351|363|374|387|399|256|292|299|311|327|339|352|366|376|390|404|416'
     return render :json => res
   end
 
