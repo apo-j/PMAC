@@ -22,6 +22,22 @@ class ConfiguratorController < ApplicationController
     end
   end
 
+  def indexAlu
+    @response = {}
+    @response[:data] = {}
+
+    begin
+      @response[:status] = 200
+    rescue SYS::ObjNotValid
+      @response[:status] = 'not valide'
+    rescue SYS::FieldNotValid
+      @response[:status] = 'not valide2'
+    rescue StandardError
+      @response[:status] = 'not valide3'
+    end
+  end
+
+
 
   def price_data
 =begin
@@ -46,9 +62,11 @@ class ConfiguratorController < ApplicationController
 
   private
     def verify_params
+=begin
       if(!params[:material] || params[:material] == '')
         logger.error "Attempt to access invalid address /configurator/#{params[:meterial]}/#{params[:type]}"
         redirect_to store_url, notice: 'Paramères non valides'
       end
+=end
     end
 end
