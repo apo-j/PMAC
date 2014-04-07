@@ -4,6 +4,8 @@ PMAC::Application.routes.draw do
   match "messages", to:'message#create', via: 'post'
   match "configurator/pvc" , to: "configurator#index", via: 'get'
   match "configurator/aluminium" , to: "configurator#indexAlu", via: 'get'
+  match "configurator/store" , to: "configurator#indexStore", via: 'get'
+  match "configurator/rideaux-metalique" , to: "configurator#indexRideaux", via: 'get'
   match "price", to:'configurator#price_data', via: 'post'
 
   resources :users
