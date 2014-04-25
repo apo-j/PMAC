@@ -29,13 +29,13 @@ class LineItemsController < ApplicationController
   def create
     product_info = params[:product_info]
 
-    material = Material.find(product_info[:matiere].to_i).name
-    color = Color.find(product_info[:coloris].to_i).name
-    color_side = product_info[:coloris_side]
-    mode = Mode.find(product_info[:type].to_i).name
-    width = product_info[:width].to_i
-    height = product_info[:height].to_i
-    price = product_info[:total]
+    material = 'title' #Material.find(product_info[:matiere].to_i).name
+    color = 'name' #Color.find(product_info[:coloris].to_i).name
+    color_side = 'color' #product_info[:coloris_side]
+    mode = 'type' #Mode.find(product_info[:type].to_i).name
+    width = 'width' #product_info[:width].to_i
+    height = 'height' #product_info[:height].to_i
+    price = 'total' #product_info[:total]
 
     @product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
 

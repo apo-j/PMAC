@@ -2,39 +2,106 @@
 
   <div id="configurator">
     <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#matiere">
-              Type de pose
-            </a>
-          </h4>
-        </div>
-        <div class="panel-collapse collapse in"  id="matiere">
-          <div class="panel-body">
-          <!--<div class="panel-body" data-bind="foreach:$data">-->
-            <div class="easyzoom easyzoom--adjacent" style="float:left">
-              <a href="/assets/pvc-pose-renovation.png">
-                <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-              </a>
-            </div>
-            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
-            </div>
-            <hr>
-            <div class="easyzoom easyzoom--adjacent" style="float:left">
-              <a href="/assets/pvc-pose-neuf-titanium.png">
-                <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
-              </a>
-            </div>
-            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
-            </div>
-          </div>
-        </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#profile">
+            Profilé
+          </a>
+        </h4>
       </div>
+      <div class="panel-collapse collapse in"  id="profile">
+        <div class="panel-body">
+          <label>Profilé</label>
+          <ul>
+            <li>
+              <label>
+                <input type="radio" name="type_chassis" value="serie_froide" data-bind="checked: $root.results.typeProfile">
+                <span>Profilé serie froide</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="type_chassis" value="pont_thermique" data-bind="checked: $root.results.typeProfile">
+                <span>Profilé rupture pont thérmique</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="type_chassis" value="coulissant" data-bind="checked: $root.results.typeProfile">
+                <span>Coulissant</span>
+              </label>
+            </li>
+          </ul>
+        </div>
 
+        <!-- ko if: ($root.results.typeProfile()) -->
+        <div class="panel-body">
+          <label>Type de pose</label>  <br/><br/>
+          <!-- ko if: ( 'serie_froide'=== $root.results.typeProfile()) -->
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
+            <a href="/assets/pvc-pose-renovation.png">
+              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+          </div>
+          <hr>
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
+            <a href="/assets/pvc-pose-neuf-titanium.png">
+              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+          </div>
+          <!-- /ko -->
 
+          <!-- ko if: ( 'pont_thermique'=== $root.results.typeProfile()) -->
+          <div class="easyzoom easyzoom--adjacent" style="float:left">  sdjfask
+            <a href="/assets/pvc-pose-renovation.png">
+              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+          </div>
+          <hr>
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
+            <a href="/assets/pvc-pose-neuf-titanium.png">
+              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+          </div>
+          <!-- /ko -->
+
+          <!-- ko if: ( 'coulissant'=== $root.results.typeProfile()) -->
+          <div class="easyzoom easyzoom--adjacent" style="float:left">  coulissant
+            <a href="/assets/pvc-pose-renovation.png">
+              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+          </div>
+          <hr>
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
+            <a href="/assets/pvc-pose-neuf-titanium.png">
+              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+            </a>
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+          </div>
+          <!-- /ko -->
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
       <div class="panel panel-default"> <!--coloris-->
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -51,16 +118,6 @@
                  <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
                </label></li>
             </ul>
-           <div class="panel-body">
-               <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:1">
-                 <span>Votre choix de coloris à l'extérieur et à l'intérieur</span>
-               </label><br>
-               <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:2">
-                 <span>Votre choix de coloris à l'extérieur, blanc à l'intérieur</span>
-               </label><br>
-           </div>
         </div>
       </div>
 
@@ -74,70 +131,43 @@
         </div>
        <div class="panel-collapse collapse"  id="ouverture">
          <div class="panel-body">
-             <label>Type de châssis</label>
-           <ul>
+           <label>Type de châssis</label>
+           <br/>
+           <ul style="float:left">
              <li>
                 <label>
-                    <input type="radio" name="type_chassis" value="fenetre" data-bind="checked: $root.results.typeChassis">
-                    <span>Fenêtre</span>
+                    <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                    <span>Deux vantaux</span>
                 </label>
              </li>
              <li>
              <label>
-               <input type="radio" name="type_chassis" value="porte_fenetre" data-bind="checked: $root.results.typeChassis">
-               <span>Porte-Fenêtre</span>
+               <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+               <span>Trois vantaux sur trois rails</span>
              </label>
             </li>
+             <li>
+               <label>
+                 <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                 <span>Quatre vantaux sur deux rails</span>
+               </label>
+             </li>
            </ul>
-         </div>
-
-         <div class="panel-body">
-          <label>Ouverture</label>
-           <ul data-bind="foreach: data.typesOuverture">
-             <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
-             <li style="float:left;width:160px;height:100px"><label>
-               <input type="radio" name="coloris" data-bind="checked: $root.results.typeChassis, value:value">
-               <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
-               <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
-             </label></li>
+           <div style="float:right;margin-right: 200px;">
+             <!-- ko if: ( 'deux_vantaux'=== $root.results.typeChassis()) -->
+             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
              <!-- /ko -->
-           </ul>
-           <br style="clear:both"/>
-           <!-- ko if: ($root.results.typeChassis() === 'fenetre') -->
-           <div style="padding-left: 20px">
-             <label>Options</label>  <br/>
-             <input type="checkbox" data-bind="checked:results.options.traverseIntermediaire">&nbsp;Traverse intermédiaire
+             <!-- ko if: ( 'trois_vantaux'=== $root.results.typeChassis()) -->
+             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+             <!-- /ko -->
+             <!-- ko if: ( 'quatre_vantaux'=== $root.results.typeChassis()) -->
+             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+             <!-- /ko -->
            </div>
-           <!-- /ko -->
-           <!-- ko if: ($root.results.typeChassis() === 'porte_fenetre') -->
-           <div style="padding-left: 20px">
-                <label>Sens</label>     <br/>
-                <input type="radio" value="0" name="sens" data-bind="checked:results.sens"/>&nbsp;à droite (vue intérieure)  &nbsp;&nbsp;
-                <input type="radio" value="1" name="sens" data-bind="checked:results.sens"/>&nbsp;à gauche (vue intérieure)
-           </div>
-           <div style="padding-left: 20px;margin-top: 20px">
-              <label>Seuil alu</label>  <br/>
-             <input type="radio" value="0" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Sans seuil alu   &nbsp;&nbsp;
-             <input type="radio" value="1" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Seuil alu 40 mm anodisé
 
-           </div>
-           <div style="padding-left: 20px;margin-top: 20px">
-             <label>Options</label>     <br/>
-             <div style="padding-left: 50px">
-               <input type="checkbox"  data-bind="checked:results.options.sansSoubassement">&nbsp;Sans soubassement <br/>
-               <input type="checkbox"  data-bind="checked:results.options.serrure">&nbsp;Serrure <br/>
-               <!-- ko if: ($root.results.options.serrure() === false) -->
-               <input type="checkbox"  data-bind="checked:results.options.oscilloBattant">&nbsp;Oscillo-battant <br/>
-               <input type="checkbox" data-bind="checked:results.options.PoigneACle">&nbsp;Poignée à clé <br/>
-               <!-- /ko -->
-               <input type="checkbox" data-bind="checked:results.options.grilleAeration">&nbsp;Grille d'aération
-             </div>
-           </div>
-           <!-- /ko -->
          </div>
-        </div>
       </div>
-
+      </div>
       <div class="panel panel-default" data-bind="with:data.type">  <!-- Type -->
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -175,7 +205,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <br />
     <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
 
     <!-- Modal -->
@@ -198,7 +228,7 @@
                    <td>Coloris</td><td data-bind="text:color"></td>
                  </tr>
                  <tr>
-                   <td>Coloris side</td><td data-bind="text:colorisSide"></td>
+                   <td>Coloris side</td><td data-bind="text:color_side"></td>
                  </tr>
                  <tr>
                    <td>Type</td><td data-bind="text:mode"></td>
@@ -221,9 +251,6 @@
         </div><!-- /.modal-content end-->
       </div><!-- /.modal-dialog end-->
     </div><!-- /.modal -->
-
-
-
   </div>
 
 <% content_for :custom_right_side_bar do %>
@@ -402,22 +429,10 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
+                typeProfile:ko.observable(''),
                 typeRepose: ko.observable(''),
                 typeChassis: ko.observable(''),
-                typeOuverture: ko.observable(''),
-                options:{
-                     traverseIntermediaire : ko.observable(false),
-                     sansSoubassement : ko.observable(false),
-                     serrure : ko.observable(false),
-                     oscilloBattant : ko.observable(false),
-                     PoigneACle : ko.observable(false),
-                     grilleAeration : ko.observable(false)
-                },
-                sens: ko.observable('0'),//right
-                seuilAlu:ko.observable('0'),
                 coloris: ko.observable(),
-                colorisSide: ko.observable('1'),
-                type:ko.observable(),
                 width:ko.observable(0),
                 height:ko.observable(0),
                 total: ko.observable(0)
@@ -427,7 +442,7 @@
                 title:ko.observable(''),
                 material:ko.observable(''),
                 color:ko.observable('') ,
-                colorisSide:ko.observable(),
+                color_side:ko.observable(),
                 mode:ko.observable(),
                 width:ko.observable(),
                 height:ko.observable(),
@@ -453,7 +468,7 @@
                             self.product.price(utilities.numberToEuro(data.price));
                             self.product.material(data.material);
                             self.product.color(data.color);
-                            self.product.colorisSide(data.color_side);
+                            self.product.color_side(data.color_side);
                             self.product.mode(data.mode);
                             self.product.width(data.width);
                             self.product.height(data.height);
@@ -473,7 +488,7 @@
                 if(self.results.typeRepose()){
                     utilities.post(
                                 "/price",
-                                {matiere: 'pvc', type:self.results.typeRepose() },
+                                {matiere: 'aluminium', type:self.results.typeProfile() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);

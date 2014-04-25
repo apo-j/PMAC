@@ -21,9 +21,9 @@ Navbar.create(name: 'Accueil', picture:'glyphicon glyphicon-home' ,code: 'home',
 Navbar.create(name: 'PVC', code: 'pvc', is_top: true, order: 1, url: '/configurator/pvc')
 Navbar.create(name: 'Aluminium', code:'aluminium', is_top: true, order: 2, url: '/configurator/aluminium')
 Navbar.create(name: 'Volet Roulants', code:'VR', is_top: true, order: 3)
-Navbar.create(name: 'Volet Battand', code:'VB', is_top: true, order: 4)
-Navbar.create(name: 'Store', code:'store', is_top: true, order: 5)
-Navbar.create(name: 'Rideaux Métalique', code:'RM', is_top: true, order: 6)
+#Navbar.create(name: 'Volet Battand', code:'VB', is_top: true, order: 4)
+Navbar.create(name: 'Store', code:'store', is_top: true, order: 5, url: '/configurator/store' )
+Navbar.create(name: 'Rideaux Métalique', code:'RM', is_top: true, order: 6,  url: '/configurator/rideaux-metalique')
 Navbar.create(name: 'Accessoires', code:'accessoires', is_top: true, order: 7)
 
 
