@@ -6,6 +6,8 @@ PMAC::Application.routes.draw do
   match "configurator/aluminium" , to: "configurator#indexAlu", via: 'get'
   match "configurator/store" , to: "configurator#indexStore", via: 'get'
   match "configurator/rideaux-metalique" , to: "configurator#indexRideaux", via: 'get'
+  match "configurator/volet-roulant" , to: "configurator#indexVoletRoulant", via: 'get'
+  match "configurator/accessoires" , to: "configurator#indexAccessoires", via: 'get'
   match "price", to:'configurator#price_data', via: 'post'
 
   resources :users

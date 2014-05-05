@@ -1,257 +1,151 @@
 <% provide(:title,'Configurateur') %>
 
-  <div id="configurator">
-    <div class="panel-group" id="accordion">
-
+<div id="configurator">
+  <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#profile">
-            Profilé
-          </a>
-        </h4>
+        <h4 class="panel-title"> Store </h4>
       </div>
-      <div class="panel-collapse collapse in"  id="profile">
-        <div class="panel-body">
-          <label>Profilé</label>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div style="background-color: yellow;width:500px;height:200px;"></div>
+        </li>
+        <li class="list-group-item">
+          <label>Lame :</label><br/>
           <ul>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="serie_froide" data-bind="checked: $root.results.typeProfile">
-                <span>Profilé serie froide</span>
+                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Lame pleine</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="pont_thermique" data-bind="checked: $root.results.typeProfile">
-                <span>Profilé rupture pont thérmique</span>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Lame Microperforet</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="coulissant" data-bind="checked: $root.results.typeProfile">
-                <span>Coulissant</span>
+                <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Lame Cobra</span>
               </label>
             </li>
-          </ul>
-        </div>
-
-        <!-- ko if: ($root.results.typeProfile()) -->
-        <div class="panel-body">
-          <label>Type de pose</label>  <br/><br/>
-          <!-- ko if: ( 'serie_froide'=== $root.results.typeProfile()) -->
-          <div class="easyzoom easyzoom--adjacent" style="float:left">
-            <a href="/assets/pvc-pose-renovation.png">
-              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-            </a>
+          </ul> <br/>
+        </li>
+        <li class="list-group-item">
+          <label>Dimension</label><br/>
+          <div style="">
+            <div style="float:left;background-color: yellow;width:100px;height:200px;"></div>
+            <div style="float:left;background-color: blue;width:100px;height:200px;"></div>
           </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+          <br style="clear:both"/>
+          <div class="form-group">
+            <label class="col-xs-4 text-right control-label" >Largeur</label>
+            <div class="col-xs-3">
+              <input name="largeur" class="form-control input-sm" data-bind="value: $root.results.largeur">
+            </div>
+          </div><br/>
+          <div class="form-group">
+            <label class="col-xs-4 text-right control-label" >Hauteur</label>
+            <div class="col-xs-3">
+              <input name="hauteur" class="form-control input-sm" data-bind="value: $root.results.hauteur">
+            </div>
+          </div>   <br/>
+          <div class="form-group">
+            <label class="col-xs-4 text-right control-label" >Hauteur de lame cobra</label>
+            <div class="col-xs-3">
+              <input name="hauteur" class="form-control input-sm" data-bind="value: $root.results.hauteur">
+            </div>
+          </div>      <br/>
+          <div class="form-group">
+            <label class="col-xs-4 text-right control-label" >Hauteur de lame microperforet</label>
+            <div class="col-xs-3">
+              <input name="hauteur" class="form-control input-sm" data-bind="value: $root.results.hauteur">
+            </div>
           </div>
-          <hr>
-          <div class="easyzoom easyzoom--adjacent" style="float:left">
-            <a href="/assets/pvc-pose-neuf-titanium.png">
-              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
-            </a>
-          </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
-          </div>
-          <!-- /ko -->
-
-          <!-- ko if: ( 'pont_thermique'=== $root.results.typeProfile()) -->
-          <div class="easyzoom easyzoom--adjacent" style="float:left">  sdjfask
-            <a href="/assets/pvc-pose-renovation.png">
-              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-            </a>
-          </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
-          </div>
-          <hr>
-          <div class="easyzoom easyzoom--adjacent" style="float:left">
-            <a href="/assets/pvc-pose-neuf-titanium.png">
-              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
-            </a>
-          </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
-          </div>
-          <!-- /ko -->
-
-          <!-- ko if: ( 'coulissant'=== $root.results.typeProfile()) -->
-          <div class="easyzoom easyzoom--adjacent" style="float:left">  coulissant
-            <a href="/assets/pvc-pose-renovation.png">
-              <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-            </a>
-          </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
-          </div>
-          <hr>
-          <div class="easyzoom easyzoom--adjacent" style="float:left">
-            <a href="/assets/pvc-pose-neuf-titanium.png">
-              <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
-            </a>
-          </div>
-          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
-          </div>
-          <!-- /ko -->
-        </div>
-        <!-- /ko -->
-      </div>
-    </div>
-      <div class="panel panel-default"> <!--coloris-->
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
-              Coloris
-            </a>
-          </h4>
-        </div>
-        <div class="panel-collapse collapse"  id="coloris">
-           <ul class="panel-body" data-bind="foreach:data.colors">
-               <li style="float:left;width:160px;height:100px"><label>
-                 <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:code">
-                 <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
-                 <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
-               </label></li>
-            </ul>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#ouverture">
-              Ouverture
-            </a>
-          </h4>
-        </div>
-       <div class="panel-collapse collapse"  id="ouverture">
-         <div class="panel-body">
-           <label>Type de châssis</label>
-           <br/>
-           <ul style="float:left">
-             <li>
-                <label>
-                    <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
-                    <span>Deux vantaux</span>
-                </label>
-             </li>
-             <li>
-             <label>
-               <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
-               <span>Trois vantaux sur trois rails</span>
-             </label>
+          <br/>
+        </li>
+        <li class="list-group-item">
+          <label>Options</label><br/>
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Boitre à clé extérieur 45€ HT</span>
+              </label>
             </li>
-             <li>
-               <label>
-                 <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
-                 <span>Quatre vantaux sur deux rails</span>
-               </label>
-             </li>
-           </ul>
-           <div style="float:right;margin-right: 200px;">
-             <!-- ko if: ( 'deux_vantaux'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-             <!-- ko if: ( 'trois_vantaux'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-             <!-- ko if: ( 'quatre_vantaux'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-           </div>
-
-         </div>
-      </div>
-      </div>
-      <div class="panel panel-default" data-bind="with:data.type">  <!-- Type -->
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#type">
-              Type
-            </a>
-          </h4>
-        </div>
-        <div class="panel-collapse collapse"  id="type">
-          <div class="panel-body" data-bind="foreach:$root.data.type">
-            <label>
-              <input type="radio" name="type" data-bind="checked: $root.results.type, value:id">
-              <img class="bordered black" data-bind="attr:{src:image_url,width:47, height:47}"/>
-              <span data-bind="text:name"></span>
-            </label><br>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#dimension">
-              Dimension
-            </a>
-          </h4>
-        </div>
-        <div class="panel-collapse collapse" id="dimension">
-          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
-            <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
-          </label>
-          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
-            <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
-          </label>
-        </div>
-      </div>
+            <li>
+              <label>
+                <input type="checkbox" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Bouton poussoir 18€ HT</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Télécommande 231€ HT</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Sabot viro 216€ HT</span>
+              </label>
+            </li>
+          </ul> <br/>
+        </li>
+      </ul>
     </div>
-    <br />
-    <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="add-to-cart-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Vous venez d'ajouter à votre panier : </h4>
-          </div>
-          <div class="modal-body" data-bind='with: $root.product'>
-               <table>
-                 <tr>
-                    <td>Titre</td><td data-bind="text:title"></td>
-                 </tr>
-                 <tr>
-                   <td>Matière</td><td data-bind="text:material"></td>
-                 </tr>
-                 <tr>
-                   <td>Coloris</td><td data-bind="text:color"></td>
-                 </tr>
-                 <tr>
-                   <td>Coloris side</td><td data-bind="text:color_side"></td>
-                 </tr>
-                 <tr>
-                   <td>Type</td><td data-bind="text:mode"></td>
-                 </tr>
-                 <tr>
-                   <td>Largeur</td><td data-bind="text:width"></td>
-                 </tr>
-                 <tr>
-                   <td>Hauteur</td><td data-bind="text:height"></td>
-                 </tr>
-                 <tr>
-                   <td>Prix</td><td data-bind="text:price"></td>
-                 </tr>
-               </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id='reload' class="btn btn-default pull-left" data-dismiss="modal">Continuer le shopping</button>
-            <button type="button" data-bind="click:showCart" class="btn btn-primary">Afficher le panier</button>
-          </div>
-        </div><!-- /.modal-content end-->
-      </div><!-- /.modal-dialog end-->
-    </div><!-- /.modal -->
   </div>
+  <br />
+  <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="add-to-cart-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Vous venez d'ajouter à votre panier : </h4>
+        </div>
+        <div class="modal-body" data-bind='with: $root.product'>
+          <table>
+            <tr>
+              <td>Titre</td><td data-bind="text:title"></td>
+            </tr>
+            <tr>
+              <td>Matière</td><td data-bind="text:material"></td>
+            </tr>
+            <tr>
+              <td>Coloris</td><td data-bind="text:color"></td>
+            </tr>
+            <tr>
+              <td>Coloris side</td><td data-bind="text:color_side"></td>
+            </tr>
+            <tr>
+              <td>Type</td><td data-bind="text:mode"></td>
+            </tr>
+            <tr>
+              <td>Largeur</td><td data-bind="text:width"></td>
+            </tr>
+            <tr>
+              <td>Hauteur</td><td data-bind="text:height"></td>
+            </tr>
+            <tr>
+              <td>Prix</td><td data-bind="text:price"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id='reload' class="btn btn-default pull-left" data-dismiss="modal">Continuer le shopping</button>
+          <button type="button" data-bind="click:showCart" class="btn btn-primary">Afficher le panier</button>
+        </div>
+      </div><!-- /.modal-content end-->
+    </div><!-- /.modal-dialog end-->
+  </div><!-- /.modal -->
+</div>
 
 <% content_for :custom_right_side_bar do %>
     <div class="bloc" style="line-height: 30px">
@@ -269,13 +163,13 @@
 
 <% content_for :js do %>
     <script>
-      // $('.image-zoom').elevateZoom();
-      var $easyzoom = $('.easyzoom').easyZoom();
-      //var api = $easyzoom.data('easyZoom');
-      $('#reload').on('click', function(){
-         window.document.location.reload();
-      });
-      $('#price-total>span').text(utilities.numberToEuro(0));
+        // $('.image-zoom').elevateZoom();
+        var $easyzoom = $('.easyzoom').easyZoom();
+        //var api = $easyzoom.data('easyZoom');
+        $('#reload').on('click', function(){
+            window.document.location.reload();
+        });
+        $('#price-total>span').text(utilities.numberToEuro(0));
         var rawData = JSON.parse(String.removeChangeLine($('#' + static.pageContentId).text()));
 
         var priceData = function(data, widths, heights){
@@ -369,9 +263,9 @@
                 ],
                 colors:[
                     {
-                       name:'Blanc',
-                       imageUrl:'/assets/white.png',
-                       code:'blanc'
+                        name:'Blanc',
+                        imageUrl:'/assets/white.png',
+                        code:'blanc'
                     },
                     {
                         name:'Irish Oak',
@@ -429,7 +323,7 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                typeProfile:ko.observable(''),
+                largeur:ko.observable(0),
                 typeRepose: ko.observable(''),
                 typeChassis: ko.observable(''),
                 coloris: ko.observable(),
@@ -487,33 +381,33 @@
             ko.computed(function(){
                 if(self.results.typeRepose()){
                     utilities.post(
-                                "/price",
-                                {matiere: 'aluminium', type:self.results.typeProfile() },
-                                function(data){
-                                    self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
-                                    utilities.arrayRange(self.priceData.widths, self.range.width);
-                                    utilities.arrayRange(self.priceData.heights, self.range.height);
-                                },
-                                function(){alert('Error')});
-                }
-             });
-
-           /* ko.computed(function(){
-                if(self.results.matiere() && self.results.type()){
-                    utilities.post(
                             "/price",
-                            {matiere: self.results.matiere(), type: self.results.type()},
+                            {matiere: 'aluminium', type:self.results.typeProfile() },
                             function(data){
                                 self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                 utilities.arrayRange(self.priceData.widths, self.range.width);
                                 utilities.arrayRange(self.priceData.heights, self.range.height);
-                                console.log('ajax');
                             },
-                            function(){alert('KO')});
+                            function(){alert('Error')});
                 }
-            });*/
+            });
 
-           ko.computed(function(){
+            /* ko.computed(function(){
+             if(self.results.matiere() && self.results.type()){
+             utilities.post(
+             "/price",
+             {matiere: self.results.matiere(), type: self.results.type()},
+             function(data){
+             self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
+             utilities.arrayRange(self.priceData.widths, self.range.width);
+             utilities.arrayRange(self.priceData.heights, self.range.height);
+             console.log('ajax');
+             },
+             function(){alert('KO')});
+             }
+             });*/
+
+            ko.computed(function(){
                 if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
 
                     var i = utilities.b_search(self.priceData.widths, self.results.width());

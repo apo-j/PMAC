@@ -67,6 +67,35 @@ class ConfiguratorController < ApplicationController
     end
   end
 
+  def indexVoletRoulant
+    @response = {}
+    @response[:data] = {}
+
+    begin
+      @response[:status] = 200
+    rescue SYS::ObjNotValid
+      @response[:status] = 'not valide'
+    rescue SYS::FieldNotValid
+      @response[:status] = 'not valide2'
+    rescue StandardError
+      @response[:status] = 'not valide3'
+    end
+  end
+
+  def indexAccessoires
+    @response = {}
+    @response[:data] = {}
+
+    begin
+      @response[:status] = 200
+    rescue SYS::ObjNotValid
+      @response[:status] = 'not valide'
+    rescue SYS::FieldNotValid
+      @response[:status] = 'not valide2'
+    rescue StandardError
+      @response[:status] = 'not valide3'
+    end
+  end
 
   def price_data
 =begin
