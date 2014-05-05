@@ -1,157 +1,192 @@
 <% provide(:title,'Configurateur') %>
-
   <div id="configurator">
-    <div class="panel-group">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"> Store </h4>
+    <div class="panel-group" id="accordion">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#profile">
+            Composition et coloris
+          </a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse in"  id="profile">
+        <div class="panel-body">
+          <label>Lames de tablier</label> <br/><br/>
+          <div class="" style="float:left">
+              <img src="/assets/lame-Alu.png"  height="230px">
           </div>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <div style="background-color: yellow;width:500px;height:200px;"></div>
-            </li>
-            <li class="list-group-item">
-              <label>Couleur armature :</label> blanc (les autres couleurs sur demande)
-            </li>
-            <li class="list-group-item">
-              <label>Dimension</label><br/>
-              <div class="form-group">
-                <label class="col-xs-2 text-right control-label" >Largeur</label>
-                <div class="col-xs-2">
-                  <input name="largeur" class="form-control input-sm" data-bind="value: $root.results.largeur">
-                </div>
-              </div><br/>
-              <div class="form-group">
-                <label class="col-xs-2 text-right control-label" >Avancer</label>
-                <div class="col-xs-2">
-                  <label>
-                    <input type="radio" name="avancer" class="" value="1500" data-bind="checked: $root.results.avancer">
-                    <span>1500</span>
-                  </label>
-                </div>
-                <div class="col-xs-2">
-                  <label>
-                    <input type="radio" name="avancer" class="" value="2000" data-bind="checked: $root.results.avancer">
-                    <span>2000</span>
-                  </label>
-                </div>
-                <div class="col-xs-2">
-                  <label>
-                    <input type="radio" name="avancer" class="" value="2500" data-bind="checked: $root.results.avancer">
-                    <span>2500</span>
-                  </label>
-                </div>
-                <div class="col-xs-2">
-                  <label>
-                    <input type="radio" name="avancer" class="" value="3000" data-bind="checked: $root.results.avancer">
-                    <span>3000</span>
-                  </label>
-                </div>
-                <div class="col-xs-2">
-                  <label>
-                    <input type="radio" name="avancer" class="" value="3500" data-bind="checked: $root.results.avancer">
-                    <span>3500</span>
-                  </label>
-                </div>
-              </div>
-               <br/>
-            </li>
-            <li class="list-group-item">
-              <label>Manoeuvre : </label><br/>
-              <ul>
-                <li data-bind="(if:$root.results.largeur() <= 5000)">
-                  <label>
-                    <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
-                    <span>Manuel</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
-                    <span>Motorisé filaire</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
-                    <span>Motorisé télécommande</span>
-                  </label>
-                </li>
-              </ul> <br/>
-            </li>
-            <li class="list-group-item">
-              <label>Couleur de toile : </label><br/>
-              <ul class="store color-list">
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u157-tournesol-200.jpg" alt="U157 Tournesol" title="U157 Tournesol" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                      <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u150-blanc-200.jpg" alt="U150 Blanc" title="U150 Blanc" class="scaleimg">
-                      <div class="infos-produit">
-                        <span class="nom-produit">U152 Ficelle</span><br>
-                        <span class="gamme-produit">Alto FR</span><br/>
-                      </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u153-silex-200.jpg" alt="U153 Silex" title="U153 Silex" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u151-craie-200.jpg" alt="U151 Craie" title="U151 Craie" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u152-ficelle-200.jpg" alt="U152 Ficelle" title="U152 Ficelle" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u150-blanc-200.jpg" alt="U150 Blanc" title="U150 Blanc" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-                <li style="display: inline-block">
-                  <div class="content">
-                    <img src="http://www.dickson-constant.com/medias/images/catalogue/api/u150-blanc-200.jpg" alt="U150 Blanc" title="U150 Blanc" class="scaleimg">
-                    <div class="infos-produit">
-                      <span class="nom-produit">U152 Ficelle</span><br>
-                      <span class="gamme-produit">Alto FR</span><br/>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-
-               <br/>
-          </ul>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Tablier Aluminium</label>
+          </div>
+          <hr>
+          <div class="" style="float:left">
+              <img src="/assets/lame-pvc.png" height="230px">
+          </div>
+          <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Tablier PVC</label>
+          </div>
         </div>
+        <div class="panel-body">
+          <div style="float:left;margin-right: 100px">
+          <label>Coloris de tablier</label><br/><br/>
+          <ul style="float:left">
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_BL.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Blanc</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_CR.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Crème</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_MR.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Marron</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_AN.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Alu naturel</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_NO.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Noire</span>
+              </label>
+            </li>
+          </ul>
+          </div>
+          <div style="float:left">
+          <label>Coloris coffre, coulisses et lame finale</label><br/><br/>
+          <ul style="float:left">
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_BL.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Blanc</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_CR.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Crème</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_MR.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Crème</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_AN.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Crème</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <img src="/assets/RENO_COUL_TAB_NO.jpg" style="border:solid 1px #DDDDDD"/>
+                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <span>Noire</span>
+              </label>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="panel panel-default"> <!--coloris-->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
+              Dimension
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="coloris">
+          <div class="panel-body">
+            <label>Position du coffre</label> <br/><br/>
+            <div class="" style="float:left">
+              <img src="/assets/RENO_POSE_P3.jpg"  height="230px">
+            </div>
+            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+              <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Sous le linteau pan coupé à l'extérieur</label>
+            </div>
+            <hr>
+            <div class="" style="float:left">
+              <img src="/assets/RENO_POSE_P2.jpg" height="230px">
+            </div>
+            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Sous le linteau pan coupé à l'intérieur</label>
+            </div>
+            <hr>
+            <div class="" style="float:left">
+              <img src="/assets/RENO_POSE_P1.jpg" height="230px">
+            </div>
+            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
+              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Au dessus du linteau</label>
+            </div>
+          </div>
+          <div class="panel-body">
+            <label class="col-xs-4">Largeur en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
+              pvc:700 - 1800
+              alu:700 - 3500
+              <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
+            </label>
+            <label class="col-xs-4">Hauteur en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
+            </label>
+          </div>
+        </div>
+      </div>
 
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#ouverture">
+              Manoeuvre
+            </a>
+          </h4>
+        </div>
+       <div class="panel-collapse collapse"  id="ouverture">
+         <br/>
+         <ul>
+           <li data-bind="(if:$root.results.largeur() <= 5000)">
+             <label>
+               <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+               <span>Manuel</span>
+             </label>
+           </li>
+           <li>
+             <label>
+               <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+               <span>Motorisé filaire</span>
+             </label>
+           </li>
+           <li>
+             <label>
+               <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+               <span>Motorisé télécommande</span>
+             </label>
+           </li>
+         </ul>
+       </div>
+     </div>
     </div>
     <br />
     <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
@@ -377,7 +412,7 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                largeur:ko.observable(0),
+                typeProfile:ko.observable(''),
                 typeRepose: ko.observable(''),
                 typeChassis: ko.observable(''),
                 coloris: ko.observable(),
