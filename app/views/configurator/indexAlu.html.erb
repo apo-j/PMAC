@@ -17,19 +17,19 @@
           <ul>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="serie_froide" data-bind="checked: $root.results.typeProfile">
+                <input type="radio" name="type_chassis" value="Profilé serie froide" data-bind="checked: $root.results.typeProfile">
                 <span>Profilé serie froide</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="pont_thermique" data-bind="checked: $root.results.typeProfile">
+                <input type="radio" name="type_chassis" value="Profilé rupture pont thérmique" data-bind="checked: $root.results.typeProfile">
                 <span>Profilé rupture pont thérmique</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="coulissant" data-bind="checked: $root.results.typeProfile">
+                <input type="radio" name="type_chassis" value="Coulissant" data-bind="checked: $root.results.typeProfile">
                 <span>Coulissant</span>
               </label>
             </li>
@@ -39,14 +39,14 @@
         <!-- ko if: ($root.results.typeProfile()) -->
         <div class="panel-body">
           <label>Type de pose</label>  <br/><br/>
-          <!-- ko if: ( 'serie_froide'=== $root.results.typeProfile()) -->
+          <!-- ko if: ( 'Profilé serie froide'=== $root.results.typeProfile()) -->
           <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+            <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
           </div>
           <hr>
           <div class="easyzoom easyzoom--adjacent" style="float:left">
@@ -55,18 +55,18 @@
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+            <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
           <!-- /ko -->
 
-          <!-- ko if: ( 'pont_thermique'=== $root.results.typeProfile()) -->
-          <div class="easyzoom easyzoom--adjacent" style="float:left">  sdjfask
+          <!-- ko if: ( 'Profilé rupture pont thérmique'=== $root.results.typeProfile()) -->
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+            <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
           </div>
           <hr>
           <div class="easyzoom easyzoom--adjacent" style="float:left">
@@ -75,18 +75,18 @@
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+            <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
           <!-- /ko -->
 
-          <!-- ko if: ( 'coulissant'=== $root.results.typeProfile()) -->
-          <div class="easyzoom easyzoom--adjacent" style="float:left">  coulissant
+          <!-- ko if: ( 'Coulissant'=== $root.results.typeProfile()) -->
+          <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+            <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
           </div>
           <hr>
           <div class="easyzoom easyzoom--adjacent" style="float:left">
@@ -95,7 +95,7 @@
             </a>
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
+            <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
           <!-- /ko -->
         </div>
@@ -136,19 +136,19 @@
            <ul style="float:left">
              <li>
                 <label>
-                    <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                    <input type="radio" name="type_chassis" value="Deux vantaux" data-bind="checked: $root.results.typeChassis">
                     <span>Deux vantaux</span>
                 </label>
              </li>
              <li>
              <label>
-               <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+               <input type="radio" name="type_chassis" value="Trois vantaux sur trois rails" data-bind="checked: $root.results.typeChassis">
                <span>Trois vantaux sur trois rails</span>
              </label>
             </li>
              <li>
                <label>
-                 <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                 <input type="radio" name="type_chassis" value="Trois vantaux sur trois rails" data-bind="checked: $root.results.typeChassis">
                  <span>Quatre vantaux sur deux rails</span>
                </label>
              </li>
@@ -167,24 +167,6 @@
 
          </div>
       </div>
-      </div>
-      <div class="panel panel-default" data-bind="with:data.type">  <!-- Type -->
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#type">
-              Type
-            </a>
-          </h4>
-        </div>
-        <div class="panel-collapse collapse"  id="type">
-          <div class="panel-body" data-bind="foreach:$root.data.type">
-            <label>
-              <input type="radio" name="type" data-bind="checked: $root.results.type, value:id">
-              <img class="bordered black" data-bind="attr:{src:image_url,width:47, height:47}"/>
-              <span data-bind="text:name"></span>
-            </label><br>
-          </div>
-        </div>
       </div>
 
       <div class="panel panel-default">
@@ -381,47 +363,47 @@
                     {
                        name:'Blanc',
                        imageUrl:'/assets/white.png',
-                       code:'blanc'
+                       code:'Blanc'
                     },
                     {
                         name:'Irish Oak',
                         imageUrl:'/assets/irish_oak.jpg',
-                        code:'irish Oak'
+                        code:'Irish Oak'
                     },
                     {
                         name:'Golden Oak',
                         imageUrl:'/assets/golden_oak.png',
-                        code:'golden oak'
+                        code:'Golden Oak'
                     },
                     {
                         name:'Chêne foncé',
                         imageUrl:'/assets/chene_fonce.png',
-                        code:'chêne foncé'
+                        code:'Chêne foncé'
                     },
                     {
                         name:'Acajou',
                         imageUrl:'/assets/acajou.png',
-                        code:'acajou'
+                        code:'Acajou'
                     },
                     {
                         name:'Bleu acier grainé',
                         imageUrl:'/assets/bleu_acier.png',
-                        code:'bleu acier grainé'
+                        code:'Bleu acier grainé'
                     },
                     {
                         name:'Gris anthracite grainé',
                         imageUrl:'/assets/gris_fonce.png',
-                        code:'gris anthracite grainé'
+                        code:'Gris anthracite grainé'
                     },
                     {
                         name:'Rouge carmin',
                         imageUrl:'/assets/rouge.png',
-                        code:'rouge carmin'
+                        code:'Rouge carmin'
                     },
                     {
                         name:'Vert mousse',
                         imageUrl:'/assets/rouge.png',
-                        code:'vert mousse'
+                        code:'Vert mousse'
                     }
                 ]
             }

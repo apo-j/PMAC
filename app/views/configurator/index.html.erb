@@ -18,7 +18,7 @@
               </a>
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+              <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
             </div>
             <hr>
             <div class="easyzoom easyzoom--adjacent" style="float:left">
@@ -27,7 +27,7 @@
               </a>
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
+              <label><input type="radio" name="type_repose" value="Pose neuf en dormant 60mm" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
             </div>
           </div>
         </div>
@@ -52,11 +52,11 @@
             </ul>
            <div class="panel-body">
                <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:1">
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:'A l\'extérieur et à l\'intérieur'">
                  <span>Votre choix de coloris à l'extérieur et à l'intérieur</span>
                </label><br>
                <label>
-                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:2">
+                 <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:'A l\'extérieur, blanc à l\'intérieur'">
                  <span>Votre choix de coloris à l'extérieur, blanc à l'intérieur</span>
                </label><br>
            </div>
@@ -77,13 +77,13 @@
            <ul>
              <li>
                 <label>
-                    <input type="radio" name="type_chassis" value="fenetre" data-bind="checked: $root.results.typeChassis">
+                    <input type="radio" name="type_chassis" value="Fenêtre" data-bind="checked: $root.results.typeChassis">
                     <span>Fenêtre</span>
                 </label>
              </li>
              <li>
              <label>
-               <input type="radio" name="type_chassis" value="porte_fenetre" data-bind="checked: $root.results.typeChassis">
+               <input type="radio" name="type_chassis" value="Porte-Fenêtre" data-bind="checked: $root.results.typeChassis">
                <span>Porte-Fenêtre</span>
              </label>
             </li>
@@ -95,29 +95,29 @@
            <ul data-bind="foreach: data.typesOuverture">
              <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
              <li style="float:left;width:160px;height:100px"><label>
-               <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:value">
+               <input type="radio" name="coloris" data-bind="checked: $root.results.typeOuverture, value:value">
                <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
                <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
              </label></li>
              <!-- /ko -->
            </ul>
            <br style="clear:both"/>
-           <!-- ko if: ($root.results.typeChassis() === 'fenetre') -->
+           <!-- ko if: ($root.results.typeChassis() === 'Fenêtre') -->
            <div style="padding-left: 20px">
              <label>Options</label>  <br/>
              <input type="checkbox" data-bind="checked:results.options.traverseIntermediaire">&nbsp;Traverse intermédiaire
            </div>
            <!-- /ko -->
-           <!-- ko if: ($root.results.typeChassis() === 'porte_fenetre') -->
+           <!-- ko if: ($root.results.typeChassis() === 'Porte-Fenêtre') -->
            <div style="padding-left: 20px">
                 <label>Sens</label>     <br/>
-                <input type="radio" value="0" name="sens" data-bind="checked:results.sens"/>&nbsp;à droite (vue intérieure)  &nbsp;&nbsp;
-                <input type="radio" value="1" name="sens" data-bind="checked:results.sens"/>&nbsp;à gauche (vue intérieure)
+                <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens"/>&nbsp;à droite (vue intérieure)  &nbsp;&nbsp;
+                <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens"/>&nbsp;à gauche (vue intérieure)
            </div>
            <div style="padding-left: 20px;margin-top: 20px">
               <label>Seuil alu</label>  <br/>
-             <input type="radio" value="0" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Sans seuil alu   &nbsp;&nbsp;
-             <input type="radio" value="1" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Seuil alu 40 mm anodisé
+             <input type="radio" value="Sans seuil alu" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Sans seuil alu   &nbsp;&nbsp;
+             <input type="radio" value="Seuil alu 40 mm anodisé" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Seuil alu 40 mm anodisé
 
            </div>
            <div style="padding-left: 20px;margin-top: 20px">
@@ -293,56 +293,56 @@
                 },
                 typesOuverture:[
                     {
-                        typeChassis:'fenetre',
+                        typeChassis:'Fenêtre',
                         imageUrl:'/assets/vert.png',
-                        value:1,
+                        value:'Fixe',
                         isActive:false,
                         name:'Fixe'
                     },
                     {
-                        typeChassis:'fenetre',
+                        typeChassis:'Fenêtre',
+                        imageUrl:'/assets/rouge.png',
+                        value:'Soufflet',
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'/assets/rouge.png',
+                        value:'Soufflet',
+                        isActive:false,
+                        name:'Soufflet'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
                         imageUrl:'/assets/rouge.png',
                         value:2,
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'porte_fenetre',
+                        typeChassis:'Porte-Fenêtre',
                         imageUrl:'/assets/rouge.png',
                         value:2,
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'porte_fenetre',
+                        typeChassis:'Porte-Fenêtre',
                         imageUrl:'/assets/rouge.png',
                         value:2,
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'porte_fenetre',
+                        typeChassis:'Porte-Fenêtre',
                         imageUrl:'/assets/rouge.png',
                         value:2,
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
+                        typeChassis:'Porte-Fenêtre',
                         imageUrl:'/assets/rouge.png',
                         value:2,
                         isActive:false,
@@ -353,47 +353,47 @@
                     {
                        name:'Blanc',
                        imageUrl:'/assets/white.png',
-                       code:'blanc'
+                       code:'Blanc'
                     },
                     {
                         name:'Irish Oak',
                         imageUrl:'/assets/irish_oak.jpg',
-                        code:'irish Oak'
+                        code:'Irish Oak'
                     },
                     {
                         name:'Golden Oak',
                         imageUrl:'/assets/golden_oak.png',
-                        code:'golden oak'
+                        code:'Golden Oak'
                     },
                     {
                         name:'Chêne foncé',
                         imageUrl:'/assets/chene_fonce.png',
-                        code:'chêne foncé'
+                        code:'Chêne foncé'
                     },
                     {
                         name:'Acajou',
                         imageUrl:'/assets/acajou.png',
-                        code:'acajou'
+                        code:'Acajou'
                     },
                     {
                         name:'Bleu acier grainé',
                         imageUrl:'/assets/bleu_acier.png',
-                        code:'bleu acier grainé'
+                        code:'Bleu acier grainé'
                     },
                     {
                         name:'Gris anthracite grainé',
                         imageUrl:'/assets/gris_fonce.png',
-                        code:'gris anthracite grainé'
+                        code:'Gris anthracite grainé'
                     },
                     {
                         name:'Rouge carmin',
                         imageUrl:'/assets/rouge.png',
-                        code:'rouge carmin'
+                        code:'Rouge carmin'
                     },
                     {
                         name:'Vert mousse',
                         imageUrl:'/assets/rouge.png',
-                        code:'vert mousse'
+                        code:'Vert mousse'
                     }
                 ]
             }
@@ -411,6 +411,7 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
+                matiere: 'pvc',
                 typeRepose: ko.observable(''),
                 typeChassis: ko.observable(''),
                 typeOuverture: ko.observable(''),
@@ -422,8 +423,8 @@
                      PoigneACle : ko.observable(false),
                      grilleAeration : ko.observable(false)
                 },
-                sens: ko.observable('0'),//right
-                seuilAlu:ko.observable('0'),
+                sens: ko.observable('à droite'),//right
+                seuilAlu:ko.observable('Sans seuil alu'),
                 coloris: ko.observable(),
                 colorisSide: ko.observable('1'),
                 type:ko.observable(),

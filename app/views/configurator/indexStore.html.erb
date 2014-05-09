@@ -61,19 +61,19 @@
               <ul>
                 <li data-bind="(if:$root.results.largeur() <= 5000)">
                   <label>
-                    <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                    <input type="radio" name="manoeuvre" value="Manuel" data-bind="checked: $root.results.manoeuvre">
                     <span>Manuel</span>
                   </label>
                 </li>
                 <li>
                   <label>
-                    <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                    <input type="radio" name="manoeuvre" value="Motorisé filaire" data-bind="checked: $root.results.manoeuvre">
                     <span>Motorisé filaire</span>
                   </label>
                 </li>
                 <li>
                   <label>
-                    <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                    <input type="radio" name="manoeuvre" value="Motorisé télécommande" data-bind="checked: $root.results.manoeuvre">
                     <span>Motorisé télécommande</span>
                   </label>
                 </li>
@@ -267,64 +267,6 @@
                         }
                     }
                 },
-                typesOuverture:[
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/vert.png',
-                        value:1,
-                        isActive:false,
-                        name:'Fixe'
-                    },
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    }
-                ],
                 colors:[
                     {
                        name:'Blanc',
@@ -388,11 +330,9 @@
 
             self.results = { // use this to set default values
                 largeur:ko.observable(0),
-                typeRepose: ko.observable(''),
-                typeChassis: ko.observable(''),
+                avancer: ko.observable(''),
+                manoeuvre: ko.observable(''),
                 coloris: ko.observable(),
-                width:ko.observable(0),
-                height:ko.observable(0),
                 total: ko.observable(0)
             };
 
@@ -443,17 +383,17 @@
             }
 
             ko.computed(function(){
-                if(self.results.typeRepose()){
+
                     utilities.post(
                                 "/price",
-                                {matiere: 'aluminium', type:self.results.typeProfile() },
+                                {matiere: 'aluminium', type:self.results.largeur() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);
                                     utilities.arrayRange(self.priceData.heights, self.range.height);
                                 },
                                 function(){alert('Error')});
-                }
+
              });
 
            /* ko.computed(function(){
@@ -472,7 +412,7 @@
             });*/
 
            ko.computed(function(){
-                if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
+                if(false && self.results.largeur()){
 
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());

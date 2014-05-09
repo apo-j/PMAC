@@ -17,14 +17,14 @@
               <img src="/assets/lame-Alu.png"  height="230px">
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Tablier Aluminium</label>
+            <label><input type="radio" name="type_repose" value="Tablier Aluminium" data-bind="checked: $root.results.lames" />&nbsp;Tablier Aluminium</label>
           </div>
           <hr>
           <div class="" style="float:left">
               <img src="/assets/lame-pvc.png" height="230px">
           </div>
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-            <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Tablier PVC</label>
+            <label><input type="radio" name="type_repose" value="Tablier PVC" data-bind="checked: $root.results.lames"/>&nbsp;Tablier PVC</label>
           </div>
         </div>
         <div class="panel-body">
@@ -34,35 +34,35 @@
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_BL.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_tablier" value="Blanc" data-bind="checked: $root.results.colorTablier">
                 <span>Blanc</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_CR.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_tablier" value="Crème" data-bind="checked: $root.results.colorTablier">
                 <span>Crème</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_MR.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_tablier" value="Marron" data-bind="checked: $root.results.colorTablier">
                 <span>Marron</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_AN.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_tablier" value="Alu naturel" data-bind="checked: $root.results.colorTablier">
                 <span>Alu naturel</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_NO.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_tablier" value="Noire" data-bind="checked: $root.results.colorTablier">
                 <span>Noire</span>
               </label>
             </li>
@@ -74,35 +74,35 @@
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_BL.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_coffre" value="Blanc" data-bind="checked: $root.results.colorCoffreCoulissesLameFinale">
                 <span>Blanc</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_CR.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_coffre" value="Crème" data-bind="checked: $root.results.colorCoffreCoulissesLameFinale">
                 <span>Crème</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_MR.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
-                <span>Crème</span>
+                <input type="radio" name="color_coffre" value="Marron" data-bind="checked: $root.results.colorCoffreCoulissesLameFinale">
+                <span>Marron</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_AN.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
-                <span>Crème</span>
+                <input type="radio" name="color_coffre" value="Alu naturel" data-bind="checked: $root.results.colorCoffreCoulissesLameFinale">
+                <span>Alu naturel</span>
               </label>
             </li>
             <li>
               <label>
                 <img src="/assets/RENO_COUL_TAB_NO.jpg" style="border:solid 1px #DDDDDD"/>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="color_coffre" value="Noire" data-bind="checked: $root.results.colorCoffreCoulissesLameFinale">
                 <span>Noire</span>
               </label>
             </li>
@@ -111,7 +111,7 @@
         </div>
       </div>
     </div>
-      <div class="panel panel-default"> <!--coloris-->
+      <div class="panel panel-default"> <!--Dimension-->
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
@@ -126,21 +126,21 @@
               <img src="/assets/RENO_POSE_P3.jpg"  height="230px">
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="renovation" data-bind="checked: $root.results.typeRepose" />&nbsp;Sous le linteau pan coupé à l'extérieur</label>
+              <label><input type="radio" name="position_coffre" value="Sous le linteau pan coupé à l\'extérieur" data-bind="checked: $root.results.positionCoffre" />&nbsp;Sous le linteau pan coupé à l'extérieur</label>
             </div>
             <hr>
             <div class="" style="float:left">
               <img src="/assets/RENO_POSE_P2.jpg" height="230px">
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Sous le linteau pan coupé à l'intérieur</label>
+              <label><input type="radio" name="position_coffre" value="Sous le linteau pan coupé à l\'intérieur" data-bind="checked: $root.results.positionCoffre"/>&nbsp;Sous le linteau pan coupé à l'intérieur</label>
             </div>
             <hr>
             <div class="" style="float:left">
               <img src="/assets/RENO_POSE_P1.jpg" height="230px">
             </div>
             <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Au dessus du linteau</label>
+              <label><input type="radio" name="position_coffre" value="Au dessus du linteau" data-bind="checked: $root.results.positionCoffre"/>&nbsp;Au dessus du linteau</label>
             </div>
           </div>
           <div class="panel-body">
@@ -168,19 +168,19 @@
          <ul>
            <li data-bind="(if:$root.results.largeur() <= 5000)">
              <label>
-               <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+               <input type="radio" name="type_chassis" value="Manuel" data-bind="checked: $root.results.manoeuvre">
                <span>Manuel</span>
              </label>
            </li>
            <li>
              <label>
-               <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+               <input type="radio" name="type_chassis" value="Motorisé filaire" data-bind="checked: $root.results.manoeuvre">
                <span>Motorisé filaire</span>
              </label>
            </li>
            <li>
              <label>
-               <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+               <input type="radio" name="type_chassis" value="Motorisé télécommande" data-bind="checked: $root.results.manoeuvre">
                <span>Motorisé télécommande</span>
              </label>
            </li>
@@ -301,112 +301,7 @@
                             right:0
                         }
                     }
-                },
-                typesOuverture:[
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/vert.png',
-                        value:1,
-                        isActive:false,
-                        name:'Fixe'
-                    },
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    }
-                ],
-                colors:[
-                    {
-                       name:'Blanc',
-                       imageUrl:'/assets/white.png',
-                       code:'blanc'
-                    },
-                    {
-                        name:'Irish Oak',
-                        imageUrl:'/assets/irish_oak.jpg',
-                        code:'irish Oak'
-                    },
-                    {
-                        name:'Golden Oak',
-                        imageUrl:'/assets/golden_oak.png',
-                        code:'golden oak'
-                    },
-                    {
-                        name:'Chêne foncé',
-                        imageUrl:'/assets/chene_fonce.png',
-                        code:'chêne foncé'
-                    },
-                    {
-                        name:'Acajou',
-                        imageUrl:'/assets/acajou.png',
-                        code:'acajou'
-                    },
-                    {
-                        name:'Bleu acier grainé',
-                        imageUrl:'/assets/bleu_acier.png',
-                        code:'bleu acier grainé'
-                    },
-                    {
-                        name:'Gris anthracite grainé',
-                        imageUrl:'/assets/gris_fonce.png',
-                        code:'gris anthracite grainé'
-                    },
-                    {
-                        name:'Rouge carmin',
-                        imageUrl:'/assets/rouge.png',
-                        code:'rouge carmin'
-                    },
-                    {
-                        name:'Vert mousse',
-                        imageUrl:'/assets/rouge.png',
-                        code:'vert mousse'
-                    }
-                ]
+                }
             }
             self.priceData = new priceData();
             self.range = {
@@ -422,12 +317,13 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                typeProfile:ko.observable(''),
-                typeRepose: ko.observable(''),
-                typeChassis: ko.observable(''),
-                coloris: ko.observable(),
+                lames:ko.observable(''),
+                colorTablier: ko.observable(''),
+                colorCoffreCoulissesLameFinale: ko.observable(''),
+                positionCoffre: ko.observable(),
                 width:ko.observable(0),
                 height:ko.observable(0),
+                manoeuvre:ko.observable(),
                 total: ko.observable(0)
             };
 
@@ -478,10 +374,10 @@
             }
 
             ko.computed(function(){
-                if(self.results.typeRepose()){
+                if(self.results.lames()){
                     utilities.post(
                                 "/price",
-                                {matiere: 'aluminium', type:self.results.typeProfile() },
+                                {matiere: 'aluminium', type:self.results.colorTablier() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);
@@ -507,7 +403,7 @@
             });*/
 
            ko.computed(function(){
-                if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
+                if(self.results.lames() && self.results.width() > 0 && self.results.height() > 0){
 
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());

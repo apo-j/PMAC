@@ -15,19 +15,19 @@
           <ul>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="lame" value="Lame pleine" data-bind="checked: $root.results.lame">
                 <span>Lame pleine</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="lame" value="Lame Microperforet" data-bind="checked: $root.results.typeChassis">
                 <span>Lame Microperforet</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="radio" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="radio" name="lame" value="Lame Cobra" data-bind="checked: $root.results.typeChassis">
                 <span>Lame Cobra</span>
               </label>
             </li>
@@ -55,13 +55,13 @@
           <div class="form-group">
             <label class="col-xs-4 text-right control-label" >Hauteur de lame cobra</label>
             <div class="col-xs-3">
-              <input name="hauteur" class="form-control input-sm" data-bind="value: $root.results.hauteur">
+              <input name="hauteur_cobra" class="form-control input-sm" data-bind="value: $root.results.hauteurCobra">
             </div>
           </div>      <br/>
           <div class="form-group">
             <label class="col-xs-4 text-right control-label" >Hauteur de lame microperforet</label>
             <div class="col-xs-3">
-              <input name="hauteur" class="form-control input-sm" data-bind="value: $root.results.hauteur">
+              <input name="hauteur_microperforet" class="form-control input-sm" data-bind="value: $root.results.hauteurMicroperforet">
             </div>
           </div>
           <br/>
@@ -71,25 +71,25 @@
           <ul>
             <li>
               <label>
-                <input type="checkbox" name="type_chassis" value="deux_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="checkbox" name="boit_a_cle" value="Boitre à clé extérieur" data-bind="checked: $root.results.boitACle">
                 <span>Boitre à clé extérieur 45€ HT</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="checkbox" name="type_chassis" value="trois_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="checkbox" name="bouton_poussoir" value="Bouton poussoir" data-bind="checked: $root.results.boutonPoussoir">
                 <span>Bouton poussoir 18€ HT</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="checkbox" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="checkbox" name="telecommande" value="Télécommande" data-bind="checked: $root.results.telecommand">
                 <span>Télécommande 231€ HT</span>
               </label>
             </li>
             <li>
               <label>
-                <input type="checkbox" name="type_chassis" value="quatre_vantaux" data-bind="checked: $root.results.typeChassis">
+                <input type="checkbox" name="sabot_viro" value="Sabot viro" data-bind="checked: $root.results.sabotViro">
                 <span>Sabot viro 216€ HT</span>
               </label>
             </li>
@@ -212,112 +212,7 @@
                             right:0
                         }
                     }
-                },
-                typesOuverture:[
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/vert.png',
-                        value:1,
-                        isActive:false,
-                        name:'Fixe'
-                    },
-                    {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    },
-                    {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
-                        isActive:false,
-                        name:'Soufflet'
-                    }
-                ],
-                colors:[
-                    {
-                        name:'Blanc',
-                        imageUrl:'/assets/white.png',
-                        code:'blanc'
-                    },
-                    {
-                        name:'Irish Oak',
-                        imageUrl:'/assets/irish_oak.jpg',
-                        code:'irish Oak'
-                    },
-                    {
-                        name:'Golden Oak',
-                        imageUrl:'/assets/golden_oak.png',
-                        code:'golden oak'
-                    },
-                    {
-                        name:'Chêne foncé',
-                        imageUrl:'/assets/chene_fonce.png',
-                        code:'chêne foncé'
-                    },
-                    {
-                        name:'Acajou',
-                        imageUrl:'/assets/acajou.png',
-                        code:'acajou'
-                    },
-                    {
-                        name:'Bleu acier grainé',
-                        imageUrl:'/assets/bleu_acier.png',
-                        code:'bleu acier grainé'
-                    },
-                    {
-                        name:'Gris anthracite grainé',
-                        imageUrl:'/assets/gris_fonce.png',
-                        code:'gris anthracite grainé'
-                    },
-                    {
-                        name:'Rouge carmin',
-                        imageUrl:'/assets/rouge.png',
-                        code:'rouge carmin'
-                    },
-                    {
-                        name:'Vert mousse',
-                        imageUrl:'/assets/rouge.png',
-                        code:'vert mousse'
-                    }
-                ]
+                }
             }
             self.priceData = new priceData();
             self.range = {
@@ -333,13 +228,16 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                largeur:ko.observable(0),
-                typeRepose: ko.observable(''),
-                typeChassis: ko.observable(''),
-                coloris: ko.observable(),
-                width:ko.observable(0),
-                height:ko.observable(0),
-                total: ko.observable(0)
+                lame:ko.observable(),
+                largeur: ko.observable(''),
+                hauteur: ko.observable(''),
+                hauteurCobra: ko.observable(),
+                hauteurMicroperforet:ko.observable(0),
+                boitACle:ko.observable(false),
+                boutonPoussoir:ko.observable(false),
+                telecommand:ko.observable(false),
+                sabotViro:ko.observable(false),
+                total: ko.observable(false)
             };
 
             self.product = {
@@ -389,7 +287,7 @@
             }
 
             ko.computed(function(){
-                if(self.results.typeRepose()){
+                if(false && self.results.lame()){
                     utilities.post(
                             "/price",
                             {matiere: 'aluminium', type:self.results.typeProfile() },
@@ -418,7 +316,7 @@
              });*/
 
             ko.computed(function(){
-                if(self.results.typeRepose() && self.results.width() > 0 && self.results.height() > 0){
+                if(false && self.results.lame()){
 
                     var i = utilities.b_search(self.priceData.widths, self.results.width());
                     var j = utilities.b_search(self.priceData.heights, self.results.height());
