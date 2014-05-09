@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315155448) do
+ActiveRecord::Schema.define(version: 20140325211130) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -55,6 +55,23 @@ ActiveRecord::Schema.define(version: 20140315155448) do
   end
 
   add_index "colors", ["code"], name: "index_colors_on_code", using: :btree
+
+  create_table "frame_types", force: true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "frames", force: true do |t|
+    t.integer  "frameTypes_id"
+    t.string   "url"
+    t.boolean  "sens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "frames", ["frameTypes_id"], name: "index_frames_on_frameTypes_id", using: :btree
 
   create_table "line_items", force: true do |t|
     t.integer  "product_id"

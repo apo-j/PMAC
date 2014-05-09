@@ -243,6 +243,16 @@
         Total : <span data-bind="textAsCurrency: results.total"></span>
       </div>
     </div>
+    <div class="bloc">
+      <span class="title">Mon Panier</span>
+      <div class="bloc-content" style="padding:10px;text-align: center">
+        <div>Produits :  <%= @cart.total_quantity %> </div>
+        <div>Montant : <%= number_to_currency(@cart.total_price, unit: "", separator: ",", delimiter: " ") %>€</div>
+        <div style="">
+          <a href="/show-cart" style="" class="">Afficher panier</a>
+        </div>
+      </div>
+    </div>
 <% end %>
 
 

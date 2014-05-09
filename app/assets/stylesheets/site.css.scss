@@ -294,8 +294,61 @@ ul{
         }
     }
   }
-
 }
+
+.friezeBloc{
+  float: left;
+  vertical-align: top;
+  ul {
+    text-align: center;
+    font-size: 1px;
+    letter-spacing: -1px;
+    word-spacing: -1px;
+
+    li{
+      display: inline-block;
+      width: 120px;
+      height: 30px;
+      font-size: 12px;
+      background: url(bsk_friezeGen.png) center bottom no-repeat;
+      color: #aaa;
+      font-weight: 700;
+      letter-spacing: normal;
+      word-spacing: normal;
+      &.first{
+        background-image: url(bsk_friezeLeft.png);
+        &.progres {
+          background-image: url(bsk_friezeLeftProgress.png);
+        }
+        &.completed {
+          background-image: url(bsk_friezeLeftCompleted.png);
+        }
+      }
+      &.progres {
+        color: #f21e8c;
+        background-image: url(bsk_friezeGenProgress.png);
+      }
+      &.completed {
+        background-image: url(bsk_friezeCompleted.png);
+      }
+      &.last {
+        background-image: url(bsk_friezeRight.png);
+        &.progres {
+          background-image: url(bsk_friezeRightProgress.png);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
