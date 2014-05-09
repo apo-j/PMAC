@@ -1,5 +1,9 @@
 PMAC::Application.routes.draw do
 
+  get "preorder/livraison"
+  get "preorder/recapitulatif"
+  get "preorder/paiement"
+  get "preorder/confirmation"
   get "message/new"
   match "messages", to:'message#create', via: 'post'
   match "configurator/pvc" , to: "configurator#index", via: 'get'

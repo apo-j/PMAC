@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505195736) do
+ActiveRecord::Schema.define(version: 20140509203225) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20140505195736) do
 
   add_index "addresses", ["address_type"], name: "index_addresses_on_address_type", using: :btree
   add_index "addresses", ["user_id"], name: "fk_address", using: :btree
+
+  create_table "alumia", force: true do |t|
+    t.string   "profile"
+    t.string   "pose"
+    t.string   "coloris"
+    t.string   "chassis"
+    t.integer  "largeur"
+    t.integer  "hauteur"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "carousels", force: true do |t|
     t.string   "target"
@@ -182,6 +193,48 @@ ActiveRecord::Schema.define(version: 20140505195736) do
     t.decimal  "height",      precision: 10, scale: 0
     t.decimal  "total_price", precision: 8,  scale: 2
     t.integer  "width"
+    t.integer  "detail_id"
+    t.string   "detail_type"
+  end
+
+  create_table "pvcs", force: true do |t|
+    t.string  "type_pose"
+    t.string  "coloris"
+    t.string  "position_coloris"
+    t.string  "chassis"
+    t.string  "ouverture"
+    t.string  "sens"
+    t.string  "seuil_alu"
+    t.boolean "sans_soubassement"
+    t.boolean "seurre"
+    t.boolean "oscillo_battant"
+    t.boolean "poignee_a_cle"
+    t.boolean "grill_aeration"
+    t.integer "largeur"
+    t.integer "hauteur"
+  end
+
+  create_table "rideaux_metaliques", force: true do |t|
+    t.string   "lame"
+    t.integer  "largeur"
+    t.integer  "hauteur"
+    t.integer  "hauteur_lame_cobra"
+    t.integer  "hauteur_lame_microperforet"
+    t.boolean  "boitre_a_cle_exterieur"
+    t.boolean  "bouton_poussoire"
+    t.boolean  "telecommande"
+    t.boolean  "sabot_viro"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stores", force: true do |t|
+    t.integer  "largeur"
+    t.integer  "avancer"
+    t.string   "manoeuvre"
+    t.string   "toile"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -196,5 +249,17 @@ ActiveRecord::Schema.define(version: 20140505195736) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["user_type"], name: "index_users_on_user_type", using: :btree
+
+  create_table "volet_roulands", force: true do |t|
+    t.string   "tablier"
+    t.string   "coloris_tablier"
+    t.string   "coloris_autre"
+    t.string   "position_coffre"
+    t.integer  "largeur"
+    t.integer  "hauteur"
+    t.string   "manoeuvre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,5 +1,21 @@
+<div class="friezeBloc col-xs-12">
+  <ul>
+    <li class="first progres">
+      Panier            </li>
+    <li class="">
+      Livraison            </li>
+    <li class="">
+      Récapitulatif            </li>
+    <li class="">
+      Paiement            </li>
+    <li class="last">
+      Confirmation            </li>
+  </ul>
+</div>
+
+<div class="col-xs-12 clearfix">
 <% if cart.line_items.empty? %>
-     <h4>Votre panier est actuellement vide. Vous n'avez aucune commande en cours.</h3>
+     <h4>Votre panier est actuellement vide. Vous n'avez aucune commande en cours.</h4>
      <br/>
     <a href="/">Retour à l'accueil</a>
 <% else %>
@@ -15,3 +31,4 @@
     <%= button_to 'Empty cart', cart, method: :delete,
                   data: { confirm: 'Are you sure?' } %>
 <% end %>
+</div>

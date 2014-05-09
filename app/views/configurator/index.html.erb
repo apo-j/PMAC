@@ -95,7 +95,7 @@
            <ul data-bind="foreach: data.typesOuverture">
              <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
              <li style="float:left;width:160px;height:100px"><label>
-               <input type="radio" name="coloris" data-bind="checked: $root.results.typeChassis, value:value">
+               <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:value">
                <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
                <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
              </label></li>
@@ -230,6 +230,16 @@
       <span class="title">Montant</span>
       <div class="bloc-content" id="price-total" style="min-height: 30px;padding-left: 30px">
         Total : <span data-bind="textAsCurrency: results.total"></span>
+      </div>
+    </div>
+    <div class="bloc">
+      <span class="title">Mon Panier</span>
+      <div class="bloc-content" style="padding:10px;text-align: center">
+        <div>Produits :  <%= @cart.total_quantity %> </div>
+        <div>Montant : <%= number_to_currency(@cart.total_price, unit: "", separator: ",", delimiter: " ") %>€</div>
+        <div style="">
+          <a href="/show-cart" style="" class="">Afficher panier</a>
+        </div>
       </div>
     </div>
 <% end %>
