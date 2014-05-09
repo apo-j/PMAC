@@ -1,5 +1,5 @@
 <div class="friezeBloc col-xs-12">
-  <ul>
+  <ul style="float:left">
     <li class="first progres">
       Panier            </li>
     <li class="">
@@ -11,6 +11,8 @@
     <li class="last">
       Confirmation            </li>
   </ul>
+  <%= button_to 'Empty cart', cart, method: :delete,
+                data: { confirm: 'Are you sure?' } %>
 </div>
 
 <div class="col-xs-12 clearfix">
@@ -19,7 +21,7 @@
      <br/>
     <a href="/">Retour à l'accueil</a>
 <% else %>
-    <div class="cart-title">Your Cart</div>
+    <div class="cart-title">Votre panier</div>
     <table>
       <%= render(cart.line_items) %>
       <tr class="total_line">
