@@ -28,7 +28,11 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product_info = params[:product_info]
-    
+    detail = nil
+    case product_info.matiere
+      when 'pvc'
+        detail = Pvc.create()
+    end
     material = 'title' #Material.find(product_info[:matiere].to_i).name
     color = 'name' #Color.find(product_info[:coloris].to_i).name
     color_side = 'color' #product_info[:coloris_side]
