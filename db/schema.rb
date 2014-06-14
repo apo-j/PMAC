@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140614153507) do
     t.string   "city"
     t.string   "postal"
     t.string   "country"
+    t.string   "address_type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140614153507) do
     t.string   "address"
   end
 
+  add_index "addresses", ["address_type"], name: "index_addresses_on_address_type", using: :btree
   add_index "addresses", ["user_id"], name: "fk_address", using: :btree
 
   create_table "alumia", force: true do |t|
