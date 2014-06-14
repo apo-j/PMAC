@@ -377,7 +377,7 @@
                 if(self.results.lames()){
                     utilities.post(
                                 "/price",
-                                {matiere: 'aluminium', type:self.results.colorTablier() },
+                                {matiere: 'vr', type:self.results.colorTablier() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);

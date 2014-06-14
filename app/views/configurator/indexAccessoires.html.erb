@@ -446,7 +446,7 @@
                 if(self.results.typeRepose()){
                     utilities.post(
                                 "/price",
-                                {matiere: 'aluminium', type:self.results.typeProfile() },
+                                {matiere: 'accessoire', type:self.results.typeProfile() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);

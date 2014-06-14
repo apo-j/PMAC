@@ -386,7 +386,7 @@
 
                     utilities.post(
                                 "/price",
-                                {matiere: 'aluminium', type:self.results.largeur() },
+                                {matiere: 'store', type:self.results.largeur() },
                                 function(data){
                                     self.priceData = new priceData(utilities.splitStringToArray(data.data), utilities.splitStringToArray(data.widths),utilities.splitStringToArray(data.heights));
                                     utilities.arrayRange(self.priceData.widths, self.range.width);

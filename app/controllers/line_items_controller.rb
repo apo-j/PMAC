@@ -28,20 +28,29 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product_info = params[:product_info]
-=begin
     detail = nil
-    case product_info.matiere
+    case product_info[:matiere]
       when 'pvc'
-        detail = Pvc.create()
+        detail = Pvc.create(type_pose: product_info[:typePose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
+                          sans_sousbassement: product_info[:options][:sansSousbassement], seurre: product_info[:options][:seurre], ocillo_battant: product_info[:options][:ocilloBattant], poignee_a_cle: product_info[:options][:PoigneACle],
+                          grill_aeration: product_info[:options][:grilleAeration], traverse_intermediaire: product_info[:options][:traverseIntermediaire] )
+      when 'aluminium'
+        detail =  Alumium.create()
+      when 'store'
+        detail = Store.create()
+      when 'vr'
+        detail = VoletRouland.create()
+      when 'rideaux'
+        detail = RideauxMetalique.create()
     end
-=end
-    material = 'title' #Material.find(product_info[:matiere].to_i).name
-    color = 'name' #Color.find(product_info[:coloris].to_i).name
-    color_side = 'color' #product_info[:coloris_side]
-    mode = 'type' #Mode.find(product_info[:type].to_i).name
-    width = 'width' #product_info[:width].to_i
-    height = 'height' #product_info[:height].to_i
-    price = 'total' #product_info[:total]
+
+    material = Material.find(product_info[:matiere].to_i).name
+    color = Color.find(product_info[:coloris].to_i).name
+    color_side = product_info[:coloris_side]
+    mode = Mode.find(product_info[:type].to_i).name
+    width = product_info[:width].to_i
+    height = product_info[:height].to_i
+    price = product_info[:total]
 
     @product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
 
