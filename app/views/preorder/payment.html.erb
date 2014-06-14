@@ -5,8 +5,6 @@
     </li>
     <li class="completed">
       <a href="/preorder/livraison/">Livraison</a>   </li>
-    <li class="completed">
-      <a href="/preorder/recapitulatif/">Récapitulatif</a>   </li>
     <li class="progres">
       Paiement            </li>
     <li class="last">
@@ -15,6 +13,6 @@
 </div>
 
 <div style="float:right">
-  <%= button_to "Continuer", preorder_confirmation_path, method: :get %>
+  <%= button_to "Continuer", preorder_confirmation_path, class: :"btn btn-primary", method: :get %>
 </div>
 

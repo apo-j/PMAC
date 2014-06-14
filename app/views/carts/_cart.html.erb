@@ -18,14 +18,12 @@
           <li class="">
             Livraison            </li>
           <li class="">
-            Récapitulatif            </li>
-          <li class="">
             Paiement            </li>
           <li class="last">
             Confirmation            </li>
         </ul>
         <div style="float:right;margin-top:10px">
-          <%= button_to 'Vider panier', cart, method: :delete,
+          <%= button_to 'Vider panier', cart, method: :delete, class: :"btn btn-default",
                         data: { confirm: 'Vous etes sur ?' } %>
         </div>
 
@@ -47,9 +45,8 @@
           </tr>
           </thead>
           <tbody>
-
+           <%= render(cart.line_items) %>
           </tbody>
-          <%= render(cart.line_items) %>
         </table>
       </div>
       <div class="panel-footer">
@@ -59,7 +56,7 @@
       </div>
     </div>
     <div style="float:right">
-      <%= button_to "Continuer", preorder_livraison_path, method: :get %>
+      <%= button_to "Continuer", preorder_livraison_path, class: :"btn btn-primary", method: :get %>
     </div>
 <% end %>
 </div>

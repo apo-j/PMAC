@@ -21,12 +21,13 @@
     <script>
       $(function(){
            $('#recapitulatif button.delete').on('click', function(){
+               var $this = $(this);
                var id = $(this).data('id');
                $.ajax({
                    method:"delete",
                    url:"/line_items/" + id + '.json'
                }).done(function(data){
-                  $(this).closest('tr.line').remove();
+                   $this.closest('tr.line').remove();
                }).fail(function(){
                    console.log('echec');
                });

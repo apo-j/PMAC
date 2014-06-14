@@ -3,11 +3,11 @@ PMAC::Application.routes.draw do
   get "address/new"
   get "address/create"
   get "address/destroy"
-  match "addresses", to:'address#create', via: 'post'
+  match "address", to:'address#create', via: 'post'
 
   get "preorder/livraison"
   get "preorder/recapitulatif"
-  get "preorder/paiement"
+  get "preorder/payment"
   get "preorder/confirmation"
   get "message/new"
   match "messages", to:'message#create', via: 'post'

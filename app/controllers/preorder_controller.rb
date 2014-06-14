@@ -1,12 +1,15 @@
 class PreorderController < ApplicationController
   def livraison
-    @address = Address.new
+    @address = Address.find_by_user_id(current_user[:id])
+    if(@address.nil?)
+      @address = Address.new
+    end
   end
 
   def recapitulatif
   end
 
-  def paiement
+  def payment
   end
 
   def confirmation

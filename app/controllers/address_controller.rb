@@ -1,4 +1,5 @@
 class AddressController < ApplicationController
+
   def new
     @address = Address.new
   end
@@ -6,6 +7,8 @@ class AddressController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.user_id = current_user[:id]
+    redirect_to '/preorder/payment'
+=begin
     respond_to do |format|
       if @address.save
         format.html { redirect_to @address, notice: 'Addresse was successfully created.' }
@@ -15,6 +18,7 @@ class AddressController < ApplicationController
         format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
+=end
 
   end
 
