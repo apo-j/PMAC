@@ -31,8 +31,8 @@ class LineItemsController < ApplicationController
     detail = nil
     case product_info[:matiere]
       when 'pvc'
-        detail = Pvc.create(type_pose: product_info[:typePose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
-                          sans_sousbassement: product_info[:options][:sansSousbassement], seurre: product_info[:options][:seurre], ocillo_battant: product_info[:options][:ocilloBattant], poignee_a_cle: product_info[:options][:PoigneACle],
+        detail = Pvc.create(type_pose: product_info[:typeRepose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
+                          sans_soubassement: product_info[:options][:sansSousbassement], seurre: product_info[:options][:seurre], oscillo_battant: product_info[:options][:oscilloBattant], poignee_a_cle: product_info[:options][:PoigneACle],
                           grill_aeration: product_info[:options][:grilleAeration], traverse_intermediaire: product_info[:options][:traverseIntermediaire] )
       when 'aluminium'
         detail =  Alumium.create()
