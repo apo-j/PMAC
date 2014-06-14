@@ -1,36 +1,65 @@
-<div class="friezeBloc col-xs-12">
-  <ul style="float:left">
-    <li class="first progres">
-      Panier            </li>
-    <li class="">
-      Livraison            </li>
-    <li class="">
-      Récapitulatif            </li>
-    <li class="">
-      Paiement            </li>
-    <li class="last">
-      Confirmation            </li>
-  </ul>
-  <%= button_to 'Empty cart', cart, method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-</div>
-
-<div class="col-xs-12 clearfix">
+<div id="recapitulatif" class="col-xs-12 clearfix">
 <% if cart.line_items.empty? %>
-     <h4>Votre panier est actuellement vide. Vous n'avez aucune commande en cours.</h4>
-     <br/>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">PANIER VIDE</h3>
+        </div>
+        <div class="panel-body">
+          Votre panier est actuellement vide. Vous n'avez aucune commande en cours.
+        </div>
+      </div>
     <a href="/">Retour à l'accueil</a>
+    <div style="margin-bottom: 200px"></div>
 <% else %>
-    <div class="cart-title">Votre panier</div>
-    <table>
-      <%= render(cart.line_items) %>
-      <tr class="total_line">
-        <td colspan="2">Total</td>
-        <td class="total_cell"><%= number_to_currency(cart.total_price, unit: "", separator: ",", delimiter: " ") %>€</td>
-      </tr>
-    </table>
-    <%= button_to "Checkout", new_order_path, method: :get %>
-    <%= button_to 'Empty cart', cart, method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
+      <div class="friezeBloc col-xs-12">
+        <ul style="float:left" class="col-xs-10">
+          <li class="first progres">
+            Panier            </li>
+          <li class="">
+            Livraison            </li>
+          <li class="">
+            Récapitulatif            </li>
+          <li class="">
+            Paiement            </li>
+          <li class="last">
+            Confirmation            </li>
+        </ul>
+        <div style="float:right;margin-top:10px">
+          <%= button_to 'Vider panier', cart, method: :delete,
+                        data: { confirm: 'Vous etes sur ?' } %>
+        </div>
+
+      </div>
+
+    <div class="panel panel-default"  style="margin-top:100px">
+      <div class="panel-heading">
+        <h3 class="panel-title">Votre panier</h3>
+      </div>
+      <div class="panel-body">
+        <table class="col-xs-12 table-striped">
+          <thead>
+          <tr>
+            <th class="text-center">Article(s)</th>
+            <th class="text-center">Prix unitaire</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">Prix total</th>
+            <th class="text-center"></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+          <%= render(cart.line_items) %>
+        </table>
+      </div>
+      <div class="panel-footer">
+        <div>
+          <span style="display: inline-block;margin-right:50px"><strong>Total</strong></span><%= number_to_currency(cart.total_price, unit: "", separator: ",", delimiter: " ") %>€
+        </div>
+      </div>
+    </div>
+    <div style="float:right">
+      <%= button_to "Continuer", preorder_livraison_path, method: :get %>
+    </div>
 <% end %>
 </div>

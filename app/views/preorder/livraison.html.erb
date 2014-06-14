@@ -13,3 +13,81 @@
       Confirmation            </li>
   </ul>
 </div>
+
+<div class="panel panel-default" style="margin-top: 100px">
+  <div class="panel-heading">
+    <h3 class="panel-title">ADRESSE ET LIVRAISON</h3>
+  </div>
+  <div class="panel-body">
+    Attention : nous vous rappelons que notre zone de livraison couvre exclusivement la France métropolitaine.
+    <br/>
+    <br/>
+    <br/>
+    <div class="form-horizontal">
+    <%= form_for @address do |f| %>
+          <% if @address.errors.any? %>
+              <div id="error_explanation">
+                <h2>Veuillez corriger les erreurs suivantes:</h2>
+
+                <ul>
+                  <% @message.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label "Prénom", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :name, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Nom", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :last_name, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Code Postal", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :postal, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Ville", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :city, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Pays", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              France
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Téléphone", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :telephone, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3 control-label" >&nbsp;</label>
+            <div class="col-xs-9">
+              <div class="actions" style="float:right">
+                <%= f.submit 'Enregistrer', class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+<div style="float:right">
+  <%= button_to "Continuer", preorder_paiement_path, method: :get %>
+</div>

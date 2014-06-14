@@ -1,6 +1,6 @@
 class PreorderController < ApplicationController
   def livraison
-
+    @address = Address.new
   end
 
   def recapitulatif
