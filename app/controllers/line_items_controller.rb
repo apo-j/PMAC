@@ -32,8 +32,8 @@ class LineItemsController < ApplicationController
     case product_info[:matiere]
       when 'pvc'
         detail = Pvc.create(type_pose: product_info[:typeRepose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
-                          sans_soubassement: product_info[:options][:sansSousbassement], seurre: product_info[:options][:seurre], oscillo_battant: product_info[:options][:oscilloBattant], poignee_a_cle: product_info[:options][:PoigneACle],
-                          grill_aeration: product_info[:options][:grilleAeration], traverse_intermediaire: product_info[:options][:traverseIntermediaire] )
+                          sans_soubassement: product_info[:options][:sansSoubassement].to_bool, seurre: product_info[:options][:serrure].to_bool, oscillo_battant: product_info[:options][:oscilloBattant].to_bool, poignee_a_cle: product_info[:options][:PoigneACle].to_bool,
+                          grill_aeration: product_info[:options][:grilleAeration].to_bool, traverse_intermediaire: product_info[:options][:traverseIntermediaire].to_bool )
       when 'aluminium'
         detail =  Alumium.create()
       when 'store'
@@ -44,15 +44,14 @@ class LineItemsController < ApplicationController
         detail = RideauxMetalique.create()
     end
 
-    material = Material.find(product_info[:matiere].to_i).name
-    color = Color.find(product_info[:coloris].to_i).name
-    color_side = product_info[:coloris_side]
-    mode = Mode.find(product_info[:type].to_i).name
+    material = product_info[:matiere]
+    color = product_info[:coloris]
+    color_side = product_info[:colorisSide]
     width = product_info[:width].to_i
     height = product_info[:height].to_i
-    price = product_info[:total]
+    price = product_info[:total].to_f
 
-    @product = Product.create(material: material, color: color, color_side: color_side, mode: mode, width: width, height: height, price: price)
+    @product = Product.create(material: material, color: color, color_side: color_side, width: width, height: height, price: price)
 
     @line_item = @cart.add_product(@product.id)
 
