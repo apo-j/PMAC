@@ -5,6 +5,7 @@ PMAC::Application.routes.draw do
   get "address/destroy"
   match "address", to:'address#create', via: 'post'
 
+
   get "preorder/livraison"
   get "preorder/recapitulatif"
   get "preorder/payment"
