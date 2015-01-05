@@ -363,9 +363,9 @@ $table-outer-border: 1px solid #167F92;
 $table-cell-border: 1px solid #D9E4E6;
 
 // Extra options for table style (parse these arguments when including your mixin)
-$table-border-radius: 10px;
+$table-border-radius: 3px;
 $table-highlight-color: #EAF3F3;
-$table-header-background-color: #167F92;
+$table-header-background-color: #1D2A35;
 $table-header-text-color: #FFF;
 $table-header-border: 1px solid #FFF;
 
@@ -405,9 +405,9 @@ $header-border: $table-cell-border) {
       background-color: $header-background-color;
       color: $header-text-color;
       padding: 1em;
+      text-align: center;
       &:first-child { // show the first table header for mobile
         display: table-cell;
-        text-align: center;
       }
       &:nth-child(2) { // show the second table header but replace the content with the data-th from the markup for mobile
         display: table-cell;
@@ -426,9 +426,9 @@ $header-border: $table-cell-border) {
       display: block; // display the table data as one block for mobile
       word-wrap: break-word;
       max-width: 7em;
+      text-align: center;
       &:first-child {
         display: table-cell; // display the first one as a table cell (radio button) for mobile
-        text-align: center;
         border-right: $cell-border;
       }
       @media (min-width: $breakpoint) {
@@ -437,7 +437,6 @@ $header-border: $table-cell-border) {
     }
 
     th, td {
-      text-align: left;
       margin: .5em 1em;
       @media (min-width: $breakpoint) {
         display: table-cell; // show the table as a normal table for tablet and desktop

@@ -8,6 +8,22 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
+  def search
+    email = criteria_params[:email]
+
+    sql = []
+    unless email.blank?
+      sql << "login = '"+email + "'"
+    end
+
+    @users = User.where(sql.join(' and ')).order(:login)
+    @criteria = OrderCriteria.new(criteria_params)
+    render "index"
+  end
+
+
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -84,6 +100,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+  def criteria_params
+    params.require(:user_criteria)
+  end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:login, :password, :password_confirmation, :user_type)

@@ -14,7 +14,7 @@ class PreorderController < ApplicationController
   end
 
   def payment
-    if !address_params[:id].nil?
+    if !address_params[:id].blank?
       @address = Address.find(address_params[:id])
     else
       @address = nil

@@ -1,9 +1,37 @@
 <h4>Liste des utilisateurs</h4>
 
-<div class="clearfix"></div>
-<br>
+<% if admin? %>
+    <div class="form-horizontal">
+      <%= form_for @criteria, method: :post, url: '/users/search', html: {class: 'col-xs-10'} do |f| %>
 
-<table class="col-xs-8 table-striped">
+          <div class="form-group" style="margin-bottom: 5px">
+            <%= f.label "Réf", class:"col-xs-3 control-label" %>
+            <div class="col-xs-9">
+              <%= f.text_field :name, class:"form-control input-sm" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Date début", class:"col-xs-3 control-label" %>
+            <div class="col-xs-3">
+              <%= f.text_field :start_date, class:"form-control input-sm datepicker" %>
+            </div>
+
+            <%= f.label "Date fin", class:"col-xs-3 control-label" %>
+            <div class="col-xs-3">
+              <%= f.text_field :end_date, class:"form-control input-sm datepicker" %>
+            </div>
+          </div>
+
+          <div style="float:right">
+            <input type="submit" class="btn btn-primary" value="Rechercher"/>
+          </div>
+      <% end %>
+    </div>
+    <div class="clearfix"></div>
+<% end %>
+<br/>
+
+<table class="col-xs-8 responstable">
   <thead>
     <tr style="background-color: whitesmoke;">
       <th class="text-left">Email</th>
