@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:login)
+    @criteria = UserCriteria.new
   end
 
 
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     @users = User.where(sql.join(' and ')).order(:login)
-    @criteria = OrderCriteria.new(criteria_params)
+    @criteria = UserCriteria.new(criteria_params)
     render "index"
   end
 
