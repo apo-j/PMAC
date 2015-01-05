@@ -14,7 +14,11 @@ class PreorderController < ApplicationController
   end
 
   def payment
-    @address = Address.find(address_params[:id])
+    if !address_params[:id].nil?
+      @address = Address.find(address_params[:id])
+    else
+      @address = nil
+    end
     if @address.nil?
       @address = Address.create(address_params)
       @user = User.find(current_user[:id])
