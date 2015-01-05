@@ -29,17 +29,35 @@
                 </li>
             <% else %>
                 <li>
-                  <a href="<%= item.url  %>" class="<%= item.picture%>">
-                  <% if (!item.picture || item.picture.length == 0)  %>
-                    <%= item.name %>
-                  <%end%>
+                    <a href="<%= item.url  %>" class="<%= item.picture%>">
+                      <% if (!item.picture || item.picture.length == 0)  %>
+                          <%= item.name %>
+                      <%end%>
                       </a>
                 </li>
             <% end %>
         <% end %>
       </ul>
 
-     <!-- <ul class="nav navbar-nav navbar-right">
+      <ul id="navbar" class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+              <% if admin? %>
+                <li><a href="<%= users_path %>">Tous les utilisateurs</a></li>
+                <li><a href="<%= orders_path %>">Tous les commandes</a></li>
+              <%else%>
+                <li><a href="<%= orders_path %>">Mes commandes</a></li>
+              <% end %>
+          <% end %>
+      </ul>
+    </nav>
+
+
+
+
+
+
+
+     <!--<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <% if signed_in? %>
               <form class="button_to" method="post" action="/signout">
@@ -68,31 +86,5 @@
             });
         });
      </script>
-<!--<script type="text/javascript">
-    $(function(){
-        var subMenuItemWidth = $('#navbar ul.sub-menu > li:first-child').width();
-        $('#navbar ul.sub-menu').each(function(index, element){
-            $this =  $(this);
-            $this.css('width', subMenuItemWidth * $this.children().length + ($this.children().length * 2));
-        });
-
-        $('#navbar>li>a').hover(function(){
-           $(this).next().removeClass('hide');
-        },
-        function(){
-            $(this).next().addClass('hide');
-        });
-
-       $('#navbar ul.sub-menu').hover(
-               function(event){
-                    $(this).removeClass('hide');
-               },
-               function(){
-                   $(this).addClass('hide');
-               }
-       );
-
-    })
-</script>-->
 
 <% end %>

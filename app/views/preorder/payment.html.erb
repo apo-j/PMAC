@@ -12,7 +12,17 @@
   </ul>
 </div>
 
-<div style="float:right">
-  <%= button_to "Continuer", "/orders", class: :"btn btn-primary", method: :post %>
+
+<div class="form-container radius-box glassy-bg small-10 small-centered medium-8 large-6 columns">
+  <h2 class="mbs">Nouvelle transaction</h2>
+  <%= form_tag '/preorder/process-payment' do%>
+      <p>Saisir votre compte bancaire</p>
+      <div id="dropin"></div>
+      <%=submit_tag "Pay", class: "btn btn-primary"%>
+  <%end%>
 </div>
 
+
+<!--<div style="float:right">
+  <%= button_to "Continuer", "/orders", class: :"btn btn-primary", method: :post %>
+</div>-->

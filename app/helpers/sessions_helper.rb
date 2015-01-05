@@ -20,6 +20,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def admin?
+    if !current_user.nil?
+      current_user[:user_type ] == 'admin'
+    else
+      false
+    end
+  end
+
   def sign_out
     current_user.update_attribute(:remember_token,
     User.encrypt(User.new_remember_token))

@@ -10,7 +10,7 @@ class AddressController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Addresse was successfully created.' }
+        format.html { redirect_to preorder_payment_path, notice: 'Addresse was successfully created.' }
         format.json { render action: 'show', status: :created, location: @address }
       else
         format.html { render action: 'new' }

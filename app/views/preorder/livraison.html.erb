@@ -22,7 +22,7 @@
         <br/>
         <br/>
         <div class="form-horizontal">
-          <%= form_for @address, method: :post, html: { id: "livraison_address" } do |f| %>
+          <%= form_for @address, method: :post, url: '/preorder/payment' do |f| %>
               <% if @address.errors.any? %>
                   <div id="error_explanation">
                     <h2>Veuillez corriger les erreurs suivantes:</h2>
@@ -34,6 +34,8 @@
                     </ul>
                   </div>
               <% end %>
+
+              <%= f.hidden_field :id %>
 
               <div class="form-group">
                 <%= f.label "Prénom", class:"col-xs-3 control-label" %>
@@ -77,22 +79,11 @@
                   <%= f.text_field :telephone, class:"form-control input-sm" %>
                 </div>
               </div>
+              <div style="float:right">
+                <input type="submit" class="btn btn-primary" value="Continuer"/>
+              </div>
           <% end %>
         </div>
 
       </div>
     </div>
-<div style="float:right">
-  <button id="submit_address" class="btn btn-primary">Continuer</button>
-</div>
-
-
-<% content_for :js do %>
-    <script>
-        $(function(){
-            $('#submit_address').on('click', function(){
-                $('#livraison_address').submit();
-            });
-        })
-    </script>
-<% end %>

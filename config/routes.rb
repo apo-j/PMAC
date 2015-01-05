@@ -8,7 +8,8 @@ PMAC::Application.routes.draw do
 
   get "preorder/livraison"
   get "preorder/recapitulatif"
-  get "preorder/payment"
+  match "preorder/payment", to:'preorder#payment', via: 'post'
+  match "preorder/process-payment", to:'preorder#process_payment', via: 'post'
   get "preorder/confirmation"
   get "message/new"
   match "messages", to:'message#create', via: 'post'
@@ -23,6 +24,10 @@ PMAC::Application.routes.draw do
   resources :users
 
   resources :orders
+  match "orders/next",to:'orders#next_step', via: 'post'
+  match "orders/back",to:'orders#go_back', via: 'post'
+  match "orders/cancel",to:'orders#cancel', via: 'post'
+  match "orders/search",to:'orders#search', via: 'post'
 
   resources :line_items
 
@@ -41,7 +46,7 @@ PMAC::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

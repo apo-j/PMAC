@@ -1,10 +1,8 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
-  PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
   validates :name, :address, :email, presence: true
-  validates :pay_type, inclusion: PAYMENT_TYPES
 
   #state machine
   state_machine :initial => :payed do
@@ -14,30 +12,51 @@ class Order < ActiveRecord::Base
       transition :delivered => :finished
     end
 
+    event :go_back do
+      transition :payed => :payed
+      transition :trait => :payed
+      transition :delivered => :trait
+      transition :finished => :finished
+    end
+
+    event :cancel do
+      transition all => :cancel
+    end
+
     state :payed do
-      def name
-        1
+      def state_value
+        'Payé'
       end
     end
 
     state :trait do
-      def name
-        2
+      def state_value
+        'En cours de traitement'
       end
     end
 
     state :delivered do
-      def name
-        3
+      def state_value
+        "En cours d'acheminement"
       end
     end
 
     state :finished do
-      def name
-        4
+      def state_value
+        'Terminé'
       end
     end
 
+    state :cancel do
+      def state_value
+        'Annulé'
+      end
+    end
+
+  end
+
+  def total_price
+    line_items.to_a.sum { |item| item.total_price }
   end
 
   def add_line_items_from_cart(cart)

@@ -1,24 +1,24 @@
-<div style="width:300px;margin: auto">
   <%= form_for(@user) do |f| %>
-      <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :login %><br>
-        <%= f.text_field :login %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+      <%= f.hidden_field :id %>
+      <table class="col-xs-8 table-striped">
+        <thead>
+        <tr>
+          <th class="text-left">Emall</th>
+          <th class="text-left">Type</th>
+          <th class="text-left"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td class="text-left"><%= @user.login %></td>
+              <td class="text-left">
+                <%=  f.select :user_type, options_for_select([['Admin', 'admin'],['Normal', 'normal']], @user.user_type) %>
+              </td>
+              <td class="text-left"><input type="submit" class = "btn btn-default" value="Mise à jour"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    <br>
   <% end %>
-</div>
 

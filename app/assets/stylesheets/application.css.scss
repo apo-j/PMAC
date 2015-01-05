@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require jquery-ui-1.10.0
+ *= require jquery-ui-1.10.0.custom
  *= require bootstrap
 
  * To ensure the order the loading files, all other stylesheets should be added here

@@ -1,24 +1,84 @@
-<p id="notice"><%= notice %></p>
+<h4>Détail commande</h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<div >Etat de votre commande : <span id="current-state" style="color:#1d821d;"><%= @order.state_value  %></span></div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+<%if admin? %>
+    <div class="pull-right">
+      <button class="btn btn-default btn-sm adm-order-ops next" data-op-path="/orders/next" data-order="<%= @order.id%>">Passer à l'étape suivant</button>
+      <button class="btn btn-default btn-sm adm-order-ops back" data-op-path="/orders/back" data-order="<%= @order.id%>">Retourner à l'étape précédent</button>
+      <button class="btn btn-default btn-sm adm-order-ops cancel" data-op-path="/orders/cancel" data-order="<%= @order.id%>">Annuler</button>
+    </div>
+<% end %>
+<div class="clearfix"></div>
+<br/>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Réféfence : <strong><%= @order.name %></strong></h3>
+  </div>
+  <div class="panel-body">
+    <table class="col-xs-12 table-striped">
+      <thead>
+      <tr>
+        <th class="text-center">Article(s)</th>
+        <th class="text-center">Prix unitaire</th>
+        <th class="text-center">Quantité</th>
+        <th class="text-center">Prix total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render(@order.line_items) %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <div>
+      <span style="display: inline-block;margin-right:50px"><strong>Total</strong></span><%= number_to_currency(@order.total_price, unit: "", separator: ",", delimiter: " ") %>€
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+<%= link_to 'Retour', orders_path, class: :"btn btn-default" %>
+<% content_for :js do %>
+    <script type="text/javascript">
+        $(function(){
+            var currentState = "<%= @order.state%>";
+            var $nextBtn = $('.adm-order-ops.next'),
+                    $backBtn = $('.adm-order-ops.back'),
+                    $cancelBtn = $('.adm-order-ops.cancel');
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
+            var initializeOrderState = function (currentState){
+                if(currentState == 'payed'){
+                    $backBtn.hide();
+                }else if(currentState != 'finished' && currentState != 'cancel'){
+                    $backBtn.show();
+                    $nextBtn.show();
+                    $cancelBtn.show();
+                }else{
+                    $backBtn.hide();
+                    $nextBtn.hide();
+                    $cancelBtn.hide();
+                }
+            }
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+            initializeOrderState(currentState);
+
+
+            $('.adm-order-ops').click(function(){
+                var url = $(this).data('op-path');
+                var id = $(this).data('order');
+
+                $.ajax({
+                    url: url,
+                    method: 'post',
+                    dataType:'json',
+                    data:{id: id}
+                }).done(function(data){
+                   $('#current-state').text(data.state_value);
+                    initializeOrderState(data.state);
+                }).fail(function(){
+                   alert('ko');
+                })
+            })
+        })
+    </script>
+<% end %>

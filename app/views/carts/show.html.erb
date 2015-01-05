@@ -4,6 +4,9 @@
 <% end %>
 
 <!-- START_HIGHLIGHT -->
-<%= render @cart %>
+<% unless @cart.nil? %>
+    <%= render @cart %>
+<%end%>
+
 <!-- END_HIGHLIGHT -->
 

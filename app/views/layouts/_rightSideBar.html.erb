@@ -1,17 +1,15 @@
 <div class="sidebar">
+
   <%= yield :custom_right_side_bar %>
 
-  <!--<div class="bloc">
-    <span class="title">Mon Panier</span>
-    <div class="bloc-content" style="padding:10px;text-align: center">
-         <div>Produits :  <%= @cart.total_quantity %> </div>
-         <div>Montant : <%= number_to_currency(@cart.total_price, unit: "", separator: ",", delimiter: " ") %>€</div>
-      <div style="">
-        <a href="/show-cart" style="" class="">Afficher panier</a>
+  <% if signed_in? %>
+      <div class="bloc">
+        <span class="title"><%= current_user[:login]%></span>
+        <div class="bloc-content" style="padding:10px;">
+          <%= link_to "Se déconnecter", signout_path, class:'original' %>
+        </div>
       </div>
-    </div>
-  </div>-->
-
+  <%end%>
 
   <% if !signed_in? %>
   <div class="bloc">

@@ -1,6 +1,10 @@
-<h1>Editing user</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>Détail utilisateur</strong></h3>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Retour', users_path, class: :"btn btn-default" %>

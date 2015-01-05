@@ -165,10 +165,10 @@
           </h4>
         </div>
         <div class="panel-collapse collapse" id="dimension">
-          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
+          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width, valueUpdate:'keypress'">
             <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
           </label>
-          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
+          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height, valueUpdate:'keypress'">
             <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
           </label>
         </div>
