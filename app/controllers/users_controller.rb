@@ -57,6 +57,13 @@ class UsersController < ApplicationController
     if user_params[:user_type].nil?
       @user.user_type= :normal
     end
+
+    if user_params[:state] > 0
+      @user.user_type = 1
+    else
+      @user.user_type = 0
+    end
+
     respond_to do |format|
       if @user.save
         sign_in @user
@@ -106,7 +113,7 @@ class UsersController < ApplicationController
   end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:login, :password, :password_confirmation, :user_type)
+      params.require(:user).permit(:login, :password, :password_confirmation, :user_type, :state)
     end
 
 end
