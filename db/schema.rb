@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614153507) do
+ActiveRecord::Schema.define(version: 20150106195856) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140614153507) do
     t.string   "telephone"
     t.string   "last_name"
     t.string   "address"
+    t.integer  "address_type"
   end
 
   add_index "addresses", ["user_id"], name: "fk_address", using: :btree
@@ -149,7 +150,6 @@ ActiveRecord::Schema.define(version: 20140614153507) do
 
   create_table "orders", force: true do |t|
     t.string   "name"
-    t.text     "address"
     t.string   "email"
     t.string   "pay_type"
     t.datetime "created_at"
@@ -246,10 +246,12 @@ ActiveRecord::Schema.define(version: 20140614153507) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.integer  "state"
   end
 
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["state"], name: "idx_state", using: :btree
   add_index "users", ["user_type"], name: "index_users_on_user_type", using: :btree
 
   create_table "volet_roulands", force: true do |t|
