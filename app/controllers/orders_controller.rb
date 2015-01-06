@@ -158,8 +158,9 @@ class OrdersController < ApplicationController
     end
 
   def get_livraison_and_facturation
-    @livraison = Address.where('user_id = ? and address_type = ?', current_user[:id], 1 ).first
-    @facturation = Address.where('user_id = ? and address_type = ?', current_user[:id], 2 ).first
+    @user = User.find_by(login: @order.email)
+    @livraison = Address.where('user_id = ? and address_type = ?', @user.id, 1 ).first
+    @facturation = Address.where('user_id = ? and address_type = ?', @user.id, 2 ).first
     if @livraison.nil?
       @livraison = Address.new(Address_type:1)
     end
