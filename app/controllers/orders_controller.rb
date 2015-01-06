@@ -80,6 +80,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    get_livraison_and_facturation
   end
 
   # GET /orders/new
@@ -156,5 +157,17 @@ class OrdersController < ApplicationController
       params.require(:order_criteria)
     end
 
+  def get_livraison_and_facturation
+    @livraison = Address.where('user_id = ? and address_type = ?', current_user[:id], 1 ).first
+    @facturation = Address.where('user_id = ? and address_type = ?', current_user[:id], 2 ).first
+    if @livraison.nil?
+      @livraison = Address.new(Address_type:1)
+    end
+
+    if @facturation.nil?
+      @facturation = @livraison
+    end
+
+  end
 
 end
