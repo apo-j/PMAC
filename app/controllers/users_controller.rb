@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     sql = []
     unless email.blank?
-      sql << "login = '"+email + "'"
+      sql << "login like '%"+email + "%'"
     end
 
     @users = User.where(sql.join(' and ')).order(:login)
