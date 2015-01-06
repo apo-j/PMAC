@@ -43,6 +43,42 @@
 
 <div class="clearfix"></div>
 <br/>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a href="javascript:void(0)">
+          Adresse
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse in"  id="address-facturation">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-5 pull-left">
+            <strong class="pull-left">Adresse de livraison</strong><a class="pull-right original" href="/preorder/livraison/">Modifier</a><br/>
+            <%=@livraison.name %> <%=@livraison.last_name %><br/>
+            <%=@livraison.address %><br/>
+            <%=@livraison.postal %> <%=@livraison.city %><br/>
+            Tél : <%=@livraison.telephone %>
+          </div>
+          <div class="col-md-5 pull-right">
+            <strong class="pull-left">Adresse de facturation</strong>&nbsp;<a class="pull-right original" href="/preorder/facturation/">Modifier</a><br/>
+            <%=@facturation.name %> <%=@facturation.last_name %><br/>
+            <%=@facturation.address %><br/>
+            <%=@facturation.postal %> <%=@facturation.city %><br/>
+            Tél : <%=@facturation.telephone %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
 <div style="float:right">
   <%= button_to "Continuer", "/preorder/payment/", class: :"btn btn-primary", method: :post %>
 </div>
