@@ -13,3 +13,36 @@
       Confirmation            </li>
   </ul>
 </div>
+
+<h4>Détail commande</h4>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <table class="col-xs-12 table-striped">
+      <thead>
+      <tr>
+        <th class="text-center">Article(s)</th>
+        <th class="text-center">Prix unitaire</th>
+        <th class="text-center">Quantité</th>
+        <th class="text-center">Prix total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render(@cart.line_items) %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <div>
+      <span style="display: inline-block;margin-right:50px"><strong>Total</strong></span><%= number_to_currency(@cart.total_price, unit: "", separator: ",", delimiter: " ") %>€
+    </div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+<br/>
+<div style="float:right">
+  <%= button_to "Continuer", "/preorder/payment/", class: :"btn btn-primary", method: :post %>
+</div>

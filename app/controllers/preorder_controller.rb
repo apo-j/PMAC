@@ -1,19 +1,25 @@
 class PreorderController < ApplicationController
 
   before_action :require_login, only: [:livraison, :payment, :confirmation]
-  before_action :set_cart, only: [:livraison, :payment, :process_payment]
+  before_action :set_cart, only: [:recapitulatif, :process_payment]
 
   def livraison
-    @address = Address.where('user_id = ?', current_user[:id] ).first
+    @address = Address.where('user_id = ? and address_type = ?', current_user[:id], 1 ).first
     if(@address.nil?)
       @address = Address.new
+      @address.address_type= 1
+    end
+  end
+
+  def facturation
+    @address = Address.where('user_id = ? and address_type = ?', current_user[:id], 2 ).first
+    if(@address.nil?)
+      @address = Address.new
+      @address.address_type= 2
     end
   end
 
   def recapitulatif
-  end
-
-  def payment
     if !address_params[:id].blank?
       @address = Address.find(address_params[:id])
     else
@@ -27,6 +33,10 @@ class PreorderController < ApplicationController
     else
       @address.update(address_params)
     end
+    get_livraison_and_facturation
+  end
+
+  def payment
     gon.client_token = generate_client_token
   end
 
@@ -36,7 +46,6 @@ class PreorderController < ApplicationController
     @order = Order.new
     @order.name= SecureRandom.uuid[0..7]
     @order.email= current_user[:login]
-    @order.address=@address.address + ' '+@address.postal + ' '+@address.city
     @order.add_line_items_from_cart(@cart)
     if @order.save
       @result = Braintree::Transaction.sale(
@@ -68,7 +77,20 @@ class PreorderController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:id, :name, :last_name, :postal,:address, :city, :telephone)
+    params.require(:address).permit(:id, :name, :last_name, :postal,:address, :city, :telephone, :address_type)
+  end
+
+  def get_livraison_and_facturation
+    @livraison = Address.where('user_id = ? and address_type = ?', current_user[:id], 1 ).first
+    @facturation = Address.where('user_id = ? and address_type = ?', current_user[:id], 2 ).first
+    if @livraison.nil?
+      @livraison = Address.new(Address_type:1)
+    end
+
+    if @facturation.nil?
+      @facturation = @livraison
+    end
+
   end
 
 end
