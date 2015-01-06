@@ -7,7 +7,8 @@ PMAC::Application.routes.draw do
 
 
   get "preorder/livraison"
-  get "preorder/recapitulatif"
+  get "preorder/facturation"
+  match "preorder/recapitulatif", to:'preorder#recapitulatif', via: 'post'
   match "preorder/payment", to:'preorder#payment', via: 'post'
   match "preorder/process-payment", to:'preorder#process_payment', via: 'post'
   get "preorder/confirmation"
