@@ -33,11 +33,11 @@ class PreorderController < ApplicationController
     else
       @address.update(address_params)
     end
-    gon.client_token = generate_client_token
     get_livraison_and_facturation
   end
 
   def payment
+    gon.client_token = generate_client_token
   end
 
   def process_payment
@@ -46,7 +46,6 @@ class PreorderController < ApplicationController
     @order = Order.new
     @order.name= SecureRandom.uuid[0..7]
     @order.email= current_user[:login]
-    @order.address=@address.address + ' '+@address.postal + ' '+@address.city
     @order.add_line_items_from_cart(@cart)
     if @order.save
       @result = Braintree::Transaction.sale(
