@@ -26,4 +26,11 @@ class OrderNotifier < ActionMailer::Base
   def contact(message)
 
   end
+
+  def send_token(token, user, hostname)
+    @hostname = hostname
+    @token = token
+    @user = user
+    mail to: @user.login, subject: 'Modifier mot de passe'
+  end
 end

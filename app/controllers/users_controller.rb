@@ -10,6 +10,25 @@ class UsersController < ApplicationController
   end
 
 
+  def forget_pwd
+
+  end
+
+
+  def process_forget_pwd
+    hostname = request.host || "www.pmac-group.com"
+    @email = params[:email]
+    unless @email.blank?
+      @user = User.where("login = ?", @email).first
+      #todo generate token
+      unless @user.nil?
+        OrderNotifier.send_token('wefwefw', @user, hostname).deliver
+      end
+    end
+
+    render "forget_pwd_result"
+  end
+
   def search
     email = criteria_params[:email]
 
