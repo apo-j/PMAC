@@ -52,8 +52,8 @@ class LineItemsController < ApplicationController
       width = product_info[:width].to_i
       height = product_info[:height].to_i
       price = product_info[:total].to_f
-
-      @product = Product.create!(material: material, color: color, color_side: color_side, width: width, height: height, price: price, detail_id: detail.id, detail_type: material)
+      title = [material, detail.title].join(' ')
+      @product = Product.create!(title: title, material: material, color: color, color_side: color_side, width: width, height: height, price: price, detail_id: detail.id, detail_type: material)
 
       @line_item = @cart.add_product(@product.id)
       @line_item.save!
