@@ -18,7 +18,9 @@
 </td>
 <%  end  %>
 </tr>
-
+<tr>
+  <td><%= line_item.product.detail.to_html%></td>
+</tr>
 
 <% content_for :js do %>
     <script>
