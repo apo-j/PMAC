@@ -31,6 +31,6 @@ class OrderNotifier < ActionMailer::Base
     @hostname = hostname
     @token = token
     @user = user
-    mail to: @user.login, subject: 'Modifier mot de passe'
+    mail to: @user.login, subject: 'Votre nouveau mot de passe'
   end
 end
