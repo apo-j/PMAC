@@ -28,22 +28,21 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product_info = params[:product_info]
-    detail = nil
     result = false
     ActiveRecord::Base.transaction do
       case product_info[:matiere]
         when 'pvc'
-          detail = Pvc.create!(type_pose: product_info[:typeRepose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
+          @detail = Pvc.create!(type_pose: product_info[:typeRepose], chassis: product_info[:typeChassis], ouverture: product_info[:typeOuverture], sens: product_info[:sens], seuil_alu: product_info[:seuilAlu],
                             sans_soubassement: product_info[:options][:sansSoubassement].to_bool, seurre: product_info[:options][:serrure].to_bool, oscillo_battant: product_info[:options][:oscilloBattant].to_bool, poignee_a_cle: product_info[:options][:PoigneACle].to_bool,
                             grill_aeration: product_info[:options][:grilleAeration].to_bool, traverse_intermediaire: product_info[:options][:traverseIntermediaire].to_bool )
         when 'aluminium'
-          detail =  Alumium.create!()
+          @detail =  Alumium.create!()
         when 'store'
-          detail = Store.create!()
+          @detail = Store.create!()
         when 'vr'
-          detail = VoletRouland.create!()
+          @detail = VoletRouland.create!()
         when 'rideaux'
-          detail = RideauxMetalique.create!()
+          @detail = RideauxMetalique.create!()
       end
 
       material = product_info[:matiere]
@@ -52,9 +51,9 @@ class LineItemsController < ApplicationController
       width = product_info[:width].to_i
       height = product_info[:height].to_i
       price = product_info[:total].to_f
-      title = [material, detail.title].join(' ')
-      @product = Product.create!(title: title, material: material, color: color, color_side: color_side, width: width, height: height, price: price, detail_id: detail.id, detail_type: material)
-
+      title = [material, @detail.title].join(' ')
+      @product = @detail.build_product(title: title, material: material, color: color, color_side: color_side, width: width, height: height, price: price)
+      @product.save!
       @line_item = @cart.add_product(@product.id)
       @line_item.save!
       result = true

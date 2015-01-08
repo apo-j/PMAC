@@ -5,7 +5,7 @@ class Pvc < ActiveRecord::Base
     chassis
   end
 
-  def to_html
-    :PVC
+  def to_s
+    'pvc'
   end
 end
