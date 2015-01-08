@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :addresses
+  has_many :tokens
   has_one :person
   has_secure_password
 

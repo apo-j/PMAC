@@ -5,7 +5,7 @@
     <tr class="line">
 <% end %>
 <!-- END_HIGHLIGHT -->
-<td class="text-left"><%= line_item.product.title %></td>
+<td class="text-center"><%= line_item.product.title %></td>
 <td class="item_price text-center"><%= number_to_currency(line_item.product.price, :unit => '') %>€</td>
 <td class="item_quantity text-center"><%= line_item.quantity %></td>
 <td class="item_price text-center"><%= number_to_currency(line_item.total_price, :unit => '') %>€</td>

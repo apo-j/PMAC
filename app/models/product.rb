@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   def self.latest
     Product.order(:updated_at).last
   end
+
   private
 
     # ensure that there are no line items referencing this product
