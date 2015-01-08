@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @valid_token = false;
     @token = Token.where("code = ?", params[:token]).first
     unless @token.nil?
-      if @token.date_expiration >= Time.now
+      if @token.date_expiration !=nil && @token.date_expiration >= Time.now
         @user = User.find(@token.user_id)
         @valid_token = true if !@user.nil? && @user.state > 0
       end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
       if user.save
         token = Token.where("code = ? ", params[:token]).first
-        token.date_expiration = -10.days.from_now
+        token.date_expiration = nil #-10.days.from_now
         token.save
         redirect_to root_path
       else
