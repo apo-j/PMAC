@@ -49,10 +49,11 @@ PMAC::Application.routes.draw do
   match "/users/search",to:'users#search', via: 'post'
   match '/forget-password', to: 'users#forget_pwd',     via: 'get'
   match "/process-forget-password",to:'users#process_forget_pwd', via: 'post'
+  match '/reset-password/:token', to: 'users#reset_pwd',     via: 'get'
+  match '/process-reset-password', to: 'users#process_reset_pwd',     via: 'post'
 
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'get'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

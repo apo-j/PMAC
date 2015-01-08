@@ -20,13 +20,41 @@ class UsersController < ApplicationController
     @email = params[:email]
     unless @email.blank?
       @user = User.where("login = ?", @email).first
-      #todo generate token
       unless @user.nil?
-        OrderNotifier.send_token('wefwefw', @user, hostname).deliver
+        token = Token.create(:user_id => @user.id, :date_expiration => 1.days.from_now, :code => SecureRandom.uuid)
+
+        OrderNotifier.send_token(token.code, @user, hostname).deliver
       end
     end
 
     render "forget_pwd_result"
+  end
+
+  def reset_pwd
+    @valid_token = false;
+    @token = Token.where("code = ?", params[:token]).first
+    unless @token.nil?
+      if @token.date_expiration >= Time.now
+        @user = User.find(@token.user_id)
+        @valid_token = true if !@user.nil? && @user.state > 0
+      end
+    end
+  end
+
+  def process_reset_pwd
+    if params[:password] == params[:confirm_password]
+      user = User.find(params[:user_id])
+      user.password_digest = BCrypt::Password.create(params[:password]).to_s
+
+      if user.save
+        token = Token.where("code = ? ", params[:token]).first
+        token.date_expiration = -10.days.from_now
+        token.save
+        redirect_to root_path
+      else
+        render "error/500"
+      end
+    end
   end
 
   def search
@@ -78,9 +106,9 @@ class UsersController < ApplicationController
     end
 
     if user_params[:state] > 0
-      @user.user_type = 1
+      @user.state = 1
     else
-      @user.user_type = 0
+      @user.state = 0
     end
 
     respond_to do |format|

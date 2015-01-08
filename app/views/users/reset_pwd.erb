@@ -1,0 +1,52 @@
+<%if @valid_token%>
+    <%= form_tag "/process-reset-password", :id => 'reset-pwd-form', :class => "col-sm-8 form-horizontal", :style => 'margin:auto' do%>
+        <div class="alert-danger error hidden">Les deux mot de passe ne sont pas pareils.</div>
+        <input type="hidden" value="<%= @user.id %>" name="user_id">
+        <input type="hidden" value="<%= @token.code %>" name="token">
+        <fieldset>
+          <div class="form-group">
+            <label class="col-xs-6 control-label">Mot de passe</label>
+            <div class="col-xs-6">
+              <input type="password" class="form-control input-sm password" value="" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-6 control-label">Comfirmer mot de passe</label>
+            <div class="col-xs-6">
+              <input type="password" class="form-control input-sm confirm-password" value="" name="confirm_password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xs-6 control-label"></label>
+            <div class="col-xs-6">
+            <input type="submit" value="Valider" class="btn btn-primary pull-right">
+            </div>
+          </div>
+        </fieldset>
+    <% end %>
+
+    <% content_for :js do %>
+        <script>
+            $(function(){
+                $('#reset-pwd-form').submit(function(e){
+                    var password = $(this).find('input.password').val();
+                    var confirmPassword = $(this).find('input.confirm-password').val();
+
+                    if(password && confirmPassword && password === confirmPassword){
+                        $(this).find('.error').addClass('hidden');
+                        return true;
+                    }
+                    $(this).find('.error').removeClass('hidden');
+                    return false;
+                });
+            })
+        </script>
+    <%end%>
+<%else%>
+    Le token n'est pas valide
+    <br/>
+    <br/>
+
+    <%= link_to "Retour sur la page d'acceuil", root_path, class:"original"%>
+<%end%>
