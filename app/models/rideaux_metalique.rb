@@ -5,6 +5,7 @@ class RideauxMetalique < ActiveRecord::Base
   end
 
   def to_s
+    'Rideaux Métalique'
   end
 
 

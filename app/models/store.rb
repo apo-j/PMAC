@@ -5,6 +5,7 @@ class Store < ActiveRecord::Base
   end
 
   def to_s
+    'Store'
   end
 
 end

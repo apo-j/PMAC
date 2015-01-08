@@ -6,5 +6,6 @@ class Pvc < ActiveRecord::Base
   end
 
   def to_s
+    'pvc'
   end
 end

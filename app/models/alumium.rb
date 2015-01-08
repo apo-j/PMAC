@@ -5,6 +5,7 @@ class Alumium < ActiveRecord::Base
   end
 
   def to_s
+    'aluminium'
   end
 
 end

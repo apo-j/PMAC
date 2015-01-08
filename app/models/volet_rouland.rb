@@ -5,6 +5,7 @@ class VoletRouland < ActiveRecord::Base
   end
 
   def to_s
+    'Volet Rolant'
   end
 
 end
