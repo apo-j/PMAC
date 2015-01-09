@@ -69,7 +69,6 @@
 </div>
 
 
-
 <%= link_to 'Retour', orders_path, class: :"btn btn-default" %>
 <% content_for :js do %>
     <script type="text/javascript">
@@ -112,6 +111,10 @@
                    alert('ko');
                 })
             })
+
+            $('tr.line-item').click(function(){
+                $detailLine = $(this).next().toggleClass('hidden');
+            });
         })
     </script>
 <% end %>

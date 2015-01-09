@@ -1,8 +1,8 @@
 <!-- START_HIGHLIGHT -->
 <% if line_item == @current_item %>
-    <tr id="current_item" class="line">
+    <tr id="current_item" class="line line-item">
 <% else %>
-    <tr class="line">
+    <tr class="line line-item">
 <% end %>
 <!-- END_HIGHLIGHT -->
 <td class="text-center"><%= line_item.product.title %></td>
@@ -18,25 +18,6 @@
 </td>
 <%  end  %>
 </tr>
-<tr>
-  <td><%= line_item.product.detail.to_s%></td>
+<tr class="hidden">
+  <td><%= raw(line_item.product.detail.to_s) %></td>
 </tr>
-
-<% content_for :js do %>
-    <script>
-      $(function(){
-           $('#recapitulatif button.delete').on('click', function(){
-               var $this = $(this);
-               var id = $(this).data('id');
-               $.ajax({
-                   method:"delete",
-                   url:"/line_items/" + id + '.json'
-               }).done(function(data){
-                   $this.closest('tr.line').remove();
-               }).fail(function(){
-                   console.log('echec');
-               });
-           });
-      })
-    </script>
-<% end %>
