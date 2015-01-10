@@ -36,20 +36,22 @@
         <h3 class="panel-title">Votre panier</h3>
       </div>
       <div class="panel-body">
-        <table class="col-xs-12 table-striped">
+        <div class="obj_table commandRecapTable">
+        <table class="col-xs-12">
           <thead>
-          <tr>
-            <th class="text-center">Article(s)</th>
-            <th class="text-center">Prix unitaire</th>
-            <th class="text-center">Quantité</th>
-            <th class="text-center">Prix total</th>
-            <th class="text-center"></th>
+          <tr class="tableLine1">
+            <th class="text-center th1">Article(s)</th>
+            <th class="text-center th2">Prix unitaire</th>
+            <th class="text-center th2">Quantité</th>
+            <th class="text-center th2">Prix total</th>
+            <th class="text-center th3"></th>
           </tr>
           </thead>
           <tbody>
            <%= render(cart.line_items) %>
           </tbody>
-        </table>
+        </table><div class="clearfix"></div>
+          </div>
       </div>
       <div class="panel-footer">
         <div>
