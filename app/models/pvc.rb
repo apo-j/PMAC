@@ -17,13 +17,13 @@ class Pvc < ActiveRecord::Base
     str_type_de_pose = a_type_de_pose.join(' ')
 
     a_coloris = ["<tr>",'<td>Coloris</td>']
-    a_coloris<< '<td>' + product.color + ' - '
+    a_coloris<< '<td>' + product.color + ' | '
     a_coloris<< product.color_side + "</td>"
     a_coloris<<'</tr>'
     str_coloris = a_coloris.join(' ')
 
     a_type_de_chassis = ["<tr>",'<td>Type de chassis</td>']
-    a_type_de_chassis<< '<td>' + chassis + ' - '
+    a_type_de_chassis<< '<td>' + chassis + ' | '
     a_type_de_chassis<<  ouverture + "</td>"
     a_type_de_chassis<< '</tr>'
     str_type_de_chassis = a_type_de_chassis.join(' ')
@@ -54,7 +54,7 @@ class Pvc < ActiveRecord::Base
       if grill_aeration
         a_options1<< "Grille d'aération"
       end
-      a_options << a_options1.join(' - ')
+      a_options << a_options1.join(' | ')
       a_options << '</td>'
     end
     a_options << '</tr>'
