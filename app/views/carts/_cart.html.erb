@@ -84,6 +84,10 @@
                     $this.closest('tr.line').next().remove();
                 }).fail(function(){
                     console.log('echec');
+                }).always(function(){
+                    if($('#recapitulatif tr.line-item').length <= 0){
+                        window.location.reload();
+                    }
                 });
             });
         })
