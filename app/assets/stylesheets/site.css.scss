@@ -576,6 +576,65 @@ tbody {
 
 
 
+.obj_table_details {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #dcd0d2;
+  border-image: none;
+  border-style: solid;
+  border-width: 0 1px;
+  margin: 0 0 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.obj_table_details thead {
+  font-size: 11px;
+  line-height: 11px;
+}
+
+.obj_table_details th, .obj_table td {
+  padding: 0 10px;
+  text-align: center;
+}
+
+.obj_table_details thead .tableLine1 th {
+  background: url("gen_table_thead_bg.gif") repeat-x scroll left bottom #d5c8ca;
+}
+
+.obj_table_details thead .tableLine1 th {
+  border-bottom: 1px solid #d5c8ca;
+  border-left: 1px solid #faf7f8;
+  color: #202020;
+  font-weight: bold;
+  height: 24px;
+}
+
+.obj_table_details thead .tableLine1 th.th1 {
+  border-left: 0 none;
+}
+
+.obj_table_details tbody {
+  font-size: 12px;
+}
+
+.obj_table_details tbody td {
+  padding: 3px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.obj_table_details tbody tr td {
+  background-color: #fbf7f8;
+  border-bottom: 1px solid #dcd0d2;
+  height: 25px;
+}
+
+
+
+
 
 
 

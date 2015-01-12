@@ -20,8 +20,15 @@
 </tr>
 <tr class="hidden tableLine1">
   <td colspan="5" class="product-details text-left td1" style="border-top: none">
-    <div style="border-top:1px solid #e7e6e4">
-      <%= raw(line_item.product.detail.to_s) %>
-    </div>
+    <table class="obj_table_details style1">
+      <thead>
+      <tr class="tableLine1">
+        <th style="text-align: center" colspan="2" class="th1"><strong>Détails</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= raw(line_item.product.detail.to_s) %>
+      </tbody>
+    </table>
   </td>
 </tr>
