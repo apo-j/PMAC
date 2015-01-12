@@ -6,9 +6,9 @@
 <% end %>
 <!-- END_HIGHLIGHT -->
 <td class="item_title text-center td1" style="border-bottom:none"><%= line_item.product.title %></td>
-<td class="item_price text-center td2" style="border-bottom:none"><%= number_to_currency(line_item.product.price, :unit => '') %>€</td>
+<td class="item_price text-center td2" style="border-bottom:none"><%= number_to_currency(line_item.product.price, :unit => '', separator: ",", delimiter: " ") %>€</td>
 <td class="item_quantity text-center td3" style="border-bottom:none"><%= line_item.quantity %></td>
-<td class="item_price text-center td4" style="border-bottom:none"><%= number_to_currency(line_item.total_price, :unit => '') %>€</td>
+<td class="item_price text-center td4" style="border-bottom:none"><%= number_to_currency(line_item.total_price, :unit => '', separator: ",", delimiter: " ") %>€</td>
 
 <% if line_item.order_id.nil?   %>
 <td class="text-center" style="border-bottom:none">
