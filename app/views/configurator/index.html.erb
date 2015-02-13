@@ -12,23 +12,97 @@
         </div>
         <div class="panel-collapse collapse in"  id="matiere">
           <div class="panel-body">
-            <div class="easyzoom easyzoom--adjacent" style="float:left">
-              <a href="/assets/pvc-pose-renovation.png">
-                <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-              </a>
-            </div>
-            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
-            </div>
-            <hr>
-            <div class="easyzoom easyzoom--adjacent" style="float:left">
-              <a href="/assets/pvc-pose-neuf-titanium.png">
-                <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
-              </a>
-            </div>
-            <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
-              <label><input type="radio" name="type_repose" value="Pose neuf en dormant 60mm" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
-            </div>
+              <div class="col-md-6">
+                <div class="easyzoom easyzoom--adjacent" style="">
+                  <a href="/assets/pvc-pose-renovation.png">
+                    <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+                  </a>
+                </div>
+                <div style="font-weight:bold;font-size:15px;">
+                  <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="easyzoom easyzoom--adjacent" style="">
+                  <a href="/assets/pvc-pose-neuf-titanium.png">
+                    <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+                  </a>
+                </div>
+                <div style="font-weight:bold;font-size:15px;">
+                  <label><input type="radio" name="type_repose" value="Pose neuf en dormant 60mm" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
+                </div>
+              </div>
+          </div>
+          <div class="panel-body">
+            <label>Gamme</label>
+            <table border="0">
+              <tbody>
+                <tr>
+                  <td valign="top">
+                    <div id="DIV_GAMME" style="">
+                      <input type="hidden" name="GAMME" id="GAMME" value="RADIO:GAMME">
+                      <div id="DIV_GAMME-TRADI" style="margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_GAMME_TRADI.jpg" class="liste_element_ligne_image">
+                              </td>
+                              <td width="2" valign="center">
+                                <input type="radio" value="TRADI" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Gamme 60 mm</div>
+                                <span class="formulaire_legende" style=" width:200px">Design traditionnel, parecloses moulurées, double-vitrages</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_GAMME-CLIMA" style="margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_GAMME_CLIMA.jpg" class="liste_element_ligne_image">
+                              </td>
+                              <td width="2" valign="center">
+                                <input type="radio" value="CLIMA" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Gamme 75 mm</div>
+                                <span class="formulaire_legende" style=" width:200px">Design moderne, haute performance thermique, double ou triple vitrages</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel-body">
+              <label>Dormant</label> <br>
+              <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens">&nbsp;Réno 30  &nbsp;&nbsp;
+              <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens">&nbsp;Réno 40
+          </div>
+          <div class="panel-body">
+            <label>Habillage extérieur</label> <br>
+            <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens">&nbsp;Aucun  &nbsp;&nbsp;
+            <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens">&nbsp;Cornières L 40x40
+          </div>
+          <div class="panel-body">
+            <label>Pièce d'appui</label> <br>
+            <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens">&nbsp;Aucun  &nbsp;&nbsp;
+            <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens">&nbsp;Bavette 70 X 80  &nbsp;&nbsp;
+            <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens">&nbsp;Appui neuf de 123mm
+          </div>
+          <div class="panel-body">
+            <label>Grille de ventilation</label> <br>
+            <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens">&nbsp;Aucun  &nbsp;&nbsp;
+            <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens">&nbsp;Grille de ventilation 15-22-30 m3
           </div>
         </div>
       </div>
@@ -62,6 +136,228 @@
            </div>
         </div>
       </div>
+
+
+
+      <div class="panel panel-default"> <!--Volet roulant-->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#volet-roulant">
+              Volet roulant
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="volet-roulant">
+          <div class="panel-body">
+            <label>
+              <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:'A l\'extérieur et à l\'intérieur'">
+              <span>Aucun</span>
+            </label>
+            <label>
+              <input type="radio" name="coloris_side" data-bind="checked: $root.results.colorisSide, value:'A l\'extérieur, blanc à l\'intérieur'">
+              <span>Volet roulant bloc-baie</span>
+            </label>
+          </div>
+          <div class="panel-body">
+            <table border="0">
+              <tbody>
+                <tr>
+                  <td valign="top">
+                    <div id="DIV_VR_TAB" style="display: block;">
+                      <label>Tablier</label><br>
+                      <input type="hidden" name="VR_TAB" id="VR_TAB" value="RADIO:VR_TAB">
+                      <div id="DIV_VR_TAB-PVC" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center"><img src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VR_TAB_PVC.jpg" class="liste_element_ligne_image"></td>
+                              <td width="2" valign="center">
+                                <input type="radio" name="VR_TAB" id="VR_TAB" value="PVC" onclick="calcul();" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Tablier PVC 40</div>
+                                <span class="formulaire_legende" style=" width:100px">Lame de tablier 40x9 en PVC alvéolaire</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_VR_TAB-ALU" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VR_TAB_ALU.jpg" class="liste_element_ligne_image"></td>
+                              <td width="2" valign="center">
+                                <input type="radio" name="VR_TAB" id="VR_TAB" value="ALU" onclick="calcul();" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Tablier ALU 42</div>
+                                <span class="formulaire_legende" style=" width:100px">Lame de tablier 42x8.5 en Alu avec mousse d'isolation</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                  <td valign="top">
+                    <div id="DIV_COUL_TAB" style="display: block;">
+                      <label>Couleur tablier</label><br>
+                      <div id="resultat_COUL_TAB" class="liste_resultat" onclick="affiche_liste('COUL_TAB')" style=" width:100px">Blanc</div>
+                    </div>
+                  </td>
+                  <td valign="top">
+                    <div id="DIV_VR_SENS" style="display: block;margin-left:10px">
+                      <label>Sens</label><br>
+                      <input type="hidden" name="VR_SENS" id="VR_SENS" value="RADIO:VR_SENS">
+                      <div id="DIV_VR_SENS-D" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td width="2" valign="top">
+                                <input type="radio" name="VR_SENS" id="VR_SENS" value="D" onclick="calcul();" class="formulaire_check">
+                              </td>
+                              <td valign="top">
+                                <div>à droite</div>
+                                <span class="formulaire_legende" style=" width:100px"></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_VR_SENS-G200" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td width="2" valign="top">
+                                <input type="radio" name="VR_SENS" id="VR_SENS" value="G200" onclick="calcul();" class="formulaire_check">
+                              </td>
+                              <td valign="top">
+                                <div>à gauche</div>
+                                <span class="formulaire_legende" style=" width:100px"></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="formulaire_legende_data " style=" width:140px">Côté de la manivelle ou de la sortie du câble moteur (vue intérieure)</div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel-body">
+            <table border="0">
+              <tbody>
+                <tr>
+                  <td valign="top">
+                    <div id="DIV_VR_MAN" style="display: block;">
+                      <label>Manœuvre<br></label>
+                      <input type="hidden" name="VR_MAN" id="VR_MAN" value="RADIO:VR_MAN">
+                      <div id="DIV_VR_MAN-TO" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td width="2" valign="top">
+                                <input type="radio" name="VR_MAN" id="VR_MAN" value="TO" class="formulaire_check">
+                              </td>
+                              <td valign="top">
+                                <div>Manivelle</div>
+                                <span class="formulaire_legende" style=" width:150px"></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_VR_MAN-ME" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="images_listes/MENPVC_VR_MAN_ME.jpg" class="liste_element_ligne_image">
+                              </td>
+                              <td width="2" valign="center">
+                                <input type="radio" name="VR_MAN" id="VR_MAN" value="ME" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Moteur PMAC filaire</div>
+                                <span class="formulaire_legende" style=" width:150px">Inverseur câblé</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_VR_MAN-MERTS" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="images_listes/MENPVC_VR_MAN_MERTS.jpg" class="liste_element_ligne_image">
+                              </td>
+                              <td width="2" valign="center">
+                                <input type="radio" name="VR_MAN" id="VR_MAN" value="MERTS" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Moteur PMAC radio RTS</div>
+                                <span class="formulaire_legende" style=" width:150px">piloté par télécommande radio RTS</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div id="DIV_VR_MAN-MEIO" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(204, 204, 204); margin-left: 5px;">
+                        <table border="0">
+                          <tbody>
+                            <tr>
+                              <td valign="center">
+                                <img src="images_listes/MENPVC_VR_MAN_MEIO.jpg" class="liste_element_ligne_image">
+                              </td>
+                              <td width="2" valign="center">
+                                <input type="radio" name="VR_MAN" id="VR_MAN" value="MEIO" class="formulaire_check">
+                              </td>
+                              <td valign="center">
+                                <div>Moteur PMAC radio IO</div>
+                                <span class="formulaire_legende" style=" width:150px">piloté par télécommande radio IO</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -245,9 +541,9 @@
 <% end %>
 
 
-<% content_for :body_content do %>
+<!-- <% content_for :body_content do %>
     <%= @response.to_json  %>
-<% end %>
+<% end %>-->
 
 <% content_for :js do %>
     <script>
@@ -258,7 +554,7 @@
          window.document.location.reload();
       });
       $('#price-total>span').text(utilities.numberToEuro(0));
-        var rawData = JSON.parse(String.removeChangeLine($('#' + static.pageContentId).text()));
+        //var rawData = JSON.parse(String.removeChangeLine($('#' + static.pageContentId).text()));
 
         var priceData = function(data, widths, heights){
             var self = this;
