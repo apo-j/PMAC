@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130210000) do
+ActiveRecord::Schema.define(version: 20150201162348) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -275,6 +275,12 @@ ActiveRecord::Schema.define(version: 20150130210000) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["state"], name: "idx_state", using: :btree
   add_index "users", ["user_type"], name: "index_users_on_user_type", using: :btree
+
+  create_table "vitrages", force: true do |t|
+    t.string  "type_vitrage"
+    t.string  "decor"
+    t.integer "pvc_id"
+  end
 
   create_table "volet_roulands", force: true do |t|
     t.string   "tablier"
