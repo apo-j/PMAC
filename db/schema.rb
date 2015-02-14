@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107213030) do
+ActiveRecord::Schema.define(version: 20150130210000) do
 
   create_table "addresses", force: true do |t|
     t.string   "name"
@@ -214,6 +214,20 @@ ActiveRecord::Schema.define(version: 20150107213030) do
     t.integer "largeur"
     t.integer "hauteur"
     t.boolean "traverse_intermediaire"
+    t.string  "gamme"
+    t.string  "dormant"
+    t.string  "habillage_exterieur"
+    t.string  "piece_appui"
+    t.string  "grille_ventilation"
+    t.string  "volet_roulant"
+    t.string  "tablier"
+    t.string  "couleur_tablier"
+    t.string  "sens_tablier"
+    t.string  "manivelle"
+    t.integer "hauteur_sousbassement"
+    t.string  "petits_bois"
+    t.integer "pbh"
+    t.integer "pbv"
   end
 
   create_table "rideaux_metaliques", force: true do |t|
