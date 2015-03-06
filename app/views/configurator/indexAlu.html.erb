@@ -3,7 +3,359 @@
   <div id="configurator">
     <div class="panel-group" id="accordion">
 
-    <div class="panel panel-default">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#type-pose">
+              Type de pose
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse in"  id="type-pose">
+          <div class="panel-body">
+            <div class="col-md-6">
+              <div class="easyzoom easyzoom--adjacent" style="">
+                <a href="/assets/pvc-pose-renovation.png">
+                  <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
+                </a>
+              </div>
+              <div style="font-weight:bold;font-size:15px;">
+                <label><input type="radio" name="type_repose" value="Pose en renovation sur dormant existant" data-bind="checked: $root.results.typeRepose" />&nbsp;Pose en renovation sur dormant existant</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="easyzoom easyzoom--adjacent" style="">
+                <a href="/assets/pvc-pose-neuf-titanium.png">
+                  <img src="/assets/pvc-pose-neuf-titanium.png" width="200px" height="250px">
+                </a>
+              </div>
+              <div style="font-weight:bold;font-size:15px;">
+                <label><input type="radio" name="type_repose" value="Pose neuf en dormant 60mm" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf en dormant 60mm</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <label>Gamme</label>
+            <table>
+              <tr>
+                <td>
+                  <input style="float:left" name="gamme" type="radio" value="Gamme 54 mm" data-bind="checked: $root.results.gamme">
+                </td>
+                <td>
+                  <span style="display: inline-block;font-weight: bold">Gamme 54 mm</span>
+                  <span style="display: inline-block">serie froide</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input style="float:left" name="gamme" type="radio" value="Gamme 65 mm" data-bind="checked: $root.results.gamme">
+                </td>
+                <td class="">
+                  <span style="display: inline-block;font-weight: bold">Gamme 65 mm</span>
+                  <span style="display: inline-block">rupture point thérmique</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-body">
+            <label>Habillage extérieur</label> <br>
+            <input type="radio" value="Aucun" data-bind="checked:results.habillage">&nbsp;Aucun  &nbsp;&nbsp;
+            <input type="radio" value="Cornières L 40x40" data-bind="checked:results.habillage">&nbsp;Cornières L 40x40
+          </div>
+          <div class="panel-body">
+            <label>Grille de ventilation</label> <br>
+            <input type="radio" value="Aucun" data-bind="checked:results.ventilation">&nbsp;Aucun  &nbsp;&nbsp;
+            <input type="radio" value="Grille de ventilation 15-22-30 m3"  data-bind="checked:results.ventilation">&nbsp;Grille de ventilation 15-22-30 m3
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default"> <!--coloris-->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
+              Coloris
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="coloris">
+          <ul class="panel-body" data-bind="foreach:data.colors">
+            <li style="float:left;width:220px;height:100px"><label>
+              <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:code">
+              <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
+              <span data-bind="text:name" style="display: inline-block;text-align: left;width:140px"></span>
+            </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default"> <!--Allège et Imposte-->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#allege-imposte">
+              Allège et Imposte
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="allege-imposte">
+          <div class="panel-body">
+            <label>Imposte</label><br><br>
+            <div style="padding-left: 20px">
+              <label>Type de châssis</label>  <br/>
+              <label>
+                <input type="radio" value="Aucun" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                <span>&nbsp;Aucun&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" value="Fixe" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                <span>&nbsp;Fixe&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" value="Soufflet" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                <span>&nbsp;Soufflet&nbsp;&nbsp;</span>
+              </label>
+            </div>
+
+            <!-- ko if: ($root.results.imposteTypeChassis() !== 'Aucun') -->
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Hauteur (mm)</label>&nbsp;&nbsp;
+              <input type="text" data-bind="value:results.imposteHauteur">
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Largeur</label>  <br/>
+              <label>
+                <input type="radio" name="imposte_largeur" value="Chassis principal" data-bind="checked: $root.results.imposteLargeur">
+                <span>&nbsp;Chassis principal&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" name="imposte_largeur" value="Toute la largeur" data-bind="checked: $root.results.imposteLargeur">
+                <span>&nbsp;Toute la largeur&nbsp;&nbsp;</span>
+              </label>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Type de vitrage</label>  <br/>
+              <ul data-bind="foreach:data.imposteAllegeTypeVitrage" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="imposteTypeVitrage" data-bind="checked: $root.results.typeVitrage, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Décor</label><br/>
+              <ul data-bind="foreach:data.imposteAllegeDecors" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="imposteDecor" data-bind="checked: $root.results.decor, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <!-- /ko -->
+          </div>
+          <div class="panel-body">
+            <label>Allège</label><br>
+            <div style="padding-left: 20px">
+              <label>Type de châssis</label>  <br/>
+              <label>
+                <input type="radio" value="Aucun" name="allege_type_chassis" data-bind="checked: $root.results.allegeTypeChassis">
+                <span>&nbsp;Aucun&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" value="Fixe" name="allege_type_chassis" data-bind="checked: $root.results.allegeTypeChassis">
+                <span>&nbsp;Fixe&nbsp;&nbsp;</span>
+              </label>
+            </div>
+
+            <!-- ko if: ($root.results.allegeTypeChassis() !== 'Aucun') -->
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Hauteur (mm)</label>&nbsp;&nbsp;
+              <input type="text" data-bind="value:results.allegeHauteur">
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Largeur</label>  <br/>
+              <label>
+                <input type="radio" name="allege_largeur" value="Chassis principal" data-bind="checked: $root.results.allegeLargeur">
+                <span>&nbsp;Chassis principal&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" name="allege_largeur" value="Toute la largeur" data-bind="checked: $root.results.allegeLargeur">
+                <span>&nbsp;Toute la largeur&nbsp;&nbsp;</span>
+              </label>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Type de vitrage</label>  <br/>
+              <ul data-bind="foreach:data.imposteAllegeTypeVitrage" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="allegeTypeVitrage" data-bind="checked: $root.results.typeVitrage, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Décor</label><br/>
+              <ul data-bind="foreach:data.imposteAllegeDecors" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="allegeDecor" data-bind="checked: $root.results.decor, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#petit-bois">
+              Petits-bois
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="petit-bois">
+          <div class="panel-body">
+            <label>Petits-bois</label>
+            <ul class="col-sm-12">
+              <li class="col-sm-6">
+                <table>
+                  <tr>
+                    <td class="col-sm-2">
+                      <img style="float:left" class="bordered black" src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_PBTYPE_SANS.jpg"/>
+                    </td>
+                    <td>
+                      <input style="float:left" type="radio" name="petit-bois" value="Sans petit-bois" data-bind="checked: $root.results.petitbois">
+                    </td>
+                    <td class="col-sm-10">
+                      <span style="display: inline-block;font-weight: bold">Sans petit-bois</span>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table>
+                  <tr>
+                    <td class="col-sm-2">
+                      <img style="float:left" class="bordered black" src="http://www.voletshop.fr/configurateurs/images_listes/MENPVC_PBTYPE_PB26.jpg"/>
+                    </td>
+                    <td>
+                      <input style="float:left" type="radio" name="petit-bois" value="Petits bois ALU laqués blanc 28x8" data-bind="checked: $root.results.petitbois">
+                    </td>
+                    <td class="col-sm-10">
+                      <span style="display: inline-block;font-weight: bold">Petits bois ALU laqués blanc 26x8</span>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ul>
+          </div>
+          <!-- ko if: ('Sans petit-bois' !== $root.results.petitbois()) -->
+          <div class="panel-body">
+            <div class="col-sm-4">
+              <label>Nombre PB</label>
+              <ul>
+                <li>
+                  <input type="radio" name="nbrPB" value="Automatique" data-bind="checked: $root.results.nbrPB">
+                  <span>Automatique</span>
+                </li>
+                <li>
+                  <input type="radio" name="nbrPB" value="Saisie libre" data-bind="checked: $root.results.nbrPB">
+                  <span>Saisie libre</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- ko if: ('Saisie libre' === $root.results.nbrPB()) -->
+            <div class="col-sm-4">
+              <label>PBH</label>
+              <ul>
+                <li>
+                  <input type="text"  data-bind="value: $root.results.PBH">
+                  <span>Nombre de petits-bois horizontaux</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-4">
+              <label>PBV</label>
+              <ul>
+                <li>
+                  <input type="text"  data-bind="value: $root.results.PBV">
+                  <span>Nombre de petits-bois verticaux</span>
+                </li>
+              </ul>
+            </div>
+            <!-- /ko -->
+          </div>
+          <!-- /ko -->
+        </div>
+      </div>
+
+
+
+
+
+
+      <!--<div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#profile">
@@ -36,10 +388,10 @@
           </ul>
         </div>
 
-        <!-- ko if: ($root.results.typeProfile()) -->
+        &lt;!&ndash; ko if: ($root.results.typeProfile()) &ndash;&gt;
         <div class="panel-body">
           <label>Type de pose</label>  <br/><br/>
-          <!-- ko if: ( 'Profilé serie froide'=== $root.results.typeProfile()) -->
+          &lt;!&ndash; ko if: ( 'Profilé serie froide'=== $root.results.typeProfile()) &ndash;&gt;
           <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
@@ -57,9 +409,9 @@
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
             <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
-          <!-- /ko -->
+          &lt;!&ndash; /ko &ndash;&gt;
 
-          <!-- ko if: ( 'Profilé rupture pont thérmique'=== $root.results.typeProfile()) -->
+          &lt;!&ndash; ko if: ( 'Profilé rupture pont thérmique'=== $root.results.typeProfile()) &ndash;&gt;
           <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
@@ -77,9 +429,9 @@
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
             <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
-          <!-- /ko -->
+          &lt;!&ndash; /ko &ndash;&gt;
 
-          <!-- ko if: ( 'Coulissant'=== $root.results.typeProfile()) -->
+          &lt;!&ndash; ko if: ( 'Coulissant'=== $root.results.typeProfile()) &ndash;&gt;
           <div class="easyzoom easyzoom--adjacent" style="float:left">
             <a href="/assets/pvc-pose-renovation.png">
               <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
@@ -97,29 +449,65 @@
           <div style="margin-left:250px;font-weight:bold;font-size:20px;line-height:250px;">
             <label><input type="radio" name="type_repose" value="Pose neuf" data-bind="checked: $root.results.typeRepose"/>&nbsp;Pose neuf</label>
           </div>
-          <!-- /ko -->
+          &lt;!&ndash; /ko &ndash;&gt;
         </div>
-        <!-- /ko -->
+        &lt;!&ndash; /ko &ndash;&gt;
       </div>
-    </div>
-      <div class="panel panel-default"> <!--coloris-->
+    </div>-->
+      <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#coloris">
-              Coloris
+            <a data-toggle="collapse" data-parent="#accordion" href="#vitrage">
+              Vitrage
             </a>
           </h4>
         </div>
-        <div class="panel-collapse collapse"  id="coloris">
-           <ul class="panel-body" data-bind="foreach:data.colors">
-               <li style="float:left;width:160px;height:100px"><label>
-                 <input type="radio" name="coloris" data-bind="checked: $root.results.coloris, value:code">
-                 <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
-                 <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
-               </label></li>
+        <div class="panel-collapse collapse" id="vitrage">
+          <div class="panel-body">
+            <label>Type de vitrage</label>
+            <ul data-bind="foreach:data.typeVitrage" class="col-sm-12">
+              <li class="col-sm-6" style="float:left;height:150px">
+                <table>
+                  <tr>
+                    <td class="col-sm-2">
+                      <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                    </td>
+                    <td>
+                      <input style="float:left" type="radio" name="typeVitrage" data-bind="checked: $root.results.typeVitrage, value:code">
+                    </td>
+                    <td class="col-sm-10">
+                      <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                      <span data-bind="text:subtitle" style="display: inline-block"></span>
+                    </td>
+                  </tr>
+                </table>
+              </li>
             </ul>
+          </div>
+          <div class="panel-body">
+            <label>Décor</label>
+            <ul data-bind="foreach:data.decors" class="col-sm-12">
+              <li class="col-sm-6" style="float:left;height:150px">
+                <table>
+                  <tr>
+                    <td class="col-sm-2">
+                      <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                    </td>
+                    <td>
+                      <input style="float:left" type="radio" name="decor" data-bind="checked: $root.results.decor, value:code">
+                    </td>
+                    <td class="col-sm-10">
+                      <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                      <span data-bind="text:subtitle" style="display: inline-block"></span>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -237,9 +625,15 @@
 
 <% content_for :custom_right_side_bar do %>
     <div class="bloc" style="line-height: 30px">
-      <span class="title">Montant</span>
       <div class="bloc-content" id="price-total" style="min-height: 30px;padding-left: 30px">
-        Total : <span data-bind="textAsCurrency: results.total"></span>
+        <table>
+          <tr>
+            <td>Matière</td><td data-bind="text:results.matiere"></td>
+          </tr>
+          <tr>
+            <td>Coloris</td><td data-bind="text:results.coloris"></td>
+          </tr>
+        </table>
       </div>
     </div>
     <div class="bloc">
@@ -361,49 +755,102 @@
                 ],
                 colors:[
                     {
-                       name:'Blanc',
+                       name:'Blanc (RAL 9010)',
                        imageUrl:'/assets/white.png',
-                       code:'Blanc'
+                       code:'Blanc (RAL 9010)'
                     },
                     {
-                        name:'Irish Oak',
+                        name:'Noir (RAL 9011)',
                         imageUrl:'/assets/irish_oak.jpg',
-                        code:'Irish Oak'
+                        code:'Noir (RAL 9011)'
                     },
                     {
-                        name:'Golden Oak',
+                        name:'Marron (RAL 8019)',
                         imageUrl:'/assets/golden_oak.png',
-                        code:'Golden Oak'
+                        code:'Marron (RAL 8019)'
                     },
                     {
-                        name:'Chêne foncé',
+                        name:'Rouge (RAL 3003)',
                         imageUrl:'/assets/chene_fonce.png',
-                        code:'Chêne foncé'
+                        code:'Rouge (RAL 3003)'
                     },
                     {
-                        name:'Acajou',
+                        name:'Gris anthracite (RAL 7016)',
                         imageUrl:'/assets/acajou.png',
-                        code:'Acajou'
+                        code:'Gris anthracite (RAL 7016)'
                     },
                     {
-                        name:'Bleu acier grainé',
+                        name:'Anodisé',
                         imageUrl:'/assets/bleu_acier.png',
-                        code:'Bleu acier grainé'
+                        code:'Anodisé'
+                    }
+                ],
+                typeVitrage:[
+                    {
+                        title:'Vitrage standard',
+                        subtitle:'Composition standard 4/16/4 ou 4/20/4, isolation thermique renforcée, intercalaire warm-edge, Ug1.1, Ac:30DbA',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_STD.jpg',
+                        code:'Vitrage standard'
                     },
                     {
-                        name:'Gris anthracite grainé',
-                        imageUrl:'/assets/gris_fonce.png',
-                        code:'Gris anthracite grainé'
+                        title:'Vitrage 44 1 face',
+                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
+                        code:'Vitrage standard'
+                    }
+                ],
+                decors:[
+                    {
+                        title:'Claire',
+                        subtitle:'Sans décor',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_CL.jpg',
+                        code:'Claire'
                     },
                     {
-                        name:'Rouge carmin',
-                        imageUrl:'/assets/rouge.png',
-                        code:'Rouge carmin'
+                        title:'Imprimé G200',
+                        subtitle:'',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_G200.jpg',
+                        code:'Imprimé G200'
+                    }
+                ],
+                imposteAllegeTypeVitrage:[
+                    {
+                        title:'Vitrage standard',
+                        subtitle:'Composition standard 4/16/4 ou 4/20/4, isolation thermique renforcée, intercalaire warm-edge, Ug1.1, Ac:30DbA',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_STD.jpg',
+                        code:'Vitrage standard'
                     },
                     {
-                        name:'Vert mousse',
-                        imageUrl:'/assets/rouge.png',
-                        code:'Vert mousse'
+                        title:'Vitrage 44 1 face',
+                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
+                        code:'Vitrage 44 1 face'
+                    },
+                    {
+                        title:'Vitrage 10/14/4',
+                        subtitle:'vitrage acoustique  Ac : 35 DbA, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_COMPO_104.jpg',
+                        code:'Vitrage 10/14/4'
+                    }
+                ],
+                imposteAllegeDecors:[
+                    {
+                        title:'Claire',
+                        subtitle:'Sans décor',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_CL.jpg',
+                        code:'Claire'
+                    },
+                    {
+                        title:'Imprimé G200',
+                        subtitle:'',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_G200.jpg',
+                        code:'Imprimé G200'
+                    },
+                    {
+                        title:'Delta clair',
+                        subtitle:'',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_DEL_CL.jpg',
+                        code:'Delta clair'
                     }
                 ]
             }
@@ -421,10 +868,20 @@
             //self.changeTracker = new ko.dirtyFlag(self.data, false);
 
             self.results = { // use this to set default values
-                typeProfile:ko.observable(''),
+                matiere: 'aluminium',
                 typeRepose: ko.observable(''),
-                typeChassis: ko.observable(''),
+                gamme:ko.observable(''),
+                ventilation:ko.observable('Aucun'),
+                habillage:ko.observable('Aucun'),
                 coloris: ko.observable(),
+                petitbois:ko.observable('Sans petit-bois'),
+                nbrPB:ko.observable('Automatique'),
+                PBH:ko.observable(),
+                PBV:ko.observable(),
+                typeVitrage:ko.observable(''),
+                decor:ko.observable(''),
+                imposteTypeChassis:ko.observable('Aucun'),
+                allegeTypeChassis:ko.observable('Aucun'),
                 width:ko.observable(0),
                 height:ko.observable(0),
                 total: ko.observable(0)
@@ -521,7 +978,7 @@
 
 
         var vm =  new localVM();
-        ko.applyBindings(vm, document.getElementById('configurator'));
+        ko.applyBindings(vm, document.getElementById('main'));
 
     </script>
 <% end %>

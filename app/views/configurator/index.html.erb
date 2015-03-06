@@ -110,7 +110,177 @@
         </div>
       </div>
 
+      <div class="panel panel-default"> <!--Allège et Imposte-->
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#allege-imposte">
+              Allège et Imposte
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse"  id="allege-imposte">
+          <div class="panel-body">
+            <label>Imposte</label><br><br>
+            <div style="padding-left: 20px">
+                <label>Type de châssis</label>  <br/>
+                <label>
+                  <input type="radio" value="Aucun" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                  <span>&nbsp;Aucun&nbsp;&nbsp;</span>
+                </label>
+                <label>
+                  <input type="radio" value="Fixe" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                  <span>&nbsp;Fixe&nbsp;&nbsp;</span>
+                </label>
+                <label>
+                  <input type="radio" value="Soufflet" name="imposte_type_chassis" data-bind="checked: $root.results.imposteTypeChassis">
+                  <span>&nbsp;Soufflet&nbsp;&nbsp;</span>
+                </label>
+            </div>
 
+            <!-- ko if: ($root.results.imposteTypeChassis() !== 'Aucun') -->
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Hauteur (mm)</label>&nbsp;&nbsp;
+              <input type="text" data-bind="value:results.imposteHauteur">
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Largeur</label>  <br/>
+              <label>
+                <input type="radio" name="imposte_largeur" value="Chassis principal" data-bind="checked: $root.results.imposteLargeur">
+                <span>&nbsp;Chassis principal&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" name="imposte_largeur" value="Toute la largeur" data-bind="checked: $root.results.imposteLargeur">
+                <span>&nbsp;Toute la largeur&nbsp;&nbsp;</span>
+              </label>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Type de vitrage</label>  <br/>
+              <ul data-bind="foreach:data.imposteAllegeTypeVitrage" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="imposteTypeVitrage" data-bind="checked: $root.results.typeVitrage, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Décor</label><br/>
+              <ul data-bind="foreach:data.imposteAllegeDecors" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="imposteDecor" data-bind="checked: $root.results.decor, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <!-- /ko -->
+          </div>
+          <div class="panel-body">
+            <label>Allège</label><br>
+            <div style="padding-left: 20px">
+              <label>Type de châssis</label>  <br/>
+              <label>
+                <input type="radio" value="Aucun" name="allege_type_chassis" data-bind="checked: $root.results.allegeTypeChassis">
+                <span>&nbsp;Aucun&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" value="Fixe" name="allege_type_chassis" data-bind="checked: $root.results.allegeTypeChassis">
+                <span>&nbsp;Fixe&nbsp;&nbsp;</span>
+              </label>
+            </div>
+
+            <!-- ko if: ($root.results.allegeTypeChassis() !== 'Aucun') -->
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Hauteur (mm)</label>&nbsp;&nbsp;
+              <input type="text" data-bind="value:results.allegeHauteur">
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Largeur</label>  <br/>
+              <label>
+                <input type="radio" name="allege_largeur" value="Chassis principal" data-bind="checked: $root.results.allegeLargeur">
+                <span>&nbsp;Chassis principal&nbsp;&nbsp;</span>
+              </label>
+              <label>
+                <input type="radio" name="allege_largeur" value="Toute la largeur" data-bind="checked: $root.results.allegeLargeur">
+                <span>&nbsp;Toute la largeur&nbsp;&nbsp;</span>
+              </label>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Type de vitrage</label>  <br/>
+              <ul data-bind="foreach:data.imposteAllegeTypeVitrage" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="allegeTypeVitrage" data-bind="checked: $root.results.typeVitrage, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <br/>
+            <div style="padding-left: 20px">
+              <label>Décor</label><br/>
+              <ul data-bind="foreach:data.imposteAllegeDecors" class="col-sm-12">
+                <li class="col-sm-6" style="float:left;height:150px">
+                  <table>
+                    <tr>
+                      <td class="col-sm-2">
+                        <img style="float:left" class="bordered black" data-bind="attr:{src:imageUrl,width:100, height:100}"/>
+                      </td>
+                      <td>
+                        <input style="float:left" type="radio" name="allegeDecor" data-bind="checked: $root.results.decor, value:code">
+                      </td>
+                      <td class="col-sm-10">
+                        <span data-bind="text:title" style="display: inline-block;font-weight: bold"></span>
+                        <span data-bind="text:subtitle" style="display: inline-block"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
 
       <div class="panel panel-default"> <!--Volet roulant-->
         <div class="panel-heading">
@@ -541,7 +711,7 @@
       </div>
     </div>
     <br>
-    <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Add to cart</button>
+    <button id="add-to-cart" data-bind="click:addToCart" type="button" class="btn btn-primary pull-right">Ajouter dans le panier</button>
 
     <!-- Modal -->
     <div class="modal fade" id="add-to-cart-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -593,11 +763,23 @@
 
 <% content_for :custom_right_side_bar do %>
     <div class="bloc" style="line-height: 30px">
+      <div class="bloc-content" id="price-total" style="min-height: 30px;padding-left: 30px">
+        <table>
+          <tr>
+            <td>Matière</td><td data-bind="text:results.matiere"></td>
+          </tr>
+          <tr>
+            <td>Coloris</td><td data-bind="text:results.coloris"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--<div class="bloc" style="line-height: 30px">
       <span class="title">Montant</span>
       <div class="bloc-content" id="price-total" style="min-height: 30px;padding-left: 30px">
         Total : <span data-bind="textAsCurrency: results.total"></span>
       </div>
-    </div>
+    </div>-->
     <div class="bloc">
       <span class="title">Mon Panier</span>
       <div class="bloc-content" style="padding:10px;text-align: center">
@@ -773,7 +955,7 @@
                         title:'Vitrage 44 1 face',
                         subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
                         imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
-                        code:'Vitrage standard'
+                        code:'Vitrage 44 1 face'
                     }
                 ],
                 decors:[
@@ -788,6 +970,46 @@
                         subtitle:'',
                         imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_G200.jpg',
                         code:'Imprimé G200'
+                    }
+                ],
+                imposteAllegeTypeVitrage:[
+                    {
+                        title:'Vitrage standard',
+                        subtitle:'Composition standard 4/16/4 ou 4/20/4, isolation thermique renforcée, intercalaire warm-edge, Ug1.1, Ac:30DbA',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_STD.jpg',
+                        code:'Vitrage standard'
+                    },
+                    {
+                        title:'Vitrage 44 1 face',
+                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
+                        code:'Vitrage 44 1 face'
+                    },
+                    {
+                        title:'Vitrage 10/14/4',
+                        subtitle:'vitrage acoustique  Ac : 35 DbA, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_COMPO_104.jpg',
+                        code:'Vitrage 10/14/4'
+                    }
+                ],
+                imposteAllegeDecors:[
+                    {
+                        title:'Claire',
+                        subtitle:'Sans décor',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_CL.jpg',
+                        code:'Claire'
+                    },
+                    {
+                        title:'Imprimé G200',
+                        subtitle:'',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_G200.jpg',
+                        code:'Imprimé G200'
+                    },
+                    {
+                        title:'Delta clair',
+                        subtitle:'',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_DEL_CL.jpg',
+                        code:'Delta clair'
                     }
                 ]
             }
@@ -806,6 +1028,7 @@
 
             self.results = { // use this to set default values
                 matiere: 'pvc',
+                gamme:ko.observable(''),
                 typeRepose: ko.observable(''),
                 typeChassis: ko.observable(''),
                 typeOuverture: ko.observable(''),
@@ -836,6 +1059,8 @@
                 seuilAlu:ko.observable('Sans seuil alu'),
                 coloris: ko.observable(),
                 colorisSide: ko.observable('1'),
+                imposteTypeChassis:ko.observable('Aucun'),
+                allegeTypeChassis:ko.observable('Aucun'),
                 type:ko.observable(),
                 width:ko.observable(0),
                 height:ko.observable(0),
@@ -933,7 +1158,7 @@
 
 
         var vm =  new localVM();
-        ko.applyBindings(vm, document.getElementById('configurator'));
+        ko.applyBindings(vm, document.getElementById('main'));
 
     </script>
 <% end %>
