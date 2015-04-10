@@ -696,17 +696,28 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#dimension">
-              Dimension
+              Dimension hors tout <span style="font-size: 10px">côté de la menuiserie</span>
             </a>
           </h4>
         </div>
         <div class="panel-collapse collapse" id="dimension">
-          <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width, valueUpdate:'keypress'">
-            <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
-          </label>
-          <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height, valueUpdate:'keypress'">
-            <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
-          </label>
+          <div class="panel-body">
+            <label class="col-xs-4">Largeur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.width">
+              <span data-bind="text:$root.range.width.left"></span> - <span data-bind="text:$root.range.width.right"></span>
+            </label>
+            <label class="col-xs-4">Hauteur totale en mm: <input type="text" class="form-control" data-bind="value: $root.results.height">
+              <span data-bind="text:$root.range.height.left"></span> - <span data-bind="text:$root.range.height.right"></span>
+            </label>
+          </div>
+
+          <!-- ko if: 'Aucun' == $root.results.allegeTypeChassis() -->
+          <div class="panel-body">
+            <label class="col-xs-4">Largeur totale Allege en mm: <input type="text" class="form-control" data-bind="value: $root.results.widthAllege">
+            </label>
+            <label class="col-xs-4">Hauteur totale Allege en mm: <input type="text" class="form-control" data-bind="value: $root.results.heightAllege">
+            </label>
+          </div>
+          <!-- /ko -->
         </div>
       </div>
     </div>
@@ -947,15 +958,21 @@
                 typeVitrage:[
                     {
                         title:'Vitrage standard',
-                        subtitle:'Composition standard 4/16/4 ou 4/20/4, isolation thermique renforcée, intercalaire warm-edge, Ug1.1, Ac:30DbA',
+                        subtitle:'Composition standard 4/16/4, isolation thermique renforcée, intercalaire aluminium, Ug1.1, Ac:30DbA',
                         imageUrl:'/assets/MENPVC_VITR_COMPO_STD.jpg',
                         code:'Vitrage standard'
                     },
                     {
-                        title:'Vitrage 44 1 face',
-                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        title:'Vitrage 44.2 1 face',
+                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire aluminium, Ug 1.1',
                         imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
-                        code:'Vitrage 44 1 face'
+                        code:'Vitrage standard'
+                    },
+                    {
+                        title:'Vitrage 10/10/4',
+                        subtitle:'vitrage acoustique  Ac : 35 DbA, isolation thermique renforcée, intercalaire  aluminium, Ug 1.1',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_COMPO_104.jpg',
+                        code:'Vitrage 10/10/4'
                     }
                 ],
                 decors:[
@@ -970,26 +987,32 @@
                         subtitle:'',
                         imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_G200.jpg',
                         code:'Imprimé G200'
+                    },
+                    {
+                        title:'Satinovo',
+                        subtitle:'Dépoli à l\'acide',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENALU_VITR_DECO_A_SATIN.jpg',
+                        code:'Satinovo'
                     }
                 ],
                 imposteAllegeTypeVitrage:[
                     {
                         title:'Vitrage standard',
-                        subtitle:'Composition standard 4/16/4 ou 4/20/4, isolation thermique renforcée, intercalaire warm-edge, Ug1.1, Ac:30DbA',
+                        subtitle:'Composition standard 4/16/4, isolation thermique renforcée, intercalaire aluminium, Ug1.1, Ac:30DbA',
                         imageUrl:'/assets/MENPVC_VITR_COMPO_STD.jpg',
                         code:'Vitrage standard'
                     },
                     {
-                        title:'Vitrage 44 1 face',
-                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        title:'Vitrage 44.2 1 face',
+                        subtitle:'1 face anti-effraction classe 2, isolation thermique renforcée, intercalaire aluminium, Ug 1.1',
                         imageUrl:'/assets/MENPVC_VITR_COMPO_441.jpg',
-                        code:'Vitrage 44 1 face'
+                        code:'Vitrage 44.2 1 face'
                     },
                     {
-                        title:'Vitrage 10/14/4',
-                        subtitle:'vitrage acoustique  Ac : 35 DbA, isolation thermique renforcée, intercalaire warm-edge, Ug 1.1',
+                        title:'Vitrage 10/10/4',
+                        subtitle:'vitrage acoustique  Ac : 35 DbA, isolation thermique renforcée, intercalaire aluminium, Ug 1.1',
                         imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_COMPO_104.jpg',
-                        code:'Vitrage 10/14/4'
+                        code:'Vitrage 10/1O/4'
                     }
                 ],
                 imposteAllegeDecors:[
@@ -1006,10 +1029,10 @@
                         code:'Imprimé G200'
                     },
                     {
-                        title:'Delta clair',
-                        subtitle:'',
-                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_VITR_DECO_I_DEL_CL.jpg',
-                        code:'Delta clair'
+                        title:'Satinovo',
+                        subtitle:'Dépoli à l\'acide',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENALU_VITR_DECO_A_SATIN.jpg',
+                        code:'Satinovo'
                     }
                 ]
             }
@@ -1064,6 +1087,8 @@
                 type:ko.observable(),
                 width:ko.observable(0),
                 height:ko.observable(0),
+                widthAllege:ko.observable(0),
+                heightAllege:ko.observable(0),
                 total: ko.observable(0)
             };
 
