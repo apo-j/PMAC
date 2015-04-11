@@ -594,9 +594,9 @@
           <label>Ouverture</label>
            <ul data-bind="foreach: data.typesOuverture">
              <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
-             <li style="float:left;width:160px;height:100px"><label>
+             <li style="float:left;width:160px;height:100px"><label class="normal">
                <input type="radio" name="coloris" data-bind="checked: $root.results.typeOuverture, value:value">
-               <img class="bordered black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
+               <img class="black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
                <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
              </label></li>
              <!-- /ko -->
@@ -853,57 +853,141 @@
                 typesOuverture:[
                     {
                         typeChassis:'Fenêtre',
-                        imageUrl:'/assets/vert.png',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_F.jpg',
                         value:'Fixe',
                         isActive:false,
                         name:'Fixe'
                     },
                     {
                         typeChassis:'Fenêtre',
-                        imageUrl:'/assets/rouge.png',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_SF.jpg',
                         value:'Soufflet',
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:'Soufflet',
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF1.jpg',
+                        value:'Fenêtre 1 Vantail',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 1 Vantail'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB1.jpg',
+                        value:'Fenêtre 1 Vantail OB',
+                        isActive:false,
+                        name:'Fenêtre 1 Vantail OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2.jpg',
+                        value:'Fenêtre 2 Vantaux',
+                        isActive:false,
+                        name:'Fenêtre 2 Vantaux'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2.jpg',
+                        value:'Fenêtre 2 Vantaux OB',
+                        isActive:false,
+                        name:'Fenêtre 2 Vantaux OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2F.jpg',
+                        value:'Fenêtre 2 Vtx + fixe',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + fixe'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2F.jpg',
+                        value:'Fenêtre 2 Vtx + fixe OB',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + fixe OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF3.jpg',
+                        value:'Fenêtre 3 Vantaux',
+                        isActive:false,
+                        name:'Fenêtre 3 Vantaux'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB3.jpg',
+                        value:'Fenêtre 3 Vantaux OB',
+                        isActive:false,
+                        name:'Fenêtre 3 Vantaux OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2F2.jpg',
+                        value:'Fenêtre 2 Vtx + 2 fixes',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + 2 fixes'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2F2.jpg',
+                        value:'Fenêtre 2 Vtx + 2 fixes OB',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + 2 fixes OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF4.jpg',
+                        value:'Fenêtre 4 Vantaux',
+                        isActive:false,
+                        name:'Fenêtre 4 Vantaux'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB4.jpg',
+                        value:'Fenêtre 4 Vantaux OB',
+                        isActive:false,
+                        name:'Fenêtre 4 Vantaux OB'
                     },
                     {
                         typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF1.jpg',
+                        value:'Port-fenêtre 1 Vantail',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Port-fenêtre 1 Vantail'
                     },
                     {
                         typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2.jpg',
+                        value:'Port-fenêtre 2 Vantaux',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Port-fenêtre 2 Vantaux'
                     },
                     {
                         typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2F.jpg',
+                        value:'Port-fenêtre 2 Vtx + 1 fixe',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Port-fenêtre 2 Vtx + 1 fixe'
                     },
                     {
                         typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF3.jpg',
+                        value:'Port-fenêtre 3 Vantaux',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Port-fenêtre 3 Vantaux'
                     },
                     {
                         typeChassis:'Porte-Fenêtre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2F2.jpg',
+                        value:'Port-fenêtre 2 Vtx + 2 fixes',
+                        isActive:false,
+                        name:'Port-fenêtre 2 Vtx + 2 fixes'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF4.jpg',
+                        value:'Port-fenêtre 4 Vantaux',
                         isActive:false,
                         name:'Soufflet'
                     }

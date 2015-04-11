@@ -520,41 +520,65 @@
        <div class="panel-collapse collapse"  id="ouverture">
          <div class="panel-body">
            <label>Type de châssis</label>
-           <br/>
-           <ul style="float:left">
-             <li>
-                <label>
-                    <input type="radio" name="type_chassis" value="Deux vantaux" data-bind="checked: $root.results.typeChassis">
-                    <span>Deux vantaux</span>
-                </label>
-             </li>
-             <li>
-             <label>
-               <input type="radio" name="type_chassis" value="Trois vantaux sur trois rails" data-bind="checked: $root.results.typeChassis">
-               <span>Trois vantaux sur trois rails</span>
-             </label>
-            </li>
+           <ul>
              <li>
                <label>
-                 <input type="radio" name="type_chassis" value="Trois vantaux sur trois rails" data-bind="checked: $root.results.typeChassis">
-                 <span>Quatre vantaux sur deux rails</span>
+                 <input type="radio" name="type_chassis" value="Fenêtre" data-bind="checked: $root.results.typeChassis">
+                 <span>Fenêtre</span>
+               </label>
+             </li>
+             <li>
+               <label>
+                 <input type="radio" name="type_chassis" value="Porte-Fenêtre" data-bind="checked: $root.results.typeChassis">
+                 <span>Porte-Fenêtre</span>
                </label>
              </li>
            </ul>
-           <div style="float:right;margin-right: 200px;">
-             <!-- ko if: ( 'Deux vantaux'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-             <!-- ko if: ( 'Trois vantaux sur trois rails'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-             <!-- ko if: ( 'Trois vantaux sur trois rails'=== $root.results.typeChassis()) -->
-             <img src="/assets/pvc-pose-renovation.png" width="200px" height="250px">
-             <!-- /ko -->
-           </div>
-
          </div>
-      </div>
+         <div class="panel-body">
+           <label>Ouverture</label>
+           <ul data-bind="foreach: data.typesOuverture">
+             <!-- ko if: (typeChassis === $root.results.typeChassis()) -->
+             <li style="float:left;width:160px;height:100px"><label class="normal">
+               <input type="radio" name="coloris" data-bind="checked: $root.results.typeOuverture, value:value">
+               <img class="black" data-bind="attr:{src:imageUrl,width:47, height:47}"/><br/>
+               <span data-bind="text:name" style="display: inline-block;text-align: center;width:80px"></span>
+             </label></li>
+             <!-- /ko -->
+           </ul>
+           <br style="clear:both"/>
+           <!-- ko if: ($root.results.typeChassis() === 'Fenêtre') -->
+           <div style="padding-left: 20px">
+             <label>Options</label>  <br/>
+             <input type="checkbox" data-bind="checked:results.options.traverseIntermediaire">&nbsp;Traverse intermédiaire
+           </div>
+           <!-- /ko -->
+           <!-- ko if: ($root.results.typeChassis() === 'Porte-Fenêtre') -->
+           <div style="padding-left: 20px">
+             <label>Sens</label>     <br/>
+             <input type="radio" value="à droite" name="sens" data-bind="checked:results.sens"/>&nbsp;à droite (vue intérieure)  &nbsp;&nbsp;
+             <input type="radio" value="à gauche" name="sens" data-bind="checked:results.sens"/>&nbsp;à gauche (vue intérieure)
+           </div>
+           <div style="padding-left: 20px;margin-top: 20px">
+             <label>Seuil alu</label>  <br/>
+             <input type="radio" value="Sans seuil alu" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Sans seuil alu   &nbsp;&nbsp;
+             <input type="radio" value="Seuil alu 40 mm anodisé" name="seuil-alu" data-bind="checked:results.seuilAlu"/>&nbsp;Seuil alu 40 mm anodisé
+           </div>
+           <div style="padding-left: 20px;margin-top: 20px">
+             <label>Options</label>     <br/>
+             <div style="padding-left: 50px">
+               <input type="checkbox"  data-bind="checked:results.options.sansSoubassement">&nbsp;Sans soubassement <br/>
+               <input type="checkbox"  data-bind="checked:results.options.serrure">&nbsp;Serrure <br/>
+               <!-- ko if: ($root.results.options.serrure() === false) -->
+               <input type="checkbox"  data-bind="checked:results.options.oscilloBattant">&nbsp;Oscillo-battant <br/>
+               <input type="checkbox" data-bind="checked:results.options.PoigneACle">&nbsp;Poignée à clé <br/>
+               <!-- /ko -->
+               <input type="checkbox" data-bind="checked:results.options.grilleAeration">&nbsp;Grille d'aération
+             </div>
+           </div>
+           <!-- /ko -->
+         </div>
+       </div>
       </div>
 
       <div class="panel panel-default">
@@ -707,58 +731,142 @@
                 },
                 typesOuverture:[
                     {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/vert.png',
-                        value:1,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_F.jpg',
+                        value:'Fixe',
                         isActive:false,
                         name:'Fixe'
                     },
                     {
-                        typeChassis:'fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_SF.jpg',
+                        value:'Soufflet',
                         isActive:false,
                         name:'Soufflet'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF1.jpg',
+                        value:'Fenêtre 1 Vantail',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 1 Vantail'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB1.jpg',
+                        value:'Fenêtre 1 Vantail OB',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 1 Vantail OB'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2.jpg',
+                        value:'Fenêtre 2 Vantaux',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 2 Vantaux'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2.jpg',
+                        value:'Fenêtre 2 Vantaux OB',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 2 Vantaux OB'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2F.jpg',
+                        value:'Fenêtre 2 Vtx + fixe',
                         isActive:false,
-                        name:'Soufflet'
+                        name:'Fenêtre 2 Vtx + fixe'
                     },
                     {
-                        typeChassis:'porte_fenetre',
-                        imageUrl:'/assets/rouge.png',
-                        value:2,
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2F.jpg',
+                        value:'Fenêtre 2 Vtx + fixe OB',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + fixe OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF3.jpg',
+                        value:'Fenêtre 3 Vantaux',
+                        isActive:false,
+                        name:'Fenêtre 3 Vantaux'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB3.jpg',
+                        value:'Fenêtre 3 Vantaux OB',
+                        isActive:false,
+                        name:'Fenêtre 3 Vantaux OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF2F2.jpg',
+                        value:'Fenêtre 2 Vtx + 2 fixes',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + 2 fixes'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB2F2.jpg',
+                        value:'Fenêtre 2 Vtx + 2 fixes OB',
+                        isActive:false,
+                        name:'Fenêtre 2 Vtx + 2 fixes OB'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OF4.jpg',
+                        value:'Fenêtre 4 Vantaux',
+                        isActive:false,
+                        name:'Fenêtre 4 Vantaux'
+                    },
+                    {
+                        typeChassis:'Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_OB4.jpg',
+                        value:'Fenêtre 4 Vantaux OB',
+                        isActive:false,
+                        name:'Fenêtre 4 Vantaux OB'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF1.jpg',
+                        value:'Port-fenêtre 1 Vantail',
+                        isActive:false,
+                        name:'Port-fenêtre 1 Vantail'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2.jpg',
+                        value:'Port-fenêtre 2 Vantaux',
+                        isActive:false,
+                        name:'Port-fenêtre 2 Vantaux'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2F.jpg',
+                        value:'Port-fenêtre 2 Vtx + 1 fixe',
+                        isActive:false,
+                        name:'Port-fenêtre 2 Vtx + 1 fixe'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF3.jpg',
+                        value:'Port-fenêtre 3 Vantaux',
+                        isActive:false,
+                        name:'Port-fenêtre 3 Vantaux'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF2F2.jpg',
+                        value:'Port-fenêtre 2 Vtx + 2 fixes',
+                        isActive:false,
+                        name:'Port-fenêtre 2 Vtx + 2 fixes'
+                    },
+                    {
+                        typeChassis:'Porte-Fenêtre',
+                        imageUrl:'http://www.voletshop.fr/configurateurs/images_listes/MENPVC_TYPE_PF4.jpg',
+                        value:'Port-fenêtre 4 Vantaux',
                         isActive:false,
                         name:'Soufflet'
                     }
@@ -901,6 +1009,14 @@
                 PBH:ko.observable(),
                 PBV:ko.observable(),
                 typeVitrage:ko.observable(''),
+                options:{
+                    traverseIntermediaire : ko.observable(false),
+                    sansSoubassement : ko.observable(false),
+                    serrure : ko.observable(false),
+                    oscilloBattant : ko.observable(false),
+                    PoigneACle : ko.observable(false),
+                    grilleAeration : ko.observable(false)
+                },
                 decor:ko.observable(''),
                 imposteTypeChassis:ko.observable('Aucun'),
                 allegeTypeChassis:ko.observable('Aucun'),
